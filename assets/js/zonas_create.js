@@ -11,7 +11,7 @@ var zonasPol;
 
 var xZona;
 
-var infowindow = new google.maps.InfoWindow();
+
 
 $(document).ready(function(){
 
@@ -252,14 +252,12 @@ function gotoRegion(regId) {
 					//});
 					
 					google.maps.event.addListener(zonasPol[indexx]['zmap'], 'click', function(event) {
-					
+						
+						var infowindow = new google.maps.InfoWindow();
 						var contentString = '<div id="content">'+
 							'Zona ' + valuex.name + 
 						  '</div>';
 
-
-					
-					
 						infowindow.setContent(contentString);
 						infowindow.setPosition(event.latLng);
 						infowindow.open(map);

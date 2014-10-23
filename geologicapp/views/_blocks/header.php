@@ -258,7 +258,7 @@
                         <!-- /input-group -->
                     </li>
                     <li>
-                        <a href="/geologic/auth"><i class="fa fa-random fa-fw"></i> Panel de Control</a>
+                        <a href="/geologic/auth"><i class="fa fa-random fa-fw"></i> Administracion de Usuarios</a>
                     </li>
                 </ul>
                 <!-- /#side-menu -->
