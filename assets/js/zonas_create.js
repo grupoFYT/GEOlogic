@@ -245,6 +245,14 @@ function gotoRegion(regId) {
 											});	
 					zonasPol[indexx]['zmap'].setMap(map);
 					
+					//google.maps.event.addListener(zonasPol[indexx]['zmap'], "click", function(overlay,latlng) {
+						//map.openInfoWindowHtml(overlay, '<strong>Your html things :</strong><br />etc...');
+					//});
+					
+					google.maps.event.addListener(zonasPol[indexx]['zmap'], 'click', function(event) {
+						alert("caca");
+					});
+					
 				}
 			});
 			
