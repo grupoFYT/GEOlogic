@@ -3,8 +3,8 @@ function format ( d ) {
 
 	//alert(d);
     
-	return 	'<div class="peopleinfoContent">'+
-			'<img class="" alt="User Avatar" src="/geologic/assets/images/piedraspreciosas/' + (d.piedrapreciosa).toLowerCase() + '.jpg">' +
+	return 	'<div class="ppinfoContent">'+
+			'<img style="border-radius: 5%;" class="" alt="' + d.piedrapreciosa + '" src="/geologic/assets/images/piedraspreciosas/' + (d.piedrapreciosa).toLowerCase() + '.jpg">' +
 			'</div>';
 	
 	
@@ -47,7 +47,8 @@ $(document).ready(function() {
 			  "orderable":      false,
 			  "searchable":     false,
 			  "render": function ( data, type, row ) {
-                    return '<a class="btn btn-danger btn-xs" href="/geologic/piedraspreciosas/delete/' + data.id + '">Eliminar</a>';
+                    return '<a class="btn btn-danger btn-xs" href="/geologic/piedraspreciosas/delete/' + data.id + '">Eliminar</a>' + 
+						   '<a class="btn btn-primary btn-xs" href="/geologic/piedraspreciosas/delete/' + data.id + '">Ubicar</a>';
 				},
 			},
 		],
