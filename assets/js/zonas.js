@@ -34,6 +34,13 @@ $(document).ready(function() {
 			{ "data": "zona" },
 			{ "data": "region" },
 			{ "data": "pais" },
+			{
+                 "class":          'delete-control',
+                 "orderable":      false,
+                 "data":           null,
+                 "defaultContent": '',
+				 "searchable":     false
+             },
 		],
 		"language": {
 			"lengthMenu": "Mostrando _MENU_ zonas por pagina",
