@@ -48,7 +48,7 @@ $(document).ready(function(){
 		 submitHandler: function(form) {
 			var suspend = false;
 			getPolygonCoords();
-			
+			alert(google.maps.geometry.spherical.computeArea(xZona.getPath()));
 			if (!suspend) {				
 				dataString = $("#newP_form").serialize();			 
 				$.ajax({
@@ -114,6 +114,7 @@ $(document).ready(function(){
 			strokeWeight: 2,
 			fillColor: '#CACACA',
 			fillOpacity: 0.7,
+			zIndex: 3
 		});
 				
 		xZona.setMap(map);
@@ -191,7 +192,12 @@ function setTypeahead(objdom, xrhfrunc, dataId, dataProperty, hiddencell) {
 
 }
 
-function gotoRegion(regId) {		
+function gotoRegion(regId) {	
+	
+	if(typeof(xZona) != 'undefined') {
+			xZona.setMap(null);
+	}
+		
 	$.each(ZS.regiones, function(index, value) {		
 		if (value.id == regId) {
 			zonasPol = null;
