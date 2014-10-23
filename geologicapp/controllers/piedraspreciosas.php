@@ -23,4 +23,14 @@ class Piedraspreciosas extends MY_Controller {
 		$this->load->view('_layouts/mainGeologic', $this->data);
     }
 
+	function datatable()
+    {
+		
+		$this->datatables->select('piedraspreciosas.id as id,piedraspreciosas.piedrapreciosa as piedrapreciosa,piedraspreciosas.dureza as dureza,piedraspreciosas.color as color,piedraspreciosas.densidad as densidad,piedraspreciosas.caracteristicas as caracteristicas,piedraspreciosas.talla as talla', FALSE)
+			->from('piedraspreciosas');
+		
+        echo $this->datatables->generate();
+
+	}
+	
 }

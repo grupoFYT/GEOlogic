@@ -75,7 +75,7 @@
 						<tr>
 							<th></th>
 							<th></th>
-							<th>Piedra Preciosa</th>
+							<th>P.P.</th>
 							<th>Dureza</th>
 							<th>Color</th>
 							<th>Densidad</th>
