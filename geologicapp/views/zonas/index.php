@@ -74,6 +74,7 @@
 							<th>Zona</th>
 							<th>Region</th>
 							<th>Pais</th>
+							<th>Acciones</th>
 						</tr>
 					</thead>
 					

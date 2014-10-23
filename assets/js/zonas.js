@@ -47,6 +47,13 @@ $(document).ready(function() {
 			{ "data": "zona" },
 			{ "data": "region" },
 			{ "data": "pais" },
+			{ "data": null,
+			  "orderable":      false,
+			  "searchable":     false,
+			  "render": function ( data, type, row ) {
+                    return 'hola';
+				},
+			},
 		],
 		"language": {
 			"lengthMenu": "Mostrando _MENU_ zonas por pagina",
