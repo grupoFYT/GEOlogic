@@ -11,6 +11,10 @@ var zonasPol;
 
 var xZona;
 
+var infowindow = new google.maps.InfoWindow({ 
+	size: new google.maps.Size(150,150)
+});
+
 $(document).ready(function(){
 
 	map = new google.maps.Map(document.getElementById('map-canvas'),mapOptions);
@@ -250,7 +254,9 @@ function gotoRegion(regId) {
 					//});
 					
 					google.maps.event.addListener(zonasPol[indexx]['zmap'], 'click', function(event) {
-						alert("caca");
+						infowindow.setContent("Zona " + valuex.name);
+						infowindow.setPosition(event.latLng);
+						infowindow.open(map);
 					});
 					
 				}
