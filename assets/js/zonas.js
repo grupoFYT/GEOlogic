@@ -1,7 +1,20 @@
 
 function format ( d ) {
+
+	//alert(d);
     
-    return 'detalle';
+	return 	'<div class="peopleinfoContent"><div class="thumb"><img alt="" src="/assets/images/nothumb.png"></div>' +
+			'<div class="peopleinfo"><h4><a href="">' + d.id + ' ' + d.id + '</a></h4>' +
+				'<ul>' +
+					'<li><span></span> ' + d.id + '</li>' +
+					'<li><span></span></li>' +
+				'</ul>' +
+				'<a class="btn btn-info btn-rounded" href="/geologic/zonas/delete/' + d.id +
+				((d.id == 1) ? '"><i class="fa fa-check fa-fw" style="color:green;"></i>' : '"><i class="fa fa-warning fa-fw" style="color:red;"></i>') +
+				' Eliminar</a>' +
+			'</div></div>';
+	
+	
 }
 
 
@@ -75,9 +88,6 @@ $(document).ready(function() {
 		}
 		$('#zonasGrid').DataTable().search($('#searchInput').val().trim()).draw();
 	});
-	
-	
-	
 	
 	
 } );
