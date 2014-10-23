@@ -5,9 +5,9 @@ namespace Model;
 use \Gas\Core;
 use \Gas\ORM;
 
-class Mineral extends ORM {
+class Yacimiento extends ORM {
 
-		public $table = 'minerales';
+		public $table = 'yacimientos';
         
         function _init()
         {
