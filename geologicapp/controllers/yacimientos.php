@@ -1,6 +1,6 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-class Piedraspreciosas extends MY_Controller {
+class yacimientos extends MY_Controller {
 
 	public function __construct() {
         parent::__construct();
@@ -12,12 +12,12 @@ class Piedraspreciosas extends MY_Controller {
 
 	public function index() {
 	
-		$this->styles = array('dataTables.bootstrap','piedraspreciosas') ;
-		$this->jsfiles = array('jquery.dataTables.min', 'dataTables.bootstrap', 'piedraspreciosas');
+		$this->styles = array('dataTables.bootstrap','yacimientos') ;
+		$this->jsfiles = array('jquery.dataTables.min', 'dataTables.bootstrap', 'yacimientos');
 	
 		$this->data['page_title'] = "Piedras Preciosas";
 				
-		$this->data['view_file'] = 'piedraspreciosas/index';
+		$this->data['view_file'] = 'yacimientos/index';
 		
 		//echo "caca";
 		$this->load->view('_layouts/mainGeologic', $this->data);
@@ -26,8 +26,8 @@ class Piedraspreciosas extends MY_Controller {
 	function datatable()
     {
 		
-		$this->datatables->select('piedraspreciosas.id as id,piedraspreciosas.piedrapreciosa as piedrapreciosa,piedraspreciosas.dureza as dureza,piedraspreciosas.color as color,piedraspreciosas.densidad as densidad,piedraspreciosas.caracteristicas as caracteristicas,piedraspreciosas.talla as talla', FALSE)
-			->from('piedraspreciosas');
+		$this->datatables->select('yacimientos.id as id,yacimientos.yacimiento as yacimiento,yacimientos.dureza as dureza,yacimientos.color as color,yacimientos.densidad as densidad,yacimientos.caracteristicas as caracteristicas,yacimientos.talla as talla', FALSE)
+			->from('yacimientos');
 		
         echo $this->datatables->generate();
 
