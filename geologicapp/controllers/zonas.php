@@ -125,12 +125,17 @@ class Zonas extends MY_Controller {
 				$this->db->trans_commit();
 			}
 
-			$this->session->set_flashdata('item', 'zona cargada.');
+			$this->session->set_flashdata('item', 'Zona ' . $this->input->post('zona') . ' cargada.');
 			echo TRUE;
  
 		endif;
 	}
 	
+	function delete()
+	{
+		//$this->input->post('stringQuery');
+		$this->session->set_flashdata('item', 'Zona eliminada');
+	}
 }
 
 	
