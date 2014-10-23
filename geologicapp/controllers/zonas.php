@@ -133,12 +133,12 @@ class Zonas extends MY_Controller {
 	
 	function delete()
 	{
-		$id = $this->uri->segment(2);
-		$this->db->query("UDPATE zonas SET active = 0 WHERE id = ". $id);
+		$id = $this->uri->segment(3);
+		$this->db->query("UPDATE zonas SET active = 0 WHERE id = ". $id);
 		//$this->input->post('stringQuery');
 		$this->session->set_flashdata('item', 'Zona eliminada');
 		
-		redirect('/geologic/zonas/', 'refresh');
+		redirect('/zonas/', 'refresh');
 	}
 }
 
