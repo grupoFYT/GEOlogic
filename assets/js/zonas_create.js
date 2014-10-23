@@ -11,9 +11,7 @@ var zonasPol;
 
 var xZona;
 
-var infowindow = new google.maps.InfoWindow({ 
-	size: new google.maps.Size(150,150)
-});
+var infowindow = new google.maps.InfoWindow();
 
 $(document).ready(function(){
 
@@ -254,7 +252,15 @@ function gotoRegion(regId) {
 					//});
 					
 					google.maps.event.addListener(zonasPol[indexx]['zmap'], 'click', function(event) {
-						infowindow.setContent("Zona " + valuex.name);
+					
+						var contentString = '<div id="content">'+
+							'Zona ' + valuex.name + 
+						  '</div>';
+
+
+					
+					
+						infowindow.setContent(contentString);
 						infowindow.setPosition(event.latLng);
 						infowindow.open(map);
 					});
