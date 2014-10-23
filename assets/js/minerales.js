@@ -4,7 +4,7 @@ function format ( d ) {
 	//alert(d);
     
 	return 	'<div class="ppinfoContent">'+
-			'<img style="border-radius: 5%;" class="" alt="' + d.piedrapreciosa + '" src="/geologic/assets/images/piedraspreciosas/' + (d.piedrapreciosa).toLowerCase() + '.jpg">' +
+			'<img style="border-radius: 5%;" class="" alt="' + d.mineral + '" src="/geologic/assets/images/minerales/' + (d.mineral).toLowerCase() + '.jpg">' +
 			'</div>';
 	
 	
@@ -13,12 +13,12 @@ function format ( d ) {
 
 $(document).ready(function() {
 
-	var table = $('#piedraspreciosasGrid').DataTable( {
+	var table = $('#mineralesGrid').DataTable( {
 		
 		"processing": true,
 		"serverSide": true,
 		"ajax": {
-			"url": "/geologic/piedraspreciosas/datatable",
+			"url": "/geologic/minerales/datatable",
 			"type": "POST"
 		},
 		"lengthChange": false,
@@ -37,18 +37,19 @@ $(document).ready(function() {
 				"data": "id",
 				"visible" : false
 			},
-			{ "data": "piedrapreciosa" },
+			{ "data": "mineral" },
 			{ "data": "dureza" },
 			{ "data": "color" },
 			{ "data": "densidad" },
 			{ "data": "caracteristicas" },
-			{ "data": "talla" },
+			{ "data": "origen" },
+			{ "data": "utilidad" },
 			{ "data": null,
 			  "orderable":      false,
 			  "searchable":     false,
 			  "render": function ( data, type, row ) {
-                    return '<a class="btn btn-danger btn-xs" href="/geologic/piedraspreciosas/delete/' + data.id + '">Eliminar</a>' + 
-						   '<a class="btn btn-primary btn-xs" href="/geologic/piedraspreciosas/delete/' + data.id + '">Ubicar</a>';
+                    return '<a class="btn btn-danger btn-xs" href="/geologic/minerales/delete/' + data.id + '">Eliminar</a>' + 
+						   '<a class="btn btn-primary btn-xs" href="/geologic/minerales/delete/' + data.id + '">Ubicar</a>';
 				},
 			},
 		],
@@ -68,7 +69,7 @@ $(document).ready(function() {
 		}
 	} );
 	
-    $('#piedraspreciosasGrid tbody').on('click', 'td.details-control', function () {
+    $('#mineralesGrid tbody').on('click', 'td.details-control', function () {
         var tr = $(this).closest('tr');
         var row = table.row( tr );
  
@@ -90,7 +91,7 @@ $(document).ready(function() {
 		if ($('#searchInput').val().trim().length < 4) {
 			$('#searchInput').val("");
 		}
-		$('#piedraspreciosasGrid').DataTable().search($('#searchInput').val().trim()).draw();
+		$('#mineralesGrid').DataTable().search($('#searchInput').val().trim()).draw();
 	});
 	
 	
