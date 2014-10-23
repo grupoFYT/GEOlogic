@@ -51,7 +51,7 @@ $(document).ready(function() {
 			  "orderable":      false,
 			  "searchable":     false,
 			  "render": function ( data, type, row ) {
-                    return 'hola';
+                    return '<a class="btn btn-danger btn-xs" href="/geologic/zonas/delete/' + data.id + '">Eliminar</a>';
 				},
 			},
 		],

@@ -258,7 +258,7 @@
                         <!-- /input-group -->
                     </li>
                     <li>
-                        <a href="{[ URL::to('dashboard') ]}"><i class="fa fa-random fa-fw"></i> Panel de Control</a>
+                        <a href="/geologic"><i class="fa fa-random fa-fw"></i> Panel de Control</a>
                     </li>
                 </ul>
                 <!-- /#side-menu -->

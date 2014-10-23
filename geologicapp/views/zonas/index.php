@@ -63,6 +63,10 @@
 				.table-bordered > thead > tr > th, .table-bordered > tbody > tr > th, .table-bordered > tfoot > tr > th, .table-bordered > thead > tr > td, .table-bordered > tbody > tr > td, .table-bordered > tfoot > tr > td {
 					border: 0px !important;
 				}
+				
+				#zonasGrid_filter {
+					display: none;
+				}
 
 				</style>
 				
