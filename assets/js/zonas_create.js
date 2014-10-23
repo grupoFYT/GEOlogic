@@ -247,15 +247,12 @@ function gotoRegion(regId) {
 											});	
 					zonasPol[indexx]['zmap'].setMap(map);
 					
-					//google.maps.event.addListener(zonasPol[indexx]['zmap'], "click", function(overlay,latlng) {
-						//map.openInfoWindowHtml(overlay, '<strong>Your html things :</strong><br />etc...');
-					//});
-					
 					google.maps.event.addListener(zonasPol[indexx]['zmap'], 'click', function(event) {
 						
 						var infowindow = new google.maps.InfoWindow();
-						var contentString = '<div id="content">'+
-							'Zona ' + valuex.name + 
+						var contentString = '<div id="content" style="width:250px; height: 100px;">'+
+							'Zona ' + valuex.name + '<br>' + 
+							'Area: ' + google.maps.geometry.spherical.computeArea(zonasPol[indexx]['zmap'].getPath()) + ' mts2' + 							
 						  '</div>';
 
 						infowindow.setContent(contentString);

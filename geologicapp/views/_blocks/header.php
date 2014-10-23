@@ -258,6 +258,7 @@
                         <!-- /input-group -->
                     </li>
                     <li>
+                        <a href="/geologic/"><i class="fa fa-random fa-fw"></i> Panel Principal</a>
                         <a href="/geologic/auth"><i class="fa fa-random fa-fw"></i> Administracion de Usuarios</a>
                     </li>
                 </ul>

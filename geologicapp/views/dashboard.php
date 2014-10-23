@@ -14,14 +14,14 @@
 					</div>
 					<div class="col-xs-9 text-right">
 						<? ini_set('display_errors', 'On'); ?>
-						<div class="huge"><?= count(Model\Zona::all()) ?></div>
-						<div>Zonafs</div>
+						<div class="huge"><?= count(Model\PiedraPreciosa::all()) ?></div>
+						<div>Piedras Preciosas</div>
 					</div>
 				</div>
 			</div>
 			<a href="zonas">
 				<div class="panel-footer">
-					<span class="pull-left">Minerales</span>
+					<span class="pull-left">Piedras Preciosas</span>
 					<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
 					<div class="clearfix"></div>
 				</div>
