@@ -72,14 +72,37 @@ $(document).ready(function(){
             return Math.floor((Math.random()*val_max));
         }
 		
+		
+		
+		
+		var px_center = map.getCenter();
+		
+		var polygon_width = 300;
+        var polygon_height = 200;
+        //alert(px_center);
+		
+        var px_bl_x = parseInt(px_center.k - (0)) + get_random_value(10);
+        var px_bl_y = parseInt(px_center.B + (0)) + get_random_value(10);
+        //alert(px_bl_x);
+		//alert(px_bl_y);
+        var px_br_x = parseInt(px_center.k + (0)) + get_random_value(10);
+        var px_br_y = parseInt(px_center.B + (0)) + get_random_value(10);
+        
+        var px_tr_x = parseInt(px_center.k + (0)) + get_random_value(10);
+        var px_tr_y = parseInt(px_center.B - (0)) + get_random_value(10);
+        
+        var px_tl_x = parseInt(px_center.k - (0)) + get_random_value(10);
+        var px_tl_y = parseInt(px_center.B - (0)) + get_random_value(10);
+        
+		
 		var triangleCoords = [
-			new google.maps.LatLng(25.774252, -80.190262),
-			new google.maps.LatLng(18.466465, -66.118292),
-			new google.maps.LatLng(32.321384, -64.75737),
-			new google.maps.LatLng(25.774252, -80.190262)
+			new google.maps.LatLng(px_center.k, px_center.B),
+			new google.maps.LatLng(px_br_x, px_br_y),
+			new google.maps.LatLng(px_tr_x, px_tr_y),
+			new google.maps.LatLng(px_center.k, px_center.B)
 		];
 		
-		bermudaTriangle = new google.maps.Polygon({
+		xTriangle = new google.maps.Polygon({
 			paths: triangleCoords,
 			draggable: true,
 			editable: true,			
@@ -91,25 +114,9 @@ $(document).ready(function(){
 		});
 		
 		
-		//bermudaTriangle.setMap(map);
+		xTriangle.setMap(map);
 		
-		var px_center = map.getCenter();
 		
-		var polygon_width = 300;
-        var polygon_height = 200;
-        
-        var px_bl_x = parseInt(px_center.k - (polygon_width / 2)) + get_random_value();
-        var px_bl_y = parseInt(px_center.B + (polygon_height / 2)) + get_random_value();
-        
-        var px_br_x = parseInt(px_center.k + (polygon_width / 2)) + get_random_value();
-        var px_br_y = parseInt(px_center.B + (polygon_height / 2)) + get_random_value();
-        
-        var px_tr_x = parseInt(px_center.k + (polygon_width / 2)) + get_random_value();
-        var px_tr_y = parseInt(px_center.B - (polygon_height / 2)) + get_random_value();
-        
-        var px_tl_x = parseInt(px_center.k - (polygon_width / 2)) + get_random_value();
-        var px_tl_y = parseInt(px_center.B - (polygon_height / 2)) + get_random_value();
-        
 
     });
 	
