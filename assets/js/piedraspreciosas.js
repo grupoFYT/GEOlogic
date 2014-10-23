@@ -48,7 +48,11 @@ $(document).ready(function() {
 			  "searchable":     false,
 			  "render": function ( data, type, row ) {
                     return '<a class="btn btn-danger btn-xs" href="/geologic/piedraspreciosas/delete/' + data.id + '">Eliminar</a>' + 
-						   '<a class="btn btn-primary btn-xs" href="/geologic/piedraspreciosas/delete/' + data.id + '">Ubicar</a>';
+						   '<a class="btn btn-primary btn-xs" href="/geologic/piedraspreciosas/delete/' + data.id + '">Ubicar</a>' +						   
+						   '<a href="#" class=""><i class="fa fa-trash fa-fw"></i></a>';
+                        
+                   
+						   
 				},
 			},
 		],
