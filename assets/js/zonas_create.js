@@ -9,6 +9,7 @@ var map;
 var regionPol;
 var zonasPol;
 
+var xZona;
 
 $(document).ready(function(){
 
@@ -45,7 +46,9 @@ $(document).ready(function(){
             }
         },
 		 submitHandler: function(form) {
-			var suspend = false;			
+			var suspend = false;
+			getPolygonCoords();
+			
 			if (!suspend) {				
 				dataString = $("#newP_form").serialize();			 
 				$.ajax({
@@ -66,6 +69,10 @@ $(document).ready(function(){
 
 	
 	$('#polygon_main_add').on('click', function(){
+		
+		if(typeof(xZona) != 'undefined') {
+			xZona.setMap(null);
+		}		
 	
 		function get_random_value(val_max) {
             val_max = val_max || 100;
@@ -73,18 +80,14 @@ $(document).ready(function(){
         }
 		
 		
-		
-		
 		var px_center = map.getCenter();
 		
 		var polygon_width = 300;
         var polygon_height = 200;
-        //alert(px_center);
-		
+
         var px_bl_x = parseInt(px_center.k - (0)) + get_random_value(2);
         var px_bl_y = parseInt(px_center.B + (0)) + get_random_value(2);
-        //alert(px_bl_x);
-		//alert(px_bl_y);
+
         var px_br_x = parseInt(px_center.k + (0)) + get_random_value(2);
         var px_br_y = parseInt(px_center.B + (0)) + get_random_value(2);
         
@@ -102,7 +105,7 @@ $(document).ready(function(){
 			new google.maps.LatLng(px_center.k, px_center.B)
 		];
 		
-		xTriangle = new google.maps.Polygon({
+		xZona = new google.maps.Polygon({
 			paths: triangleCoords,
 			draggable: true,
 			editable: true,			
@@ -112,12 +115,9 @@ $(document).ready(function(){
 			fillColor: '#CACACA',
 			fillOpacity: 0.7,
 		});
+				
+		xZona.setMap(map);
 		
-		
-		xTriangle.setMap(map);
-		
-		
-
     });
 	
 	
@@ -249,7 +249,7 @@ function gotoRegion(regId) {
 }
 
 function getPolygonCoords() {	
-	var polygonBounds = zonaTriangle.getPath();
+	var polygonBounds = xZona.getPath();
 	var coordinates = [];
 	for(var i = 0 ; i < polygonBounds.length ; i++) coordinates.push(polygonBounds.getAt(i).lat(), polygonBounds.getAt(i).lng());	
 	$("#coord").val(coordinates);
