@@ -27,7 +27,8 @@ class Zonas extends MY_Controller {
     {
 		$this->datatables->select('zonas.id as id,zonas.zona as zona,regiones.region as region, paises.pais as pais', FALSE)
 			->from('zonas') ->join('regiones','zonas.region_id = regiones.id','left')
-			->from('zonas') ->join('paises','regiones.pais_id = paises.id','left');
+			->from('zonas') ->join('paises','regiones.pais_id = paises.id','left')
+			->where('active = 1');
 		
         echo $this->datatables->generate();
 
@@ -53,7 +54,7 @@ class Zonas extends MY_Controller {
 			$this->data['regiones'][$key]['coordenadas'] = $coordenadas;
 		}
 		
-		$zonas = $this->db->query("SELECT * FROM zonas")->result();
+		$zonas = $this->db->query("SELECT * FROM zonas WHERE active = 1")->result();
 		
 		foreach ($zonas as $key=>$value)
 		{
