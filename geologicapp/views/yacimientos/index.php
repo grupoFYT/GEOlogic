@@ -23,7 +23,7 @@
 					</div>
 					<div class="col-lg-6">					
 						<a class="btn btn-warning btn-sm btn-newP" href="/geologic/zonas/create">
-							Nuevo Mineral
+							Nuevo yacimiento
 						</a>
 					</div>
 				</div>			
@@ -40,23 +40,23 @@
 					background: url('<?= base_url() ?>assets/images/details_close.png') no-repeat center center;
 				}
 				
-				#mineralesGrid tbody td:nth-child(2) {
+				#yacimientosGrid tbody td:nth-child(2) {
 					text-align: center;
 				}
 				
-				#mineralesGrid tbody td:nth-child(5) {
+				#yacimientosGrid tbody td:nth-child(5) {
 					text-align: center;
 				}
 				
-				#mineralesGrid tbody td:nth-child(6) {
+				#yacimientosGrid tbody td:nth-child(6) {
 					text-align: center;
 				}
 				
-				#mineralesGrid tbody td:nth-child(7) {
+				#yacimientosGrid tbody td:nth-child(7) {
 					text-align: center;
 				}
 				
-				#mineralesGrid tr th {
+				#yacimientosGrid tr th {
 					text-align: center;
 				}
 				
@@ -64,18 +64,18 @@
 					border: 0px !important;
 				}
 				
-				#mineralesGrid_filter {
+				#yacimientosGrid_filter {
 					display: none;
 				}
 
 				</style>
 				
-				<table id="mineralesGrid" class="table table-striped table-bordered" cellspacing="0" width="100%">
+				<table id="yacimientosGrid" class="table table-striped table-bordered" cellspacing="0" width="100%">
 					<thead>
 						<tr>
 							<th></th>
 							<th></th>
-							<th>Mineral</th>
+							<th>Macimiento</th>
 							<th>Dureza</th>
 							<th>Color</th>
 							<th>Densidad</th>
