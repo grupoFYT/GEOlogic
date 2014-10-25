@@ -77,7 +77,7 @@
 							<th></th>
 							<th>Yacimiento</th>
 							<th>Fecha Descubrimiento</th>
-							<th>Cantidad de Minerales</th>
+							<th>Zona</th>
 							<th>Acciones</th>
 						</tr>
 					</thead>

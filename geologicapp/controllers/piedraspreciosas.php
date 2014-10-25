@@ -15,7 +15,7 @@ class Piedraspreciosas extends MY_Controller {
 		$this->styles = array('dataTables.bootstrap','piedraspreciosas') ;
 		$this->jsfiles = array('jquery.dataTables.min', 'dataTables.bootstrap', 'piedraspreciosas');
 	
-		$this->data['page_title'] = "Piedras Preciosas";
+		$this->data['page_title'] = "Gestion de piedras preciosas";
 				
 		$this->data['view_file'] = 'piedraspreciosas/index';
 		

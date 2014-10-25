@@ -15,7 +15,7 @@ class Zonas extends MY_Controller {
 		$this->styles = array('dataTables.bootstrap','zonas') ;
 		$this->jsfiles = array('jquery.dataTables.min', 'dataTables.bootstrap', 'zonas');
 	
-		$this->data['page_title'] = "Zonas";
+		$this->data['page_title'] = "Gestion de zonas";
 				
 		$this->data['view_file'] = 'zonas/index';
 		

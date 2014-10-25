@@ -15,7 +15,7 @@ class yacimientos extends MY_Controller {
 		$this->styles = array('dataTables.bootstrap','yacimientos') ;
 		$this->jsfiles = array('jquery.dataTables.min', 'dataTables.bootstrap', 'yacimientos');
 	
-		$this->data['page_title'] = "Piedras Preciosas";
+		$this->data['page_title'] = "Gestion de Yacimientos";
 				
 		$this->data['view_file'] = 'yacimientos/index';
 		
@@ -26,7 +26,7 @@ class yacimientos extends MY_Controller {
 	function datatable()
     {
 		
-		$this->datatables->select('yacimientos.id as id,yacimientos.yacimiento as yacimiento,yacimientos.dureza as dureza,yacimientos.color as color,yacimientos.densidad as densidad,yacimientos.caracteristicas as caracteristicas,yacimientos.talla as talla', FALSE)
+		$this->datatables->select('yacimientos.id as id,yacimientos.yacimiento as yacimiento,yacimientos.fecha_descubrimiento as fecha_descubrimiento,yacimientos.zona_id as zona_id', FALSE)
 			->from('yacimientos');
 		
         echo $this->datatables->generate();
