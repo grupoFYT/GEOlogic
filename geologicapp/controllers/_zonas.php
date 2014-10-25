@@ -1,6 +1,6 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-class Zonas extends MY_Controller {
+class _Zonas extends MY_Controller {
 
     public function __construct() {
         parent::__construct();
@@ -16,7 +16,7 @@ class Zonas extends MY_Controller {
 		$this->jsfiles = array('jquery.dataTables.min', 'dataTables.bootstrap', 'zonas');
 	
 		$this->data['page_title'] = "Gestion de zonas";
-		
+				
 		$this->data['view_file'] = 'zonas/index';
 		
 		//echo "caca";

@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row" style="margin-top: 22px;">
 	<div class="row">
 		<div class="col-lg-12">
 			<ul class="nav nav-tabs" role="tablist">
@@ -34,9 +34,6 @@
 			<div class="col-lg-6">ecedcdec
 			</div>
 		</div>
-	
-	
-		
 	</div>
 </div>
 
