@@ -33,55 +33,14 @@ class Piedraspreciosas extends MY_Controller {
 
 	}
 	
-}
-
----
-
-
-<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
-
-class Zonas extends MY_Controller {
-
-    public function __construct() {
-        parent::__construct();
-		
-		$this->load->library('form_validation');
-		$this->load->library('Datatables');        
-        $this->load->database();		
-    }
-
-    public function index() {
-	
-		$this->styles = array('dataTables.bootstrap','zonas') ;
-		$this->jsfiles = array('jquery.dataTables.min', 'dataTables.bootstrap', 'zonas');
-	
-		$this->data['page_title'] = "Gestion de zonas";
-				
-		$this->data['view_file'] = 'zonas/index';
-		
-		//echo "caca";
-		$this->load->view('_layouts/mainGeologic', $this->data);
-    }
-	
-	function datatable()
-    {
-		$this->datatables->select('zonas.id as id,zonas.zona as zona,regiones.region as region, paises.pais as pais', FALSE)
-			->from('zonas') ->join('regiones','zonas.region_id = regiones.id','left')
-			->from('zonas') ->join('paises','regiones.pais_id = paises.id','left')
-			->where('active = 1');
-		
-        echo $this->datatables->generate();
-
-	}
-	
 	public function create() {
 	
 		//ini_set('display_errors', 'On');
 	
 		$this->styles = array('bootstrap-datetimepicker.min') ;
-		$this->jsfiles = array('moment','bootstrap3-typeahead','zonas_create','bootstrap-datetimepicker.min','jquery.validate.min') ;
+		$this->jsfiles = array('moment','bootstrap3-typeahead','piedraspreciosas_create','bootstrap-datetimepicker.min','jquery.validate.min') ;
 	
-		$this->data['page_title'] = "Nueva Zona";
+		$this->data['page_title'] = "Nueva Piedra Preciosa";
 		
 		$regiones = $this->db->query("SELECT * FROM regiones")->result();
 		
@@ -182,7 +141,4 @@ class Zonas extends MY_Controller {
 	}
 }
 
-	
 
-/* End of file home.php */
-/* Location: ./application/controllers/home.php */

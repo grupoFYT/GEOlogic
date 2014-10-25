@@ -50,15 +50,15 @@ $(document).ready(function(){
 		 submitHandler: function(form) {
 			var suspend = false;
 			getPolygonCoords();
-			alert(google.maps.geometry.spherical.computeArea(xZona.getPath()));
+			alert(google.maps.geometry.spherical.computeArea(xPiedra.getPath()));
 			if (!suspend) {				
 				dataString = $("#newP_form").serialize();			 
 				$.ajax({
 					type: "POST",
-					url: "/geologic/zonas/save",
+					url: "/geologic/piedraspreciosas/save",
 					data: dataString,			 
 					success: function(data){
-						data ? (window.location.href = "/geologic/zonas/") : "";
+						data ? (window.location.href = "/geologic/piedraspreciosas/") : "";
 					}		 
 				});			 
 			}			
@@ -72,8 +72,8 @@ $(document).ready(function(){
 	
 	$('#polygon_main_add').on('click', function(){
 		
-		if(typeof(xZona) != 'undefined') {
-			xZona.setMap(null);
+		if(typeof(xPiedra) != 'undefined') {
+			xPiedra.setMap(null);
 		}		
 	
 		function get_random_value(val_max) {
@@ -85,18 +85,20 @@ $(document).ready(function(){
 		var px_center = map.getCenter();
 		
 		var polygon_width = 300;
-        var polygon_height = 200;
+	        var polygon_height = 200;
 
+		var x =parseInt(px_center.k + (0));
+		var y =parseInt(px_center.B + (0));
 		
 		var markerCoords = [
-			new google.maps.LatLng(px_center.k, px_center.B)
+			new google.maps.LatLng(x,y)
 		];
 		
 		xPiedra = new google.maps.Marker({
 			position: markerCoords,
 			draggable: true,
 			editable: true,			
-			zIndex: 3
+			title: "Piedra Preciosa"
 		});
 				
 		xPiedra.setMap(map);
@@ -114,7 +116,7 @@ function setTypeahead(objdom, xrhfrunc, dataId, dataProperty, hiddencell) {
 
 	$(objdom).typeahead({ 
 		source: function(query, process) {
-			var $url = '/geologic/zonas/' + xrhfrunc;
+			var $url = '/geologic/piedraspreciosas/' + xrhfrunc;
 			var $items = new Array;
 			$items = [""];
 			$.ajax({
@@ -176,8 +178,8 @@ function setTypeahead(objdom, xrhfrunc, dataId, dataProperty, hiddencell) {
 
 function gotoRegion(regId) {	
 	
-	if(typeof(xZona) != 'undefined') {
-			xZona.setMap(null);
+	if(typeof(xPiedra) != 'undefined') {
+			xPiedra.setMap(null);
 	}
 		
 	$.each(ZS.regiones, function(index, value) {		
@@ -250,7 +252,7 @@ function gotoRegion(regId) {
 }
 
 function getPolygonCoords() {	
-	var polygonBounds = xZona.getPath();
+	var polygonBounds = xPiedra.getPath();
 	var coordinates = [];
 	for(var i = 0 ; i < polygonBounds.length ; i++) coordinates.push(polygonBounds.getAt(i).lat(), polygonBounds.getAt(i).lng());	
 	$("#coord").val(coordinates);
