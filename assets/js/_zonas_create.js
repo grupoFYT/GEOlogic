@@ -87,17 +87,17 @@ $(document).ready(function(){
 		var polygon_width = 300;
         var polygon_height = 200;
 
-        var px_bl_x = parseInt(px_center.k - (0)) + 1;
-        var px_bl_y = parseInt(px_center.B + (0)) + 2;
+        var px_bl_x = parseInt(px_center.k - (0)) + get_random_value(2);
+        var px_bl_y = parseInt(px_center.B + (0)) + get_random_value(2);
 
-        var px_br_x = parseInt(px_center.k + (0)) + 1;
-        var px_br_y = parseInt(px_center.B + (0)) + 1;
+        var px_br_x = parseInt(px_center.k + (0)) + get_random_value(2);
+        var px_br_y = parseInt(px_center.B + (0)) + get_random_value(2);
         
-        var px_tr_x = parseInt(px_center.k + (0)) + 3;
-        var px_tr_y = parseInt(px_center.B - (0)) + 3;
+        var px_tr_x = parseInt(px_center.k + (0)) + get_random_value(2);
+        var px_tr_y = parseInt(px_center.B - (0)) + get_random_value(2);
         
-        var px_tl_x = parseInt(px_center.k - (0)) + 1;
-        var px_tl_y = parseInt(px_center.B - (0)) + 4;
+        var px_tl_x = parseInt(px_center.k - (0)) + get_random_value(2);
+        var px_tl_y = parseInt(px_center.B - (0)) + get_random_value(2);
         
 		
 		var triangleCoords = [
@@ -107,16 +107,8 @@ $(document).ready(function(){
 			new google.maps.LatLng(px_center.k, px_center.B)
 		];
 		
-		
-		var squareCoords = [
-			new google.maps.LatLng(px_bl_x, px_bl_y),
-			new google.maps.LatLng(px_br_x, px_br_y),
-			new google.maps.LatLng(px_tl_x, px_tl_y),
-			new google.maps.LatLng(px_tr_x, px_tr.y)
-		];
-
 		xZona = new google.maps.Polygon({
-			paths: squareCoords,
+			paths: triangleCoords,
 			draggable: true,
 			editable: true,			
 			strokeColor: '#000000',
