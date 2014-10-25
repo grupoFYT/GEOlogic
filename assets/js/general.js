@@ -55,7 +55,7 @@ $(document).ready(function(){
 		"language": {
 			"lengthMenu": "Mostrando _MENU_ zonas por pagina",
 			"zeroRecords": "No se han encontrado resultados",
-			"info": "Pag. _PAGE_ de _PAGES_",
+			"info": "_PAGE_ / _PAGES_",
 			"search": "Buscar: ",
 			"paginate": {
 				"first":      "Primera",
