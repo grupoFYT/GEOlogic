@@ -61,7 +61,7 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-lg-12">info adsfghasfg
+		<div id="infoRow" class="col-lg-12">info adsfghasfg
 		</div>
 	</div>
 </div>

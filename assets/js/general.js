@@ -17,6 +17,8 @@ $(document).ready(function(){
 
 	map = new google.maps.Map(document.getElementById('map-canvas'),mapOptions);
 	
+	drawRegiones();
+	
 	var table = $('#zonasGrid').DataTable( {
 		
 		"processing": true,
@@ -61,19 +63,21 @@ $(document).ready(function(){
 		}
 	} );
 	
-	// $('#zonasGrid tbody').on( 'click', 'tr', function () {
-		
-        // if ( $(this).hasClass('selected') ) {
-            // $(this).removeClass('selected');
-        // }
-        // else {
-            // table.$('tr.selected').removeClass('selected');
-            // $(this).addClass('selected');
-        // }
-    // } );
-	
 	$('#zonasGrid tbody').on( 'click', 'tr', function () {
-		alert( table.row( this ).data() );
+		var data = table.row( this ).data();
+		
+		$('#infoRow').html(data.zona + '<br>' + data.region);
+		
+		$.each(ZS.zonas , function(index, value) {
+			if (value.id == data.id) {
+				var latLng = new google.maps.LatLng(value.c_lat, value.c_lng);
+				map.setZoom(value.c_zoom);
+				map.panTo(latLng);
+			}
+		});	
+		
+		
+		
 	} );
 		
 	// Search Button
@@ -85,7 +89,7 @@ $(document).ready(function(){
 		$('#zonasGrid').DataTable().search($('#searchInput').val().trim()).draw();
 	});
 	
-	drawRegiones();
+	
 	
 });
 
