@@ -1,8 +1,6 @@
 <style>
 
-	#zonasGrid_filter {
-		display: none;
-	}
+
 	
 	#zonasGrid {
 		border: 0 none;
@@ -37,6 +35,14 @@
 	<div class="row tab-content" style="margin-top: 12px;">
 		<div class="tab-pane active" id="tabZonas">
 			<div class="col-lg-6">
+				<div style="">
+					<a href="/geologic/zonas/create" class="btn btn-warning btn-sm btn-newP" style="float:left;">
+						Nueva Zona
+					</a>
+				</div>
+				<div style="clear:both;">
+					
+				</div>
 				<div id="map-canvas" style="height: 400px; width: auto; margin-top: 13px;">
 				</div>
 			</div>
@@ -44,7 +50,6 @@
 				<table id="zonasGrid" class="table table-striped table-bordered" cellspacing="0" width="100%">
 					<thead>
 						<tr>
-							<th></th>
 							<th></th>
 							<th>Zona</th>
 							<th>Region</th>

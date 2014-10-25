@@ -28,13 +28,6 @@ $(document).ready(function(){
 		"lengthChange": false,
 		"order": [[ 1, "desc" ]],
 		"columns": [
-			 {
-                 "class":          'details-control',
-                 "orderable":      false,
-                 "data":           null,
-                 "defaultContent": '',
-				 "searchable":     false
-             },
 			{ 
 				"orderable":      false,
 				"searchable":     false,
@@ -67,22 +60,6 @@ $(document).ready(function(){
 			"infoFiltered": "(Filtrado de _MAX_ registros)"
 		}
 	} );
-	
-    $('#zonasGrid tbody').on('click', 'td.details-control', function () {
-        var tr = $(this).closest('tr');
-        var row = table.row( tr );
- 
-        if ( row.child.isShown() ) {
-            // This row is already open - close it
-            row.child.hide();
-            tr.removeClass('shown');
-        }
-        else {
-            // Open this row
-            row.child( format(row.data()) ).show();
-            tr.addClass('shown');
-        }
-    } );
 	
 	// Search Button
 			
