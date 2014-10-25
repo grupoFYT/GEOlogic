@@ -9,7 +9,7 @@ var map;
 var regionPol;
 var zonasPol;
 
-var xZona;
+var xPiedra;
 
 
 
@@ -87,39 +87,19 @@ $(document).ready(function(){
 		var polygon_width = 300;
         var polygon_height = 200;
 
-        var px_bl_x = parseInt(px_center.k - (0)) - 0.1;
-        var px_bl_y = parseInt(px_center.B + (0)) - 0.1;
-
-        var px_br_x = parseInt(px_center.k + (0)) + 0.1;
-        var px_br_y = parseInt(px_center.B + (0)) - 0.1;
-        
-        var px_tr_x = parseInt(px_center.k + (0)) + 0.1;
-        var px_tr_y = parseInt(px_center.B - (0)) + 0.1;
-        
-        var px_tl_x = parseInt(px_center.k - (0)) - 0.1;
-        var px_tl_y = parseInt(px_center.B - (0)) + 0.1;
-        
 		
-		var triangleCoords = [
-			new google.maps.LatLng(px_bl_x, px_bl_y),
-			new google.maps.LatLng(px_br_x, px_br_y),
-			new google.maps.LatLng(px_tr_x, px_tr_y),
-			new google.maps.LatLng(px_tl_x, px_tl_y)
+		var markerCoords = [
+			new google.maps.LatLng(px_center.k, px_center.B)
 		];
 		
-		xZona = new google.maps.Polygon({
-			paths: triangleCoords,
+		xPiedra = new google.maps.Marker({
+			position: markerCoords,
 			draggable: true,
 			editable: true,			
-			strokeColor: '#000000',
-			strokeOpacity: 0.5,
-			strokeWeight: 2,
-			fillColor: '#CACACA',
-			fillOpacity: 0.7,
 			zIndex: 3
 		});
 				
-		xZona.setMap(map);
+		xPiedra.setMap(map);
 		
     });
 	
