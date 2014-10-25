@@ -1,7 +1,5 @@
 <style>
 
-
-	
 	#zonasGrid {
 		border: 0 none;
 	}
@@ -11,12 +9,13 @@
 		border-left: 0 none;
 	}
 	
-	
-	
 	.table-bordered > thead > tr > th, .table-bordered > thead > tr > td {
 		border-bottom-width: 0;	
 	}
-
+	
+	#zonasGrid tbody tr.odd.selected, #zonasGrid tbody tr.odd.selected {
+		background-color: #abb9d3;
+	}
 
 </style>
 

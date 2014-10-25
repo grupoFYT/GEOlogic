@@ -61,6 +61,17 @@ $(document).ready(function(){
 		}
 	} );
 	
+	$('#zonasGrid tbody').on( 'click', 'tr', function () {
+		//alert("caca");
+        if ( $(this).hasClass('selected') ) {
+            $(this).removeClass('selected');
+        }
+        else {
+            table.$('tr.selected').removeClass('selected');
+            $(this).addClass('selected');
+        }
+    } );
+	
 	// Search Button
 			
 	$('#searchButton').click(function() {
