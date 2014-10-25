@@ -14,7 +14,7 @@
 	}
 	
 	#zonasGrid tbody tr.odd.selected, #zonasGrid tbody tr.odd.selected {
-		background-color: #abb9d3;
+		background-color: #abb9d3 !important;
 	}
 
 </style>
