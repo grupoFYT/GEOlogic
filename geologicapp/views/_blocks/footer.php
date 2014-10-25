@@ -5,7 +5,7 @@
     </div>	
     <!-- /#wrapper -->
 <script src="//code.jquery.com/jquery.js"></script>
-
+<script type="text/javascript" language="javascript" src="<?= base_url() ?>assets/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
 
 <?php if (!empty($this->jsfiles)): ?>
