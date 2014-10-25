@@ -1,3 +1,28 @@
+<style>
+
+	#zonasGrid_filter {
+		display: none;
+	}
+	
+	#zonasGrid {
+		border: 0 none;
+	}
+	
+	#zonasGrid th, #zonasGrid td {
+		border-right: 0 none;
+		border-left: 0 none;
+	}
+	
+	
+	
+	.table-bordered > thead > tr > th, .table-bordered > thead > tr > td {
+		border-bottom-width: 0;	
+	}
+
+
+</style>
+
+
 <div class="row" style="margin-top: 22px;">
 	<div class="row">
 		<div class="col-lg-12">
@@ -9,10 +34,10 @@
 			</ul>
 		</div>
 	</div>
-	<div class="row tab-content">
+	<div class="row tab-content" style="margin-top: 12px;">
 		<div class="tab-pane active" id="tabZonas">
 			<div class="col-lg-6">
-				<div id="map-canvas" style="height: 400px; width: auto;">
+				<div id="map-canvas" style="height: 400px; width: auto; margin-top: 13px;">
 				</div>
 			</div>
 			<div class="col-lg-6">
