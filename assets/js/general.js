@@ -81,7 +81,68 @@ $(document).ready(function(){
 		$('#zonasGrid').DataTable().search($('#searchInput').val().trim()).draw();
 	});
 	
+	drawRegiones();
 	
 });
+
+function drawRegiones() {
+
+	$.each(ZS.regiones, function(index, value) {		
+		if (value.id == regId) {
+			zonasPol = null;
+			if(typeof(regionPol) != 'undefined') {
+				regionPol.setMap(null);
+			}		
+			var regionCoords = [];
+			$.each(value.coords , function(indexx, valuex) {
+				regionCoords.push(new google.maps.LatLng(valuex['lat'], valuex['lng']));				
+			});			
+			regionPol = new google.maps.Polygon({
+				paths: regionCoords,
+				draggable: false,
+				editable: false,
+				strokeColor: '#' + value.color,
+				strokeOpacity: 0.8,
+				strokeWeight: 2,
+				fillColor: '#' + value.color ,
+				fillOpacity: 0.3,
+				zIndex: 0
+			});			
+			regionPol.setMap(map);				
+			var latLng = new google.maps.LatLng(value.c_lat, value.c_lng); //Makes a latlng
+			map.setZoom(value.c_zoom);
+			map.panTo(latLng);
+
+			zonasPol = new Array();
+			$.each(ZS.zonas , function(indexx, valuex) {
+				if ((valuex.region_id == value.id) && (valuex.coords.length > 0)) {
+					zonasPol[indexx] = new Array();
+					zonasPol[indexx]['coords'] = new Array();
+					$.each(valuex.coords , function(indexxx, valuexx) {
+						zonasPol[indexx]['coords'].push( new google.maps.LatLng(valuexx['lat'], valuexx['lng']) );						
+					});
+					zonasPol[indexx]['zmap'] = new google.maps.Polygon({
+												paths: zonasPol[indexx]['coords'],
+												draggable: false,
+												editable: false,
+												strokeColor: '#ff2012',
+												strokeOpacity: 0.8,
+												strokeWeight: 2,
+												fillColor: '#ff2012',
+												fillOpacity: 0.5,
+												zIndex: 1
+											});	
+					zonasPol[indexx]['zmap'].setMap(map);
+					
+				}
+			});
+			
+			
+			
+		}
+	}); 
+
+	
+}
 
 

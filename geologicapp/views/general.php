@@ -66,3 +66,25 @@
 	</div>
 </div>
 
+<script>
+
+var ZS = ZS || {};
+	ZS.regiones = [<?php foreach( $regiones as $region ) : ?>
+		{id : <?=$region['region']->id ?>,
+		 name : "<?=$region['region']->region ?>",
+		 color: "<?=$region['region']->color ?>",
+		 c_lat: <?=$region['region']->c_lat ?>,
+		 c_lng: <?=$region['region']->c_lng ?>,
+		 c_zoom: <?=$region['region']->c_zoom ?>,
+		 coords :[<?php foreach( $region['coordenadas'] as $coord ) : ?>{"lat":"<?=$coord->lat ?>","lng":"<?=$coord->lng ?>"},<?php endforeach; ?>]
+		},<?php endforeach; ?>];
+    ZS.zonas = [<?php foreach( $zonas as $zona ) : ?>
+		{id : <?=$zona['zona']->id ?>,
+		 name : "<?=$zona['zona']->zona ?>",
+		 region_id: <?=$zona['zona']->region_id ?>,
+		 coords :[<?php foreach( $zona['coordenadas'] as $coord ) : ?>{"lat":"<?=$coord->lat ?>","lng":"<?=$coord->lng ?>"},<?php endforeach; ?>]
+		},<?php endforeach; ?>];
+	
+</script>
+
+
