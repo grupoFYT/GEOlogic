@@ -10,30 +10,15 @@
 		</div>
 	</div>
 	<div class="row tab-content">
-		<div class="row tab-pane active" id="tabZonas">
+		<div class="tab-pane active" id="tabZonas">
 			<div class="col-lg-6">edcedc
 			</div>
 			<div class="col-lg-6">edcedc
 			</div>
 		</div>
-		<div class="row tab-pane active" id="tabMinerales">
-			<div class="col-lg-6">safgasfg
-			</div>
-			<div class="col-lg-6">
-			</div>
-		</div>
-		<div class="row tab-pane active" id="tabPP">
-			<div class="col-lg-6">sdfsadh
-			</div>
-			<div class="col-lg-6">edcedc
-			</div>
-		</div>
-		<div class="row tab-pane active" id="tabYacimientos">
-			<div class="col-lg-6">dsfhsdg
-			</div>
-			<div class="col-lg-6">ecedcdec
-			</div>
-		</div>
+	</div>
+	<div class="row">
+		info adsfghasfg
 	</div>
 </div>
 
