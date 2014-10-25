@@ -84,18 +84,9 @@ $(document).ready(function(){
 		
 		var px_center = map.getCenter();
 		
-		var polygon_width = 300;
-	        var polygon_height = 200;
-
-		var x =parseInt(px_center.k + (0));
-		var y =parseInt(px_center.B + (0));
-		
-		var markerCoords = [
-			new google.maps.LatLng(x,y)
-		];
-		
 		xPiedra = new google.maps.Marker({
-			position: markerCoords,
+			position: myLatLng,
+			map: map,
 			draggable: true,
 			editable: true,			
 			title: "Piedra Preciosa"
