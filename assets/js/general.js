@@ -70,6 +70,8 @@ $(document).ready(function(){
 		
 		$.each(ZS.zonas , function(index, value) {
 			if (value.id == data.id) {
+				
+				
 				var latLng = new google.maps.LatLng(value.c_lat, value.c_lng);
 				map.setZoom(value.c_zoom);
 				map.panTo(latLng);
@@ -116,6 +118,8 @@ function drawRegiones() {
 									zIndex: 0
 								});	
 		regionesPol[index]['zmap'].setMap(map);
+		var tettt = regionesPol[index]['zmap'].getBounds().getCenter();
+		
 		
 		$.each(ZS.zonas , function(indexx, valuex) {
 			if ((valuex.region_id == value.id) && (valuex.coords.length > 0)) {
