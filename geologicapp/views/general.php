@@ -11,14 +11,29 @@
 	</div>
 	<div class="row tab-content">
 		<div class="tab-pane active" id="tabZonas">
-			<div class="col-lg-6">edcedc
+			<div class="col-lg-6">
+				<div id="map-canvas" style="height: 400px; width: auto;">
+				</div>
 			</div>
-			<div class="col-lg-6">edcedc
+			<div class="col-lg-6">
+				<table id="zonasGrid" class="table table-striped table-bordered" cellspacing="0" width="100%">
+					<thead>
+						<tr>
+							<th></th>
+							<th></th>
+							<th>Zona</th>
+							<th>Region</th>
+							<th>Pais</th>
+							<th>Acciones</th>
+						</tr>
+					</thead>					
+				</table>
 			</div>
 		</div>
 	</div>
 	<div class="row">
-		info adsfghasfg
+		<div class="col-lg-12">info adsfghasfg
+		</div>
 	</div>
 </div>
 

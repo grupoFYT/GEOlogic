@@ -13,7 +13,7 @@ class General extends MY_Controller {
 	public function index() {
 	
 		$this->styles = array('dataTables.bootstrap','minerales') ;
-		$this->jsfiles = array('jquery.dataTables.min', 'dataTables.bootstrap', 'minerales');
+		$this->jsfiles = array('jquery.dataTables.min', 'dataTables.bootstrap', 'general');
 	
 		$this->data['view_file'] = 'general';
 		
