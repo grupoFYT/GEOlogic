@@ -1,6 +1,6 @@
 var myLatLng = new google.maps.LatLng(-36.000000, -64.000000);
 var mapOptions = {
-	zoom: 3,
+	zoom: 1,
 	center: myLatLng,
 	mapTypeId: google.maps.MapTypeId.HYBRID
 };
@@ -75,8 +75,8 @@ $(document).ready(function(){
 			if (value.id == data.id) {
 				var x = value['zmap'].my_getBounds().getCenter();				
 				var latLng = new google.maps.LatLng(x.k, x.B);
-				map.setZoom(7);
-				map.panTo(latLng);
+				map.fitBounds(markerBounds);
+				
 			}
 		});			
 	} );
@@ -97,14 +97,17 @@ function drawRegiones() {
 
 	regionesPol = new Array();
 	zonasPol = new Array();
+		var markerBounds = new google.maps.LatLngBounds();
+
 	$.each(ZS.regiones , function(index, value) {
 		regionesPol[index] = new Array();
 		regionesPol[index]['coords'] = new Array();
-		var markerBounds = new google.maps.LatLngBounds();
 		$.each(value.coords , function(ix, vx) {
 		
 			regionesPol[index]['coords'].push( new google.maps.LatLng(vx['lat'], vx['lng']) );
 			markerBounds.extend(new google.maps.LatLng(vx['lat'], vx['lng']));						
+			map.fitBounds(markerBounds);
+				
 		});
 		regionesPol[index]['zmap'] = new google.maps.Polygon({
 									paths: regionesPol[index]['coords'],
