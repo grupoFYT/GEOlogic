@@ -86,7 +86,9 @@ $(document).ready(function(){
 });
 
 function drawZonas() {
-
+//Cabeza, hice esta funcion nueva con el metodo markerBound, con eso te autocalcula el nivel de zoom
+//para que entren todos los vertices de un poligono en la vista (Tambien corregi la funcion 
+//drawRegiones() es un poco mas lenta lo unico...
 		
 		$('#infoRow').html(data.zona + '<br>' + data.region);
 		var markerBounds = new google.maps.LatLngBounds();
@@ -98,8 +100,11 @@ function drawZonas() {
 				vertices=value['zmap'].getPath();
 				
 				for (i = 0; i < vertices.length; i++) {
-				markerBounds.extend( new google.maps.LatLng(vertices.getAt(i).lat(), vertices.getAt(i)lng()) );						
-				//map.fitBounds(markerBounds);
+				lng=(vertices.getAt(i).lng());
+				lat=(vertices.getAt(i).lat());
+				markerBounds.extend( new google.maps.LatLng(lat, lng) );						
+				map.panToBounds(markerBounds);
+				map.fitBounds(markerBounds);
 				    }
 				}
 		});			
@@ -120,6 +125,7 @@ function drawRegiones() {
 		
 			regionesPol[index]['coords'].push( new google.maps.LatLng(vx['lat'], vx['lng']) );
 			markerBounds.extend(new google.maps.LatLng(vx['lat'], vx['lng']));						
+			map.panToBounds(markerBounds);
 			map.fitBounds(markerBounds);
 				
 		});
