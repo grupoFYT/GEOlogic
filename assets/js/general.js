@@ -98,11 +98,13 @@ function drawRegiones() {
 	regionesPol = new Array();
 	zonasPol = new Array();
 	$.each(ZS.regiones , function(index, value) {
-
 		regionesPol[index] = new Array();
 		regionesPol[index]['coords'] = new Array();
+		var markerBounds = new google.maps.LatLngBounds();
 		$.each(value.coords , function(ix, vx) {
-			regionesPol[index]['coords'].push( new google.maps.LatLng(vx['lat'], vx['lng']) );						
+		
+			regionesPol[index]['coords'].push( new google.maps.LatLng(vx['lat'], vx['lng']) );
+			markerBounds.extend(new google.maps.LatLng(vx['lat'], vx['lng']));						
 		});
 		regionesPol[index]['zmap'] = new google.maps.Polygon({
 									paths: regionesPol[index]['coords'],
