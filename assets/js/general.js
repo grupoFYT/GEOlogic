@@ -93,17 +93,14 @@ function drawZonas() {
 
 		$.each(zonasPol , function(index, value) {
 			if (value.id == data.id) {
-				var x = value['zmap'].my_getBounds().getCenter();				
-				var latLng = new google.maps.LatLng(x.k, x.B);
-				//map.setZoom(7);
-				//map.panTo(latLng);
-
-				$.each(value.coords , function(index2, value2) {
-					markerBounds.extend( new google.maps.LatLng(value2['lat'], value2['lng']) );						
-				});
-
-				map.fitBounds(markerBounds);
-
+				//var x = value['zmap'].my_getBounds().getCenter();				
+				//var latLng = new google.maps.LatLng(x.k, x.B);
+				vertices=value['zmap'].getPath();
+				
+				for (i = 0; i < vertices.length; i++) {
+				markerBounds.extend( new google.maps.LatLng(vertices.getAt(i).lat(), vertices.getAt(i)lng()) );						
+				//map.fitBounds(markerBounds);
+				    }
 				}
 		});			
 
