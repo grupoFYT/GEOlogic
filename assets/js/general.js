@@ -97,7 +97,11 @@ function drawZonas() {
 				var latLng = new google.maps.LatLng(x.k, x.B);
 				//map.setZoom(7);
 				//map.panTo(latLng);
-				markerBounds.extend(latLng);						
+
+				$.each(value.coords , function(index2, value2) {
+					markerBounds.extend( new google.maps.LatLng(value2['lat'], value2['lng']) );						
+				});
+
 				map.fitBounds(markerBounds);
 
 				}
