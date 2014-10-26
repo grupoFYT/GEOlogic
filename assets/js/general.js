@@ -77,6 +77,43 @@ $(document).ready(function(){
 				var latLng = new google.maps.LatLng(x.k, x.B);
 				map.setZoom(7);
 				map.panTo(latLng);
+				
+				//
+				
+				var xc = map.getBounds();
+				var xsdd = xc.getNorthWest();
+				var sfghdsfh = xsdd.lat();
+				alert(sfghdsfh);
+				alert(map.getBounds().getNorthWest().lat());
+				
+				var visiblemap = new google.maps.Polygon({
+					paths: [
+							new google.maps.LatLng(map.getBounds().getNorthWest().lat(), map.getBounds().getNorthWest().lng()),
+							new google.maps.LatLng(map.getBounds().getNorthEast().lat(), map.getBounds().getNorthEast().lng()),
+							new google.maps.LatLng(map.getBounds().getSouthEast().lat(), map.getBounds().getSouthEast().lng()),
+							new google.maps.LatLng(map.getBounds().getSouthWest().lat(), map.getBounds().getSouthWest().lng()),
+							new google.maps.LatLng(map.getBounds().getNorthWest().lat(), map.getBounds().getNorthWest().lng())
+							]
+				});
+				
+				var area = google.maps.geometry.spherical.computeArea(visiblemap.getPath());
+				alert(area);
+				
+				// var scale = Math.pow(2, map.getZoom());
+				// var nw = new google.maps.LatLng(
+					// map.getBounds().getNorthEast().lat(),
+					// map.getBounds().getSouthWest().lng()
+				// );
+				// var worldCoordinateNW = map.getProjection().fromLatLngToPoint(nw);
+				// var worldCoordinate = map.getProjection().fromLatLngToPoint(marker.getPosition());
+				// var pixelOffset = new google.maps.Point(
+					// Math.floor((worldCoordinate.x - worldCoordinateNW.x) * scale),
+					// Math.floor((worldCoordinate.y - worldCoordinateNW.y) * scale)
+				// );
+				
+				
+				
+				
 			}
 		});			
 	} );
