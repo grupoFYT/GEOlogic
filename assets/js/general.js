@@ -1,4 +1,4 @@
-var myLatLng = new google.maps.LatLng(-31.416667, -64.183333);
+var myLatLng = new google.maps.LatLng(-36.000, -64.000);
 var mapOptions = {
 	zoom: 3,
 	center: myLatLng,
@@ -71,11 +71,13 @@ $(document).ready(function(){
 		
 		$('#infoRow').html(data.zona + '<br>' + data.region);
 		
+		var markerBounds = new google.maps.LatLngBounds();
 		$.each(zonasPol , function(index, value) {
 			if (value.id == data.id) {
 				var x = value['zmap'].my_getBounds().getCenter();				
 				var latLng = new google.maps.LatLng(x.k, x.B);
-				map.setZoom(7);
+				markerBounds.extend(latLng);
+				map.fitBounds(markerBounds);
 				map.panTo(latLng);
 				
 				//
