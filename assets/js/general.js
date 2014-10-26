@@ -12,6 +12,11 @@ var zonasPol;
 var xZona;
 
 
+google.maps.Polygon.prototype.my_getBounds=function(){
+    var bounds = new google.maps.LatLngBounds()
+    this.getPath().forEach(function(element,index){bounds.extend(element)})
+    return bounds
+}
 
 $(document).ready(function(){
 
@@ -64,17 +69,32 @@ $(document).ready(function(){
 	} );
 	
 	$('#zonasGrid tbody').on( 'click', 'tr', function () {
+		
 		var data = table.row( this ).data();
 		
 		$('#infoRow').html(data.zona + '<br>' + data.region);
 		
-		$.each(ZS.zonas , function(index, value) {
+		$.each(zonasPol , function(index, value) {
 			if (value.id == data.id) {
+			
+				alert(value['zmap'].my_getBounds().getCenter());
+				
+				// var bounds = new google.maps.LatLngBounds();
+				// var paths = value['zmap'].getPaths();
+				// var path;        
+				// for (var i = 0; i < paths.getLength(); i++) {
+					// path = paths.getAt(i);
+					// for (var ii = 0; ii < path.getLength(); ii++) {
+						// bounds.extend(path.getAt(ii));
+					// }
+				// }
+				
+				// alert(bounds.getCenter());
 				
 				
-				var latLng = new google.maps.LatLng(value.c_lat, value.c_lng);
-				map.setZoom(value.c_zoom);
-				map.panTo(latLng);
+				//var latLng = new google.maps.LatLng(value.c_lat, value.c_lng);
+				//map.setZoom(value.c_zoom);
+				//map.panTo(latLng);
 			}
 		});	
 		
@@ -94,6 +114,7 @@ $(document).ready(function(){
 	
 	
 });
+
 
 function drawRegiones() {
 
@@ -118,12 +139,13 @@ function drawRegiones() {
 									zIndex: 0
 								});	
 		regionesPol[index]['zmap'].setMap(map);
-		var tettt = regionesPol[index]['zmap'].getBounds().getCenter();
 		
 		
 		$.each(ZS.zonas , function(indexx, valuex) {
 			if ((valuex.region_id == value.id) && (valuex.coords.length > 0)) {
 				zonasPol[indexx] = new Array();
+				zonasPol[indexx]['id'] = valuex.id;
+				zonasPol[indexx]['name'] = valuex.name;
 				zonasPol[indexx]['coords'] = new Array();
 				$.each(valuex.coords , function(indexxx, valuexx) {
 					zonasPol[indexx]['coords'].push( new google.maps.LatLng(valuexx['lat'], valuexx['lng']) );						
