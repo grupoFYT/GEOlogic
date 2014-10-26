@@ -104,7 +104,6 @@ function drawZonas() {
 				lng=(vertices.getAt(i).lng());
 				lat=(vertices.getAt(i).lat());
 				markerBounds.extend( new google.maps.LatLng(lat, lng) );						
-				//map.panToBounds(markerBounds);
 				map.fitBounds(markerBounds);
 				    }
 				}
@@ -117,14 +116,14 @@ function drawRegiones() {
     	regionesPol = new Array();
 	zonasPol = new Array();
 		var markerBounds = new google.maps.LatLngBounds();
-	map.fitBounds(markerBounds);
 	$.each(ZS.regiones , function(index, value) {
 		regionesPol[index] = new Array();
 		regionesPol[index]['coords'] = new Array();
 		$.each(value.coords , function(ix, vx) {
 			regionesPol[index]['coords'].push( new google.maps.LatLng(vx['lat'], vx['lng']) );
-			markerBounds.extend(new google.maps.LatLng(vx['lat'], vx['lng']));						
-			map.panToBounds(markerBounds);
+			shortLat = vx['lat'];
+			shortLng = vx['lng'];
+			markerBounds.extend(new google.maps.LatLng(shortLat, shortLng));						
 			map.fitBounds(markerBounds);
 				
 		});
