@@ -76,30 +76,12 @@ $(document).ready(function(){
 		
 		$.each(zonasPol , function(index, value) {
 			if (value.id == data.id) {
-			
-				alert(value['zmap'].my_getBounds().getCenter());
-				
-				// var bounds = new google.maps.LatLngBounds();
-				// var paths = value['zmap'].getPaths();
-				// var path;        
-				// for (var i = 0; i < paths.getLength(); i++) {
-					// path = paths.getAt(i);
-					// for (var ii = 0; ii < path.getLength(); ii++) {
-						// bounds.extend(path.getAt(ii));
-					// }
-				// }
-				
-				// alert(bounds.getCenter());
-				
-				
-				//var latLng = new google.maps.LatLng(value.c_lat, value.c_lng);
-				//map.setZoom(value.c_zoom);
-				//map.panTo(latLng);
+				var x = value['zmap'].my_getBounds().getCenter();				
+				var latLng = new google.maps.LatLng(x.k, x.B);
+				map.setZoom(7);
+				map.panTo(latLng);
 			}
-		});	
-		
-		
-		
+		});			
 	} );
 		
 	// Search Button
