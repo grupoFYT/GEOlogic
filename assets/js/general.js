@@ -121,9 +121,9 @@ function drawRegiones() {
 		regionesPol[index]['coords'] = new Array();
 		$.each(value.coords , function(ix, vx) {
 			regionesPol[index]['coords'].push( new google.maps.LatLng(vx['lat'], vx['lng']) );
-			shortLat = vx['lat'];
-			shortLng = vx['lng'];
-			markerBounds.extend(new google.maps.LatLng(shortLat, shortLng));						
+			lat = vx['lat'];
+			Lng = vx['lng'];
+			markerBounds.extend(new google.maps.LatLng(lat, Lng));						
 			map.fitBounds(markerBounds);
 				
 		});
