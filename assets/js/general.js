@@ -2,7 +2,7 @@ var myLatLng = new google.maps.LatLng(-36.000000, -64.000000);
 var mapOptions = {
 	zoom: 1,
 	center: myLatLng,
-	mapTypeId: google.maps.MapTypeId.HYBRID
+	mapTypeId: google.maps.MapTypeId.ROADMAP
 };
 
 var map;
@@ -20,7 +20,8 @@ google.maps.Polygon.prototype.my_getBounds=function(){
 $(document).ready(function(){
 
 	map = new google.maps.Map(document.getElementById('map-canvas'),mapOptions);
-	
+        map.setZoom(1);
+	map.panTo(myLatLng);
 	drawRegiones();
 	
 	table = $('#zonasGrid').DataTable( {
@@ -103,7 +104,7 @@ function drawZonas() {
 				lng=(vertices.getAt(i).lng());
 				lat=(vertices.getAt(i).lat());
 				markerBounds.extend( new google.maps.LatLng(lat, lng) );						
-				map.panToBounds(markerBounds);
+				//map.panToBounds(markerBounds);
 				map.fitBounds(markerBounds);
 				    }
 				}
@@ -113,16 +114,14 @@ function drawZonas() {
 }
 
 function drawRegiones() {
-
-	regionesPol = new Array();
+    	regionesPol = new Array();
 	zonasPol = new Array();
 		var markerBounds = new google.maps.LatLngBounds();
-
+	map.fitBounds(markerBounds);
 	$.each(ZS.regiones , function(index, value) {
 		regionesPol[index] = new Array();
 		regionesPol[index]['coords'] = new Array();
 		$.each(value.coords , function(ix, vx) {
-		
 			regionesPol[index]['coords'].push( new google.maps.LatLng(vx['lat'], vx['lng']) );
 			markerBounds.extend(new google.maps.LatLng(vx['lat'], vx['lng']));						
 			map.panToBounds(markerBounds);
