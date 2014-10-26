@@ -8,6 +8,8 @@ var mapOptions = {
 var map;
 var regionPol;
 var zonasPol;
+var table;
+var data;
 
 google.maps.Polygon.prototype.my_getBounds=function(){
     var bounds = new google.maps.LatLngBounds()
@@ -21,7 +23,7 @@ $(document).ready(function(){
 	
 	drawRegiones();
 	
-	var table = $('#zonasGrid').DataTable( {
+	table = $('#zonasGrid').DataTable( {
 		
 		"processing": true,
 		"serverSide": true,
@@ -66,20 +68,11 @@ $(document).ready(function(){
 	} );
 	
 	$('#zonasGrid tbody').on( 'click', 'tr', function () {
+
+		data = table.row( this ).data();
+		drawZonas();
 		
-		var data = table.row( this ).data();
-		
-		$('#infoRow').html(data.zona + '<br>' + data.region);
-		
-		$.each(zonasPol , function(index, value) {
-			if (value.id == data.id) {
-				var x = value['zmap'].my_getBounds().getCenter();				
-				var latLng = new google.maps.LatLng(x.k, x.B);
-				map.fitBounds(markerBounds);
-				
-			}
-		});			
-	} );
+		} );
 		
 	// Search Button
 			
@@ -92,6 +85,26 @@ $(document).ready(function(){
 	
 });
 
+function drawZonas() {
+
+		
+		$('#infoRow').html(data.zona + '<br>' + data.region);
+		var markerBounds = new google.maps.LatLngBounds();
+
+		$.each(zonasPol , function(index, value) {
+			if (value.id == data.id) {
+				var x = value['zmap'].my_getBounds().getCenter();				
+				var latLng = new google.maps.LatLng(x.k, x.B);
+				//map.setZoom(7);
+				//map.panTo(latLng);
+				markerBounds.extend(latLng);						
+				map.fitBounds(markerBounds);
+
+				}
+		});			
+
+	
+}
 
 function drawRegiones() {
 
