@@ -9,9 +9,6 @@ var map;
 var regionPol;
 var zonasPol;
 
-var xZona;
-
-
 google.maps.Polygon.prototype.my_getBounds=function(){
     var bounds = new google.maps.LatLngBounds()
     this.getPath().forEach(function(element,index){bounds.extend(element)})
@@ -92,8 +89,6 @@ $(document).ready(function(){
 		}
 		$('#zonasGrid').DataTable().search($('#searchInput').val().trim()).draw();
 	});
-	
-	
 	
 });
 
