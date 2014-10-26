@@ -1,8 +1,8 @@
-var myLatLng = new google.maps.LatLng(-36.000000, -64.000000);
+var myLatLng = new google.maps.LatLng(-33.000000, -64.000000);
 var mapOptions = {
-	zoom: 1,
+	zoom: 3,
 	center: myLatLng,
-	mapTypeId: google.maps.MapTypeId.ROADMAP
+	mapTypeId: google.maps.MapTypeId.HYBRID
 };
 
 var map;
@@ -135,7 +135,7 @@ function drawRegiones() {
 									strokeOpacity: 0.8,
 									strokeWeight: 1,
 									fillColor: '#' + value.color ,
-									fillOpacity: 0.3,
+									fillOpacity: 0.4,
 									zIndex: 0
 								});	
 		regionesPol[index]['zmap'].setMap(map);
@@ -158,7 +158,7 @@ function drawRegiones() {
 											strokeOpacity: 0.8,
 											strokeWeight: 1,
 											fillColor: '#ff2012',
-											fillOpacity: 0.5,
+											fillOpacity: 0.6,
 											zIndex: 1
 										});	
 				zonasPol[indexx]['zmap'].setMap(map);
