@@ -3,7 +3,8 @@ var mapOptions = {
 	streetViewControl: false,
 	zoom: 3,
 	center: myLatLng,
-	mapTypeId: google.maps.MapTypeId.HYBRID
+	mapTypeId: google.maps.MapTypeId.HYBRID,
+	disableDefaultUI: true
 };
 
 var map;
@@ -88,17 +89,12 @@ $(document).ready(function(){
 });
 
 function drawZonas() {
-//Cabeza, hice esta funcion nueva con el metodo markerBound, con eso te autocalcula el nivel de zoom
-//para que entren todos los vertices de un poligono en la vista (Tambien corregi la funcion 
-//drawRegiones() es un poco mas lenta lo unico...
 		
 		$('#infoRow').html(data.zona + '<br>' + data.region);
 		var markerBounds = new google.maps.LatLngBounds();
 
 		$.each(zonasPol , function(index, value) {
 			if (value.id == data.id) {
-				//var x = value['zmap'].my_getBounds().getCenter();				
-				//var latLng = new google.maps.LatLng(x.k, x.B);
 				vertices=value['zmap'].getPath();
 				
 				for (i = 0; i < vertices.length; i++) {
@@ -136,7 +132,7 @@ function drawRegiones() {
 									strokeOpacity: 0.8,
 									strokeWeight: 1,
 									fillColor: '#' + value.color ,
-									fillOpacity: 0.4,
+									fillOpacity: 0.3,
 									zIndex: 0
 								});	
 		regionesPol[index]['zmap'].setMap(map);
@@ -159,7 +155,7 @@ function drawRegiones() {
 											strokeOpacity: 0.8,
 											strokeWeight: 1,
 											fillColor: '#ff2012',
-											fillOpacity: 0.6,
+											fillOpacity: 0.4,
 											zIndex: 1
 										});	
 				zonasPol[indexx]['zmap'].setMap(map);
