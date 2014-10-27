@@ -109,19 +109,6 @@ function drawZonas() {
 	
 }
 
-function showArrays(event) {
-
-      
-        var contentString = '<b>Bermuda Triangle polygon</b><br>' +
-              'Clicked location: <br>' + event.latLng.lat() + ',' + event.latLng.lng() +
-                    '<br>';
-                    
-	    infoWindow[1].setContent(contentString);
-	    infoWindow[1].setPosition(event.latLng);
-            infoWindow[1].open(map);
-}
-                                                  
-
 function drawRegiones() {
     	regionesPol = new Array();
 	zonasPol = new Array();
@@ -149,8 +136,7 @@ function drawRegiones() {
 									zIndex: 0
 								});	
 		regionesPol[index]['zmap'].setMap(map);
-		google.maps.event.addListener(regionesPol[index], 'click', showArrays);
-		infoWindow[index] = new google.maps.InfoWindow();
+		
 		
 		$.each(ZS.zonas , function(indexx, valuex) {
 			if ((valuex.region_id == value.id) && (valuex.coords.length > 0)) {
