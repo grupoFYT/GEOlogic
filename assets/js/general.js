@@ -1,5 +1,6 @@
 var myLatLng = new google.maps.LatLng(-33.000000, -64.000000);
 var mapOptions = {
+	streetViewControl: false,
 	zoom: 3,
 	center: myLatLng,
 	mapTypeId: google.maps.MapTypeId.HYBRID
