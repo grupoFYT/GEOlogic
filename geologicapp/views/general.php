@@ -35,9 +35,34 @@
 		<div class="tab-pane active" id="tabZonas">
 			<div class="col-lg-6">
 				<div style="">
+					<!--
 					<a href="/geologic/zonas/create" class="btn btn-warning btn-sm btn-newP" style="float:left;">
 						Nueva Zona
 					</a>
+					-->
+					<button type="button" class="btn btn-warning btn-sm btn-newP" data-toggle="modal" data-target="#myModal" style="float:left;">
+						Nueva Zona
+					</button>
+					<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					  <div class="modal-dialog">
+						<div class="modal-content">
+						  <div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+							<h4 class="modal-title" id="myModalLabel">Nueva Zona</h4>
+						  </div>
+						  <div class="modal-body">
+							...
+						  </div>
+						  <!--
+						  <div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+							<button type="button" class="btn btn-primary">Guardar</button>
+						  </div>
+						  -->
+						</div>
+					  </div>
+					</div>
+
 				</div>
 				<div style="clear:both;">
 					
