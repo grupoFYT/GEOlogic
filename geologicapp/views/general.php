@@ -51,7 +51,23 @@
 									<h4 class="modal-title" id="myModalLabel">Nueva Zona</h4>
 								</div>
 								<div class="modal-body">
+									<style>
+										#rootwizard .navbar {
+											display: none;
+										}
+									</style>
 									<div id="rootwizard">
+										<div class="navbar">
+											<div class="navbar-inner">
+												<div class="container">
+													<ul>
+														<li><a href="#tab1" data-toggle="tab">1</a></li>
+														<li><a href="#tab2" data-toggle="tab">2</a></li>
+														<li><a href="#tab3" data-toggle="tab">3</a></li>
+													</ul>
+												</div>
+											</div>
+										</div>
 										<div class="tab-content">
 											<div class="tab-pane" id="tab1">
 											  1
@@ -62,23 +78,11 @@
 											<div class="tab-pane" id="tab3">
 												3
 											</div>
-											<div class="tab-pane" id="tab4">
-												4
-											</div>
-											<div class="tab-pane" id="tab5">
-												5
-											</div>
-											<div class="tab-pane" id="tab6">
-												6
-											</div>
-											<div class="tab-pane" id="tab7">
-												7
-											</div>
 											<ul class="pager wizard">
-												<li class="previous first" style="display:none;"><a href="#">First</a></li>
-												<li class="previous"><a href="#">Previous</a></li>
-												<li class="next last" style="display:none;"><a href="#">Last</a></li>
-												<li class="next"><a href="#">Next</a></li>
+												<li class="previous first" style="display:none;"><a href="#">Prim.</a></li>
+												<li class="previous"><a href="#">Ant.</a></li>
+												<li class="next last" style="display:none;"><a href="#">Ult.</a></li>
+												<li class="next"><a href="#">Sig.</a></li>
 											</ul>
 										</div>	
 									</div>

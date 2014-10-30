@@ -86,8 +86,10 @@ $(document).ready(function(){
 		$('#zonasGrid').DataTable().search($('#searchInput').val().trim()).draw();
 	});
 	
-	$('#rootwizard').bootstrapWizard({'tabClass': 'bwizard-steps'});
-	
+	$('#myModal').on('shown.bs.modal', function (e) {
+		$('#rootwizard').bootstrapWizard({'tabClass': 'bwizard-steps'});
+	});
+
 });
 
 function drawZonas() {
