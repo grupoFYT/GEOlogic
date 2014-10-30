@@ -60,8 +60,7 @@
 											text-align: right;
 											width: 111px;
 										}
-									</style>
-									<p>Ingrese una denominación y seleccione la región para la nueva zona</p>
+									</style>									
 									<div id="rootwizard">
 										<div class="navbar">
 											<div class="navbar-inner">
@@ -76,6 +75,7 @@
 										</div>
 										<div class="tab-content">
 											<div class="tab-pane" id="tab1">
+												<p>Ingrese una denominación y seleccione la región para la nueva zona</p>
 												<div class="col-lg-12">
 													<div class="form-group input-group col-lg-6">
 														<span class="input-group-addon">Zona</span>

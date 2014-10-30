@@ -13,7 +13,7 @@ class General extends MY_Controller {
 	public function index() {
 	
 		$this->styles = array('dataTables.bootstrap') ;
-		$this->jsfiles = array('jquery.dataTables.min', 'dataTables.bootstrap','jquery.bootstrap.wizard','general');
+		$this->jsfiles = array('jquery.dataTables.min', 'dataTables.bootstrap','jquery.bootstrap.wizard','bootstrap3-typeahead','general');
 		
 		$regiones = $this->db->query("SELECT * FROM regiones")->result();
 		
