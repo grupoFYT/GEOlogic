@@ -89,6 +89,8 @@ $(document).ready(function(){
 	$('#myModal').on('shown.bs.modal', function (e) {
 		$('#rootwizard').bootstrapWizard({'tabClass': 'bwizard-steps'});
 	});
+	
+	setTypeahead('#searchRegion', 'getRegiones', 'id', 'region','hiddenRegionID');
 
 });
 
@@ -170,6 +172,71 @@ function drawRegiones() {
 		
 	});
 
+
+}
+
+function setTypeahead(objdom, xrhfrunc, dataId, dataProperty, hiddencell) {
+
+	$(objdom).typeahead({ 
+		source: function(query, process) {
+			var $url = '/geologic/zonas/' + xrhfrunc;
+			var $items = new Array;
+			$items = [""];
+			$.ajax({
+				url: $url,
+				data: { stringQuery: query },
+				dataType: "json",
+				type: "POST",
+				success: function(data) {
+					//console.log(data);
+					//empty array
+					//elmnts.length = 0;					
+					$.map(data, function(data){
+						//elmnts.push(data[dataProperty]);						
+						var group;
+						group = {
+							id: data[dataId],
+							descriptionField: data[dataProperty],                          
+							toString: function () {
+								return JSON.stringify(this);
+								//return this.app;
+							},
+							toLowerCase: function () {
+								return this.descriptionField.toLowerCase();
+							},
+							indexOf: function (string) {
+								return String.prototype.indexOf.apply(this.descriptionField, arguments);
+							},
+							replace: function (string) {
+								var value = '';
+								value +=  this.descriptionField;
+								if(typeof(this.level) != 'undefined') {
+									value += ' <span class="pull-right muted">';
+									value += this.level;
+									value += '</span>';
+								}
+								return String.prototype.replace.apply('<div style="width:' + $('#search').width() + 'px;">' + value + '</div>', arguments);
+							}
+						};
+						$items.push(group);
+					});
+
+					process($items);
+				}
+			});
+		},
+		property: dataProperty,
+		items: 20,
+		minLength: 2,
+		updater: function (item) {
+			var item = JSON.parse(item);
+
+			$('#' + hiddencell).val(item.id); 
+			//gotoRegion(item.id);
+			alert(item.id);
+			return item.descriptionField;
+		}
+	});
 
 }
 

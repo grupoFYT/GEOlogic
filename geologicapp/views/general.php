@@ -55,7 +55,13 @@
 										#rootwizard .navbar {
 											display: none;
 										}
+										
+										.input-group-addon {
+											text-align: right;
+											width: 111px;
+										}
 									</style>
+									<p>Ingrese una denominación y seleccione la región para la nueva zona</p>
 									<div id="rootwizard">
 										<div class="navbar">
 											<div class="navbar-inner">
@@ -70,12 +76,12 @@
 										</div>
 										<div class="tab-content">
 											<div class="tab-pane" id="tab1">
-												<div class="col-lg-6">
-													<div class="form-group input-group col-lg-8">
+												<div class="col-lg-12">
+													<div class="form-group input-group col-lg-6">
 														<span class="input-group-addon">Zona</span>
 														<input type="text" class="form-control" name="zona" id="zona" placeholder="Zona">
 													</div>
-													<div class="form-group input-group col-lg-8">
+													<div class="form-group input-group col-lg-6">
 														<span class="input-group-addon">Región</span>
 														<input type="text" name="searchRegion" id="searchRegion" data-provide="typeahead" class="form-control" autocomplete="off" placeholder="Region" />
 														<input type="hidden" name="hiddenRegionID" id="hiddenRegionID"/>
