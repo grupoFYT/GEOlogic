@@ -93,7 +93,8 @@
 												</div>
 											</div>
 											<div class="tab-pane" id="tab2">
-												2
+												<div id="mini-map" style="height: 350px; width: auto;">
+												</div>
 											</div>
 											<div class="tab-pane" id="tab3">
 												3

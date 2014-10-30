@@ -8,6 +8,7 @@ var mapOptions = {
 };
 
 var map;
+var map1;
 var regionPol;
 var zonasPol;
 var table;
@@ -22,7 +23,7 @@ google.maps.Polygon.prototype.my_getBounds=function(){
 $(document).ready(function(){
 
 	map = new google.maps.Map(document.getElementById('map-canvas'),mapOptions);
-        map.setZoom(1);
+	map.setZoom(1);
 	map.panTo(myLatLng);
 	drawRegiones();
 	
@@ -88,6 +89,11 @@ $(document).ready(function(){
 	
 	$('#myModal').on('shown.bs.modal', function (e) {
 		$('#rootwizard').bootstrapWizard({'tabClass': 'bwizard-steps'});
+		
+		map1 = new google.maps.Map(document.getElementById('mini-map'),mapOptions);
+		map1.setZoom(1);
+		map1.panTo(myLatLng);
+		
 	});
 	
 	setTypeahead('#searchRegion', 'getRegiones', 'id', 'region','hiddenRegionID');
@@ -232,7 +238,7 @@ function setTypeahead(objdom, xrhfrunc, dataId, dataProperty, hiddencell) {
 			var item = JSON.parse(item);
 
 			$('#' + hiddencell).val(item.id); 
-			//gotoRegion(item.id);
+			gotoRegion(item.id);
 			alert(item.id);
 			return item.descriptionField;
 		}
