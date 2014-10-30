@@ -91,7 +91,7 @@ $(document).ready(function(){
 		$('#rootwizard').bootstrapWizard({
 			'tabClass': 'bwizard-steps',
 			onNext: function(tab, navigation, index) {
-				alert(index + "on next");
+				//alert(index + "on next");
 				if(index==1) {					
 					alert("check inputzzs");
 				}
@@ -249,7 +249,7 @@ function setTypeahead(objdom, xrhfrunc, dataId, dataProperty, hiddencell) {
 
 			$('#' + hiddencell).val(item.id); 
 			//gotoRegion(item.id);
-			alert(item.id);
+			//alert(item.id);
 			return item.descriptionField;
 		}
 	});
