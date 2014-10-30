@@ -91,8 +91,15 @@ $(document).ready(function(){
 	
 		$('#rootwizard').bootstrapWizard({
 			'tabClass': 'bwizard-steps',
-			
-			
+			onNext: function(tab, navigation, index) {
+				//alert(index);
+				if(index==1) {
+					alert(index);
+					gotoRegion($('#hiddenRegionID').val());
+					
+					
+				}
+			}
 		});		
 	
 	});
@@ -247,22 +254,24 @@ function setTypeahead(objdom, xrhfrunc, dataId, dataProperty, hiddencell) {
 
 }
 
-var minzonasPol;
-var minregionPol;
 
 function gotoRegion(regId) {	
-
+	
+	if(typeof(xZona) != 'undefined') {
+			xZona.setMap(null);
+	}
+		
 	$.each(ZS.regiones, function(index, value) {		
 		if (value.id == regId) {
-			minzonasPol = null;
-			if(typeof(minregionPol) != 'undefined') {
-				minregionPol.setMap(null);
+			zonasPol = null;
+			if(typeof(regionPol) != 'undefined') {
+				regionPol.setMap(null);
 			}		
 			var regionCoords = [];
 			$.each(value.coords , function(indexx, valuex) {
 				regionCoords.push(new google.maps.LatLng(valuex['lat'], valuex['lng']));				
 			});			
-			minregionPol = new google.maps.Polygon({
+			regionPol = new google.maps.Polygon({
 				paths: regionCoords,
 				draggable: false,
 				editable: false,
@@ -273,21 +282,21 @@ function gotoRegion(regId) {
 				fillOpacity: 0.3,
 				zIndex: 0
 			});			
-			minregionPol.setMap(minmap);				
+			regionPol.setMap(map);				
 			var latLng = new google.maps.LatLng(value.c_lat, value.c_lng); //Makes a latlng
-			minmap.setZoom(value.c_zoom);
-			minmap.panTo(latLng);
+			map.setZoom(value.c_zoom);
+			map.panTo(latLng);
 
-			minzonasPol = new Array();
+			zonasPol = new Array();
 			$.each(ZS.zonas , function(indexx, valuex) {
 				if ((valuex.region_id == value.id) && (valuex.coords.length > 0)) {
-					minzonasPol[indexx] = new Array();
-					minzonasPol[indexx]['coords'] = new Array();
+					zonasPol[indexx] = new Array();
+					zonasPol[indexx]['coords'] = new Array();
 					$.each(valuex.coords , function(indexxx, valuexx) {
-						minzonasPol[indexx]['coords'].push( new google.maps.LatLng(valuexx['lat'], valuexx['lng']) );						
+						zonasPol[indexx]['coords'].push( new google.maps.LatLng(valuexx['lat'], valuexx['lng']) );						
 					});
-					minzonasPol[indexx]['zmap'] = new google.maps.Polygon({
-												paths: minzonasPol[indexx]['coords'],
+					zonasPol[indexx]['zmap'] = new google.maps.Polygon({
+												paths: zonasPol[indexx]['coords'],
 												draggable: false,
 												editable: false,
 												strokeColor: '#ff2012',
@@ -297,19 +306,19 @@ function gotoRegion(regId) {
 												fillOpacity: 0.5,
 												zIndex: 1
 											});	
-					minzonasPol[indexx]['zmap'].setMap(minmap);
+					zonasPol[indexx]['zmap'].setMap(map);
 					
-					google.maps.event.addListener(minzonasPol[indexx]['zmap'], 'click', function(event) {
+					google.maps.event.addListener(zonasPol[indexx]['zmap'], 'click', function(event) {
 						
 						var infowindow = new google.maps.InfoWindow();
 						var contentString = '<div id="content" style="width:250px; height: 100px;">'+
 							'Zona ' + valuex.name + '<br>' + 
-							'Area: ' + google.maps.geometry.spherical.computeArea(minzonasPol[indexx]['zmap'].getPath()) + ' mts2' + 							
+							'Area: ' + google.maps.geometry.spherical.computeArea(zonasPol[indexx]['zmap'].getPath()) + ' mts2' + 							
 						  '</div>';
 
 						infowindow.setContent(contentString);
 						infowindow.setPosition(event.latLng);
-						infowindow.open(minmap);
+						infowindow.open(map);
 					});
 					
 				}
