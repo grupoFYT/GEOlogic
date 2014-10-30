@@ -8,7 +8,7 @@ var mapOptions = {
 };
 
 var map;
-var map1;
+var minimap;
 var regionPol;
 var zonasPol;
 var table;
@@ -88,12 +88,13 @@ $(document).ready(function(){
 	});
 	
 	$('#myModal').on('shown.bs.modal', function (e) {
-		$('#rootwizard').bootstrapWizard({'tabClass': 'bwizard-steps'});
-		
-		map1 = new google.maps.Map(document.getElementById('mini-map'),mapOptions);
-		map1.setZoom(1);
-		map1.panTo(myLatLng);
-		
+	
+		$('#rootwizard').bootstrapWizard({
+			'tabClass': 'bwizard-steps',
+			
+			
+		});		
+	
 	});
 	
 	setTypeahead('#searchRegion', 'getRegiones', 'id', 'region','hiddenRegionID');
@@ -110,12 +111,12 @@ function drawZonas() {
 				vertices=value['zmap'].getPath();
 				
 				for (i = 0; i < vertices.length; i++) {
-				lng=(vertices.getAt(i).lng());
-				lat=(vertices.getAt(i).lat());
-				markerBounds.extend( new google.maps.LatLng(lat, lng) );						
-				map.fitBounds(markerBounds);
-				    }
+					lng=(vertices.getAt(i).lng());
+					lat=(vertices.getAt(i).lat());
+					markerBounds.extend( new google.maps.LatLng(lat, lng) );						
+					map.fitBounds(markerBounds);
 				}
+			}
 		});			
 
 	
@@ -238,7 +239,7 @@ function setTypeahead(objdom, xrhfrunc, dataId, dataProperty, hiddencell) {
 			var item = JSON.parse(item);
 
 			$('#' + hiddencell).val(item.id); 
-			gotoRegion(item.id);
+			//gotoRegion(item.id);
 			alert(item.id);
 			return item.descriptionField;
 		}
@@ -246,4 +247,77 @@ function setTypeahead(objdom, xrhfrunc, dataId, dataProperty, hiddencell) {
 
 }
 
+var minzonasPol;
+var minregionPol;
+
+function gotoRegion(regId) {	
+
+	$.each(ZS.regiones, function(index, value) {		
+		if (value.id == regId) {
+			minzonasPol = null;
+			if(typeof(minregionPol) != 'undefined') {
+				minregionPol.setMap(null);
+			}		
+			var regionCoords = [];
+			$.each(value.coords , function(indexx, valuex) {
+				regionCoords.push(new google.maps.LatLng(valuex['lat'], valuex['lng']));				
+			});			
+			minregionPol = new google.maps.Polygon({
+				paths: regionCoords,
+				draggable: false,
+				editable: false,
+				strokeColor: '#' + value.color,
+				strokeOpacity: 0.8,
+				strokeWeight: 2,
+				fillColor: '#' + value.color ,
+				fillOpacity: 0.3,
+				zIndex: 0
+			});			
+			minregionPol.setMap(minmap);				
+			var latLng = new google.maps.LatLng(value.c_lat, value.c_lng); //Makes a latlng
+			minmap.setZoom(value.c_zoom);
+			minmap.panTo(latLng);
+
+			minzonasPol = new Array();
+			$.each(ZS.zonas , function(indexx, valuex) {
+				if ((valuex.region_id == value.id) && (valuex.coords.length > 0)) {
+					minzonasPol[indexx] = new Array();
+					minzonasPol[indexx]['coords'] = new Array();
+					$.each(valuex.coords , function(indexxx, valuexx) {
+						minzonasPol[indexx]['coords'].push( new google.maps.LatLng(valuexx['lat'], valuexx['lng']) );						
+					});
+					minzonasPol[indexx]['zmap'] = new google.maps.Polygon({
+												paths: minzonasPol[indexx]['coords'],
+												draggable: false,
+												editable: false,
+												strokeColor: '#ff2012',
+												strokeOpacity: 0.8,
+												strokeWeight: 2,
+												fillColor: '#ff2012',
+												fillOpacity: 0.5,
+												zIndex: 1
+											});	
+					minzonasPol[indexx]['zmap'].setMap(minmap);
+					
+					google.maps.event.addListener(minzonasPol[indexx]['zmap'], 'click', function(event) {
+						
+						var infowindow = new google.maps.InfoWindow();
+						var contentString = '<div id="content" style="width:250px; height: 100px;">'+
+							'Zona ' + valuex.name + '<br>' + 
+							'Area: ' + google.maps.geometry.spherical.computeArea(minzonasPol[indexx]['zmap'].getPath()) + ' mts2' + 							
+						  '</div>';
+
+						infowindow.setContent(contentString);
+						infowindow.setPosition(event.latLng);
+						infowindow.open(minmap);
+					});
+					
+				}
+			});
+			
+			
+			
+		}
+	}); 
+}
 
