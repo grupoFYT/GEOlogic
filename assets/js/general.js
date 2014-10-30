@@ -8,7 +8,6 @@ var mapOptions = {
 };
 
 var map;
-var minimap;
 var regionPol;
 var zonasPol;
 var table;
@@ -99,8 +98,9 @@ $(document).ready(function(){
 				
 			},
 			onTabShow: function(tab, navigation, it) {
-				alert(it + "on show");
-				
+				if(it==1) {					
+					drawMinMap();
+				}				
 			}
 		});		
 	
@@ -256,24 +256,46 @@ function setTypeahead(objdom, xrhfrunc, dataId, dataProperty, hiddencell) {
 
 }
 
+var minmapOptions = {
+	streetViewControl: false,
+	zoom: 3,
+	center: myLatLng,
+	mapTypeId: google.maps.MapTypeId.HYBRID,
+	disableDefaultUI: true
+};
+
+var minmap;
+
+function drawMinMap() {
+	
+	minmap = new google.maps.Map(document.getElementById('mini-map'),minmapOptions);
+	minmap.setZoom(1);
+	minmap.panTo(myLatLng);
+
+	gotoRegion($('#hiddenRegionID').val());
+
+}
+
+var minZonasPol;
+var minRegionPol;
 
 function gotoRegion(regId) {	
 	
-	if(typeof(xZona) != 'undefined') {
-			xZona.setMap(null);
-	}
+	// if(typeof(xZona) != 'undefined') {
+			// xZona.setMap(null);
+	// }
 		
 	$.each(ZS.regiones, function(index, value) {		
 		if (value.id == regId) {
-			zonasPol = null;
-			if(typeof(regionPol) != 'undefined') {
-				regionPol.setMap(null);
+			minZonasPol = null;
+			if(typeof(minRegionPol) != 'undefined') {
+				minRegionPol.setMap(null);
 			}		
 			var regionCoords = [];
 			$.each(value.coords , function(indexx, valuex) {
 				regionCoords.push(new google.maps.LatLng(valuex['lat'], valuex['lng']));				
 			});			
-			regionPol = new google.maps.Polygon({
+			minRegionPol = new google.maps.Polygon({
 				paths: regionCoords,
 				draggable: false,
 				editable: false,
@@ -284,21 +306,21 @@ function gotoRegion(regId) {
 				fillOpacity: 0.3,
 				zIndex: 0
 			});			
-			regionPol.setMap(map);				
+			minRegionPol.setMap(minmap);				
 			var latLng = new google.maps.LatLng(value.c_lat, value.c_lng); //Makes a latlng
-			map.setZoom(value.c_zoom);
-			map.panTo(latLng);
+			minmap.setZoom(value.c_zoom);
+			minmap.panTo(latLng);
 
-			zonasPol = new Array();
+			minZonasPol = new Array();
 			$.each(ZS.zonas , function(indexx, valuex) {
 				if ((valuex.region_id == value.id) && (valuex.coords.length > 0)) {
-					zonasPol[indexx] = new Array();
-					zonasPol[indexx]['coords'] = new Array();
+					minZonasPol[indexx] = new Array();
+					minZonasPol[indexx]['coords'] = new Array();
 					$.each(valuex.coords , function(indexxx, valuexx) {
-						zonasPol[indexx]['coords'].push( new google.maps.LatLng(valuexx['lat'], valuexx['lng']) );						
+						minZonasPol[indexx]['coords'].push( new google.maps.LatLng(valuexx['lat'], valuexx['lng']) );						
 					});
-					zonasPol[indexx]['zmap'] = new google.maps.Polygon({
-												paths: zonasPol[indexx]['coords'],
+					minZonasPol[indexx]['zmap'] = new google.maps.Polygon({
+												paths: minZonasPol[indexx]['coords'],
 												draggable: false,
 												editable: false,
 												strokeColor: '#ff2012',
@@ -308,19 +330,19 @@ function gotoRegion(regId) {
 												fillOpacity: 0.5,
 												zIndex: 1
 											});	
-					zonasPol[indexx]['zmap'].setMap(map);
+					minZonasPol[indexx]['zmap'].setMap(minmap);
 					
-					google.maps.event.addListener(zonasPol[indexx]['zmap'], 'click', function(event) {
+					google.maps.event.addListener(minZonasPol[indexx]['zmap'], 'click', function(event) {
 						
 						var infowindow = new google.maps.InfoWindow();
 						var contentString = '<div id="content" style="width:250px; height: 100px;">'+
 							'Zona ' + valuex.name + '<br>' + 
-							'Area: ' + google.maps.geometry.spherical.computeArea(zonasPol[indexx]['zmap'].getPath()) + ' mts2' + 							
+							'Area: ' + google.maps.geometry.spherical.computeArea(minZonasPol[indexx]['zmap'].getPath()) + ' mts2' + 							
 						  '</div>';
 
 						infowindow.setContent(contentString);
 						infowindow.setPosition(event.latLng);
-						infowindow.open(map);
+						infowindow.open(minmap);
 					});
 					
 				}
