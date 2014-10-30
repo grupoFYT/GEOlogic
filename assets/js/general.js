@@ -93,9 +93,19 @@ $(document).ready(function(){
 			'tabClass': 'bwizard-steps',
 			onNext: function(tab, navigation, index) {
 				//alert(index);
+				if(index==0) {
+					alert(index + " por ir a 1");
+					//gotoRegion($('#hiddenRegionID').val());
+					
+					
+				}
+			},
+			onShow: function(tab, navigation, index) {
+				//alert(index);
 				if(index==1) {
-					alert(index);
-					gotoRegion($('#hiddenRegionID').val());
+					alert(index + "estoy en 1");
+					//alert(index);
+					//gotoRegion($('#hiddenRegionID').val());
 					
 					
 				}
