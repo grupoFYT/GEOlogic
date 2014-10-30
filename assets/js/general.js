@@ -92,23 +92,15 @@ $(document).ready(function(){
 		$('#rootwizard').bootstrapWizard({
 			'tabClass': 'bwizard-steps',
 			onNext: function(tab, navigation, index) {
-				//alert(index);
-				if(index==0) {
-					alert(index + " por ir a 1");
-					//gotoRegion($('#hiddenRegionID').val());
-					
-					
+				alert(index + "on next");
+				if(index==1) {					
+					alert("check inputzzs");
 				}
+				
 			},
-			onShow: function(tab, navigation, index) {
-				//alert(index);
-				if(index==1) {
-					alert(index + "estoy en 1");
-					//alert(index);
-					//gotoRegion($('#hiddenRegionID').val());
-					
-					
-				}
+			onTabShow: function(tab, navigation, it) {
+				alert(it + "on show");
+				
 			}
 		});		
 	
