@@ -93,6 +93,8 @@
 												</div>
 											</div>
 											<div class="tab-pane" id="tab2">
+												<p>Ubicar una posición para insertar la nueva zona</p>
+												<a id="polygon_main_add">Insertar</a>
 												<div id="mini-map" style="height: 350px; width: auto;">
 												</div>
 											</div>
