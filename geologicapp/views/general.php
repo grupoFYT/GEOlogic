@@ -102,9 +102,9 @@
 												3
 											</div>
 											<ul class="pager wizard">
-												<li class="previous first" style="display:none;"><a href="#">Prim.</a></li>
+												<li class="first" style="display:none;"><a href="#">Prim.</a></li>
 												<li class="previous"><a href="#">Ant.</a></li>
-												<li class="next last" style="display:none;"><a href="#">Ult.</a></li>
+												<li class="last" style="display:none;"><a href="#">Ult.</a></li>
 												<li class="next"><a href="#">Sig.</a></li>
 												<li class="finish" style="display:none;"><a href="#">Guardar</a></li>
 											</ul>
