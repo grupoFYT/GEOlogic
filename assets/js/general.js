@@ -90,6 +90,11 @@ $(document).ready(function(){
 	
 	$('#myModal').on('shown.bs.modal', function (e) {
 	
+		$('#zona').val('');
+		$('#searchRegion').val('');
+		$('#hiddenRegionID').val('');
+		
+	
 		$('#rootwizard').bootstrapWizard({
 			'tabClass': 'bwizard-steps',
 			onNext: function(tab, navigation, index) {
