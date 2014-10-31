@@ -87,7 +87,7 @@ $(document).ready(function(){
 		}
 		$('#zonasGrid').DataTable().search($('#searchInput').val().trim()).draw();
 	});
-	
+		
 	$('#myModal').on('shown.bs.modal', function (e) {
 	
 		$('#zona').val('');
