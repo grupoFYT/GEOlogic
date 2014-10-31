@@ -100,8 +100,7 @@ $(document).ready(function(){
 				//alert(index + "on next");
 				if(index==1) {					
 					alert("check inputzzs");
-				}
-				
+				}				
 			},
 			onTabShow: function(tab, navigation, it) {
 				if(it==1) {					
