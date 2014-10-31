@@ -13,6 +13,8 @@ var zonasPol;
 var table;
 var data;
 
+var xzona;
+
 google.maps.Polygon.prototype.my_getBounds=function(){
     var bounds = new google.maps.LatLngBounds()
     this.getPath().forEach(function(element,index){bounds.extend(element)})
@@ -107,28 +109,68 @@ $(document).ready(function(){
 	});
 	
 	setTypeahead('#searchRegion', 'getRegiones', 'id', 'region','hiddenRegionID');
+	
+	//
+	
+	$('#polygon_main_add').on('click', function(){		
+		if(typeof(xZona) != 'undefined') {
+			xZona.setMap(null);
+		}
+		function get_random_value(val_max) {
+            val_max = val_max || 100;
+            return Math.floor((Math.random()*val_max));
+        }		
+		var px_center = minmap.getCenter();		
+		var polygon_width = 300;
+        var polygon_height = 200;
+        var px_bl_x = parseInt(px_center.k - (0)) - 0.1;
+        var px_bl_y = parseInt(px_center.B + (0)) - 0.1;
+        var px_br_x = parseInt(px_center.k + (0)) + 0.1;
+        var px_br_y = parseInt(px_center.B + (0)) - 0.1;        
+        var px_tr_x = parseInt(px_center.k + (0)) + 0.1;
+        var px_tr_y = parseInt(px_center.B - (0)) + 0.1;        
+        var px_tl_x = parseInt(px_center.k - (0)) - 0.1;
+        var px_tl_y = parseInt(px_center.B - (0)) + 0.1;		
+		var triangleCoords = [
+			new google.maps.LatLng(px_bl_x, px_bl_y),
+			new google.maps.LatLng(px_br_x, px_br_y),
+			new google.maps.LatLng(px_tr_x, px_tr_y),
+			new google.maps.LatLng(px_tl_x, px_tl_y)
+		];		
+		xZona = new google.maps.Polygon({
+			paths: triangleCoords,
+			draggable: true,
+			editable: true,			
+			strokeColor: '#000000',
+			strokeOpacity: 0.5,
+			strokeWeight: 2,
+			fillColor: '#CACACA',
+			fillOpacity: 0.7,
+			zIndex: 3
+		});				
+		xZona.setMap(minmap);		
+    });
+	
 
 });
 
 function drawZonas() {
-		
-		$('#infoRow').html(data.zona + '<br>' + data.region);
-		var markerBounds = new google.maps.LatLngBounds();
-
-		$.each(zonasPol , function(index, value) {
-			if (value.id == data.id) {
-				vertices=value['zmap'].getPath();
-				
-				for (i = 0; i < vertices.length; i++) {
-					lng=(vertices.getAt(i).lng());
-					lat=(vertices.getAt(i).lat());
-					markerBounds.extend( new google.maps.LatLng(lat, lng) );						
-					map.fitBounds(markerBounds);
-				}
-			}
-		});			
-
 	
+	$('#infoRow').html(data.zona + '<br>' + data.region);
+	var markerBounds = new google.maps.LatLngBounds();
+
+	$.each(zonasPol , function(index, value) {
+		if (value.id == data.id) {
+			vertices=value['zmap'].getPath();
+			
+			for (i = 0; i < vertices.length; i++) {
+				lng=(vertices.getAt(i).lng());
+				lat=(vertices.getAt(i).lat());
+				markerBounds.extend( new google.maps.LatLng(lat, lng) );						
+				map.fitBounds(markerBounds);
+			}
+		}
+	});
 }
 
 function drawRegiones() {
@@ -192,7 +234,6 @@ function drawRegiones() {
 }
 
 function setTypeahead(objdom, xrhfrunc, dataId, dataProperty, hiddencell) {
-
 	$(objdom).typeahead({ 
 		source: function(query, process) {
 			var $url = '/geologic/zonas/' + xrhfrunc;
@@ -203,19 +244,14 @@ function setTypeahead(objdom, xrhfrunc, dataId, dataProperty, hiddencell) {
 				data: { stringQuery: query },
 				dataType: "json",
 				type: "POST",
-				success: function(data) {
-					//console.log(data);
-					//empty array
-					//elmnts.length = 0;					
-					$.map(data, function(data){
-						//elmnts.push(data[dataProperty]);						
+				success: function(data) {				
+					$.map(data, function(data){					
 						var group;
 						group = {
 							id: data[dataId],
 							descriptionField: data[dataProperty],                          
 							toString: function () {
 								return JSON.stringify(this);
-								//return this.app;
 							},
 							toLowerCase: function () {
 								return this.descriptionField.toLowerCase();
@@ -236,7 +272,6 @@ function setTypeahead(objdom, xrhfrunc, dataId, dataProperty, hiddencell) {
 						};
 						$items.push(group);
 					});
-
 					process($items);
 				}
 			});
@@ -253,7 +288,6 @@ function setTypeahead(objdom, xrhfrunc, dataId, dataProperty, hiddencell) {
 			return item.descriptionField;
 		}
 	});
-
 }
 
 var minmapOptions = {
@@ -281,9 +315,9 @@ var minRegionPol;
 
 function gotoRegion(regId) {	
 	
-	// if(typeof(xZona) != 'undefined') {
-			// xZona.setMap(null);
-	// }
+	if(typeof(xZona) != 'undefined') {
+			xZona.setMap(null);
+	}
 		
 	$.each(ZS.regiones, function(index, value) {		
 		if (value.id == regId) {
