@@ -93,9 +93,7 @@ $(document).ready(function(){
 		$('#zona').val('');
 		$('#searchRegion').val('');
 		$('#hiddenRegionID').val('');
-		$('#rootwizard').bootstrapWizard('display', 0);
 		
-	
 		$('#rootwizard').bootstrapWizard({
 			'tabClass': 'bwizard-steps',
 			onNext: function(tab, navigation, index) {
@@ -110,7 +108,9 @@ $(document).ready(function(){
 					drawMinMap();
 				}				
 			}
-		});		
+		});	
+
+		$('#rootwizard').bootstrapWizard('first');		
 	
 	});
 	
