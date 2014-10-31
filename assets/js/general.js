@@ -105,7 +105,16 @@ $(document).ready(function(){
 			onTabShow: function(tab, navigation, it) {
 				if(it==1) {					
 					drawMinMap();
-				}				
+					$('#rootwizard').find('.pager .finish').show();
+					$('#rootwizard').find('.pager .next').hide();
+				}
+				else {
+					$('#rootwizard').find('.pager .finish').hide();
+					$('#rootwizard').find('.pager .next').show();
+				}
+				
+
+				
 			}
 		});	
 
