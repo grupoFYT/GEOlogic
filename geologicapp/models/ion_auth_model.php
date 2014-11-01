@@ -606,6 +606,8 @@ class Ion_auth_model extends CI_Model
 			}
 		}
 		// IP Address
+		var_dump($password);
+		echo "caca";
 		$ip_address = $this->_prepare_ip($this->input->ip_address());
 		$salt       = $this->store_salt ? $this->salt() : FALSE;
 		$password   = $this->hash_password($password, $salt);
@@ -629,7 +631,7 @@ class Ion_auth_model extends CI_Model
 
 		$this->trigger_events('extra_set');
 
-		$this->db->insert($this->tables['users'], $user_data);
+		//$this->db->insert($this->tables['users'], $user_data);
 
 		$id = $this->db->insert_id();
 

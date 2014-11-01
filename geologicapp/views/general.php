@@ -97,6 +97,7 @@
 												<a id="polygon_main_add">Insertar</a>
 												<div id="mini-map" style="height: 350px; width: auto;">
 												</div>
+												<input type="hidden" id="coord" name="coord" value="" >
 											</div>
 											<div class="tab-pane" id="tab3">
 												3

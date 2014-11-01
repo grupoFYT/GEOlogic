@@ -404,3 +404,9 @@ function gotoRegion(regId) {
 	}); 
 }
 
+function getPolygonCoords() {	
+	var polygonBounds = xZona.getPath();
+	var coordinates = [];
+	for(var i = 0 ; i < polygonBounds.length ; i++) coordinates.push(polygonBounds.getAt(i).lat(), polygonBounds.getAt(i).lng());	
+	$("#coord").val(coordinates);
+}
