@@ -168,22 +168,23 @@ $(document).ready(function(){
     });
 	
 	
-	$('#polygon_main_add').on('click', function(){
+	$('.finish').on('click', function(){
 		
-		var suspend = false;
+		// var suspend = false;
 		getPolygonCoords();
-		alert(google.maps.geometry.spherical.computeArea(xZona.getPath()));
-		if (!suspend) {				
-			dataString = $("#newP_form").serialize();			 
-			$.ajax({
-				type: "POST",
-				url: "/geologic/zonas/save",
-				data: dataString,			 
-				success: function(data){
-					data ? (window.location.href = "/geologic/zonas/") : "";
-				}		 
-			});			 
-		}			
+		// alert(google.maps.geometry.spherical.computeArea(xZona.getPath()));
+		// if (!suspend) {				
+			dataString = $("#newZ_form").serialize();
+			carasfg = "adsgasdg";
+			// $.ajax({
+				// type: "POST",
+				// url: "/geologic/zonas/save",
+				// data: dataString,			 
+				// success: function(data){
+					// data ? (window.location.href = "/geologic/zonas/") : "";
+				// }		 
+			// });			 
+		// }			
 		
 	});
 	

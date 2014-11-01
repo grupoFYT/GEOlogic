@@ -92,7 +92,7 @@ class Ion_auth_model extends CI_Model
 		$this->trigger_events('model_constructor');
 	}
 
-	public function hash_password($password, $salt=false, $use_sha1_override=false)
+	public function hash_password($password, $salt=false, $use_sha1_override=FALSE)
 	{
 		if (empty($password))
 		{
@@ -102,12 +102,9 @@ class Ion_auth_model extends CI_Model
 		//bcrypt
 		if ($use_sha1_override === FALSE && $this->hash_method == 'bcrypt')
 		{
-		echo "sali por aca";
-			$pass_hash =  $this->bcrypt->hash($password);
-			var_dump($this->bcrypt->hash($password));
-			echo "<br>";
-			var_dump($pass_hash);
-			return $pass_hash;
+			var_dump(hash('sha256',$password));
+			return $this->bcrypt->hash($password);
+		
 		}
 
 
