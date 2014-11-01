@@ -102,15 +102,13 @@ class Ion_auth_model extends CI_Model
 		//bcrypt
 		if ($use_sha1_override === FALSE && $this->hash_method == 'bcrypt')
 		{
-			//var_dump($this->bcrypt->hash($password));
-			//echo hash($password);
 			//return $this->bcrypt->hash($password);
 		}
 
 
 		if ($this->store_salt && $salt)
 		{
-		echo "hash";
+			echo "hash";
 			return  sha1($password . $salt);
 		}
 		else
@@ -632,8 +630,8 @@ class Ion_auth_model extends CI_Model
 
 		$this->trigger_events('extra_set');
 		//echo "aca inserto<br>";
-		var_dump($password);
-		//$this->db->insert($this->tables['users'], $user_data);
+		//var_dump($password);
+		$this->db->insert($this->tables['users'], $user_data);
 
 		$id = $this->db->insert_id();
 
