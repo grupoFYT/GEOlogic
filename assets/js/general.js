@@ -21,6 +21,10 @@ google.maps.Polygon.prototype.my_getBounds=function(){
     return bounds
 }
 
+Number.prototype.round = function(places) {
+  return +(Math.round(this + "e+" + places)  + "e-" + places);
+}
+
 $(document).ready(function(){
 
 	map = new google.maps.Map(document.getElementById('map-canvas'),mapOptions);
@@ -198,7 +202,8 @@ function drawZonas() {
 
 	$.each(zonasPol , function(index, value) {
 		if (value.id == data.id) {
-			$('#infoRow p').html('Area: ' + google.maps.geometry.spherical.computeArea(value['zmap'].getPath()));
+			var teta = google.maps.geometry.spherical.computeArea(value['zmap'].getPath());
+			$('#infoRow p').html('Area: ' + teta.round(2) + ' mts2' );
 			vertices=value['zmap'].getPath();
 			
 			for (i = 0; i < vertices.length; i++) {
