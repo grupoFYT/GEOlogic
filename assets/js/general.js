@@ -193,7 +193,7 @@ $(document).ready(function(){
 
 function drawZonas() {
 	
-	$('#infoRow').html(data.zona + '<br>' + data.region);
+	$('#infoRow h2').html(data.zona + ' ' + data.region);
 	var markerBounds = new google.maps.LatLngBounds();
 
 	$.each(zonasPol , function(index, value) {
