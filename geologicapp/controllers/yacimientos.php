@@ -12,12 +12,12 @@ class Yacimientos extends MY_Controller {
 
     public function index() {
 	
-		$this->styles = array('dataTables.bootstrap','zonas') ;
-		$this->jsfiles = array('jquery.dataTables.min', 'dataTables.bootstrap', 'zonas');
+		$this->styles = array('dataTables.bootstrap','yacimientos') ;
+		$this->jsfiles = array('jquery.dataTables.min', 'dataTables.bootstrap', 'yacimientos');
 	
-		$this->data['page_title'] = "Gestion de zonas";
+		$this->data['page_title'] = "Gestion de yacimientos";
 		
-		$this->data['view_file'] = 'zonas/index'; 
+		$this->data['view_file'] = 'yacimientos/index'; 
 		
 		//echo "caca";
 		$this->load->view('_layouts/mainGeologic', $this->data);
