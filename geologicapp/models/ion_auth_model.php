@@ -102,14 +102,15 @@ class Ion_auth_model extends CI_Model
 		//bcrypt
 		if ($use_sha1_override === FALSE && $this->hash_method == 'bcrypt')
 		{
-			var_dump(hash('sha256',$password));
-			return $this->bcrypt->hash($password);
-		
+			//var_dump($this->bcrypt->hash($password));
+			//echo hash($password);
+			//return $this->bcrypt->hash($password);
 		}
 
 
 		if ($this->store_salt && $salt)
 		{
+		echo "hash";
 			return  sha1($password . $salt);
 		}
 		else
@@ -608,12 +609,10 @@ class Ion_auth_model extends CI_Model
 			}
 		}
 		// IP Address
-		var_dump($password);
-		echo "caca";
 		$ip_address = $this->_prepare_ip($this->input->ip_address());
 		$salt       = $this->store_salt ? $this->salt() : FALSE;
 		$password   = $this->hash_password($password, $salt);
-		var_dump($password);
+
 		$data = array(
 		    'username'   => $username,
 		    'password'   => $password,
@@ -632,7 +631,8 @@ class Ion_auth_model extends CI_Model
 		$user_data = array_merge($this->_filter_data($this->tables['users'], $additional_data), $data);
 
 		$this->trigger_events('extra_set');
-
+		//echo "aca inserto<br>";
+		var_dump($password);
 		//$this->db->insert($this->tables['users'], $user_data);
 
 		$id = $this->db->insert_id();

@@ -42,4 +42,58 @@ class General extends MY_Controller {
 		$this->load->view('_layouts/mainGeologicTabs', $this->data);
     }
 	
+	function save()
+	{
+		if($_POST):
+			
+			$this->db->trans_begin();
+		
+			$this->db->insert('zonas', array( 'zona' => $this->input->post('zona') ,
+											  'region_id' => $this->input->post('hiddenRegionID')));
+			$id_fm = $this->db->insert_id();
+			//$id_fm = 2;
+			
+			if (isset($id_fm)) {
+				
+				$count = 0;
+				foreach( explode( ',', $this->input->post('coord') ) as $x ) {
+					if ($count%2==0){
+						$coordx = array( 'zona_id' => $id_fm );
+						$coordx['lat']  = $x ;
+					}
+					else {
+						$coordx['lng']  = $x ;
+						$this->db->insert('zonas_coordenadas', $coordx );
+
+						$idx = $this->db->insert_id();
+						if (!isset($idx)) {
+							$this->db->trans_rollback();
+							return FALSE;
+						}
+						$coordx = array();						
+					}
+					$count = $count + 1;					
+				}					
+			}
+			else {
+				$this->db->trans_rollback();
+				return FALSE;
+			}
+			
+			if ($this->db->trans_status() === FALSE) {
+				$this->db->trans_rollback();
+				return FALSE;
+			}		
+			else {
+				$this->db->trans_commit();
+			}
+
+			$this->session->set_flashdata('item', 'Zona ' . $this->input->post('zona') . ' cargada.');
+			echo TRUE;
+ 
+		endif;
+	}
+	
+	
+	
 }

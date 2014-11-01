@@ -175,15 +175,14 @@ $(document).ready(function(){
 		// alert(google.maps.geometry.spherical.computeArea(xZona.getPath()));
 		// if (!suspend) {				
 			dataString = $("#newZ_form").serialize();
-			carasfg = "adsgasdg";
-			// $.ajax({
-				// type: "POST",
-				// url: "/geologic/zonas/save",
-				// data: dataString,			 
-				// success: function(data){
-					// data ? (window.location.href = "/geologic/zonas/") : "";
-				// }		 
-			// });			 
+			$.ajax({
+				type: "POST",
+				url: "/geologic/general/save",
+				data: dataString,			 
+				success: function(data){
+					data ? (window.location.href = "/geologic/general/") : "";
+				}		 
+			});			 
 		// }			
 		
 	});
