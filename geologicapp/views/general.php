@@ -16,6 +16,15 @@
 	#zonasGrid tbody tr.odd.selected, #zonasGrid tbody tr.odd.selected {
 		background-color: #abb9d3 !important;
 	}
+	
+	.article {
+		background-color: #ffffff;
+		border: 1px solid #dddddd;
+		border-radius: 5px;
+		box-shadow: 0 1px 0 rgba(255, 255, 255, 0.15) inset, 0 1px 5px rgba(0, 0, 0, 0.075);
+		margin: 10px 5px;
+		padding: 10px 15px;
+	}
 
 </style>
 
@@ -146,8 +155,12 @@
 			</div>
 		</div>
 	</div>
-	<div class="row">
-		<div id="infoRow" class="col-lg-12">info adsfghasfg
+</div>
+
+<div class="row">
+	<div class="col-md-8">
+		<div id="infoRow" class="article">
+			Aca va la información
 		</div>
 	</div>
 </div>
