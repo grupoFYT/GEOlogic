@@ -160,7 +160,7 @@
 <div class="row">
 	<div class="col-md-8">
 		<div id="infoRow" class="article">
-			<h3></h3>
+			<h4></h4>
 			<p>
 				
 			</p>

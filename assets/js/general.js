@@ -193,11 +193,12 @@ $(document).ready(function(){
 
 function drawZonas() {
 	
-	$('#infoRow h2').html(data.zona + ' ' + data.region);
+	$('#infoRow h4').html('Zona ' + data.zona + ' ( Región ' + data.region + ' )');
 	var markerBounds = new google.maps.LatLngBounds();
 
 	$.each(zonasPol , function(index, value) {
 		if (value.id == data.id) {
+			$('#infoRow p').html('Area: ' + google.maps.geometry.spherical.computeArea(value['zmap'].getPath()));
 			vertices=value['zmap'].getPath();
 			
 			for (i = 0; i < vertices.length; i++) {
