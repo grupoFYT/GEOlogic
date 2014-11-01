@@ -92,7 +92,7 @@ class Ion_auth_model extends CI_Model
 		$this->trigger_events('model_constructor');
 	}
 
-	public function hash_password($password, $salt, $use_sha1_override=FALSE)
+	public function hash_password($password, $salt=false, $use_sha1_override=FALSE)
 	{
 		if (empty($password))
 		{
@@ -102,13 +102,12 @@ class Ion_auth_model extends CI_Model
 		//bcrypt
 		if ($use_sha1_override === FALSE && $this->hash_method == 'bcrypt')
 		{
-			//return $this->bcrypt->hash($password);
+			return $this->bcrypt->hash($password);
 		}
 
 
 		if ($this->store_salt && $salt)
 		{
-			echo "hash";
 			return  sha1($password . $salt);
 		}
 		else
@@ -141,13 +140,6 @@ class Ion_auth_model extends CI_Model
 		
 		if ($use_sha1_override === FALSE && $this->hash_method == 'bcrypt')
 		{
-		
-		$passhash = $salt . substr(sha1($salt . $password), 0, -$this->salt_length);
-		
-		var_dump($passhash);
-		echo "<br>";
-		var_dump($hash_password_db->password);
-		
 			if ($this->bcrypt->verify($password,$hash_password_db->password))
 			{
 				return TRUE;
@@ -636,8 +628,7 @@ class Ion_auth_model extends CI_Model
 		$user_data = array_merge($this->_filter_data($this->tables['users'], $additional_data), $data);
 
 		$this->trigger_events('extra_set');
-		//echo "aca inserto<br>";
-		//var_dump($password);
+
 		$this->db->insert($this->tables['users'], $user_data);
 
 		$id = $this->db->insert_id();
