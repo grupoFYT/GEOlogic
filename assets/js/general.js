@@ -167,6 +167,27 @@ $(document).ready(function(){
 		xZona.setMap(minmap);		
     });
 	
+	
+	$('#polygon_main_add').on('click', function(){
+		
+		var suspend = false;
+		getPolygonCoords();
+		alert(google.maps.geometry.spherical.computeArea(xZona.getPath()));
+		if (!suspend) {				
+			dataString = $("#newP_form").serialize();			 
+			$.ajax({
+				type: "POST",
+				url: "/geologic/zonas/save",
+				data: dataString,			 
+				success: function(data){
+					data ? (window.location.href = "/geologic/zonas/") : "";
+				}		 
+			});			 
+		}			
+		
+	});
+	
+	
 
 });
 
