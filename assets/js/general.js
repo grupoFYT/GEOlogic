@@ -37,7 +37,7 @@ $(document).ready(function(){
 		"processing": true,
 		"serverSide": true,
 		"ajax": {
-			"url": "/geologic/zonas/datatable",
+			"url": "/geologic/general/datatable",
 			"type": "POST"
 		},
 		"lengthChange": false,
@@ -56,7 +56,7 @@ $(document).ready(function(){
 			  "orderable":      false,
 			  "searchable":     false,
 			  "render": function ( data, type, row ) {
-                    return '<a class="btn btn-danger btn-xs" href="/geologic/zonas/delete/' + data.id + '">Eliminar</a>';
+                    return '<a class="btn btn-danger btn-xs" href="/geologic/general/delete/' + data.id + '">Eliminar</a>';
 				},
 			},
 		],
@@ -279,7 +279,7 @@ function drawRegiones() {
 function setTypeahead(objdom, xrhfrunc, dataId, dataProperty, hiddencell) {
 	$(objdom).typeahead({ 
 		source: function(query, process) {
-			var $url = '/geologic/zonas/' + xrhfrunc;
+			var $url = '/geologic/general/' + xrhfrunc;
 			var $items = new Array;
 			$items = [""];
 			$.ajax({

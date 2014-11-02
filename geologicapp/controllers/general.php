@@ -42,6 +42,23 @@ class General extends MY_Controller {
 		$this->load->view('_layouts/mainGeologicTabs', $this->data);
     }
 	
+	function datatable()
+    {
+		$this->datatables->select('zonas.id as id,zonas.zona as zona,regiones.region as region, paises.pais as pais', FALSE)
+			->from('zonas') ->join('regiones','zonas.region_id = regiones.id','left')
+			->from('zonas') ->join('paises','regiones.pais_id = paises.id','left')
+			->where('active = 1');
+		
+        echo $this->datatables->generate();
+
+	}
+	
+	function getRegiones()
+	{
+		$query = $this->db->query('SELECT id, region FROM regiones where region like "%' . $this->input->post('stringQuery') . '%"');
+		echo json_encode($query->result());
+	}
+	
 	function save()
 	{
 		if($_POST):
