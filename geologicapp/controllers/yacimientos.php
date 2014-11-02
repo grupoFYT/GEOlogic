@@ -38,20 +38,19 @@ class Yacimientos extends MY_Controller {
 			// $this->data['regiones'][$key]['coordenadas'] = $coordenadas;
 		// }
 		
-		$regiones = $this->db->query("SELECT * FROM regiones")->result();
+		$yacimientos = $this->db->query("SELECT * FROM yacimientos")->result();
 		
-		foreach ($regiones as $key=>$value)
+		foreach ($yacimientos as $key=>$value)
 		{
-			$this->data['regiones'][$key]['region'] = $value;
-			$pais = $this->db->query("SELECT * FROM paises where id = 1")->row();
-			$this->data['regiones'][$key]['pais'] = $pais;
-			$coordenadas = $this->db->query("SELECT * FROM regiones_coordenadas where region_id = " . $value->id )->result();
-			$this->data['regiones'][$key]['coordenadas'] = $coordenadas;
+			$this->data['yacimientos'][$key]['yacimiento'] = $value;
+			$minerales = $this->db->query("SELECT * FROM minerales inner join minerales_tipo on minerales.mineral_tipo_id = minerales_tipo.id where minerales.yacimiento_id = " . $value->yacimiento_id )->result();
+			var_dump($minerales);
+			$this->data['yacimientos'][$key]['minerales'] = $minerales;
 		}
 	
 		$this->data['view_file'] = 'zonas';
 		
-		$this->load->view('_layouts/mainGeologicTabs', $this->data);
+		//$this->load->view('_layouts/mainGeologicTabs', $this->data);
     }
 	
 	function datatable()

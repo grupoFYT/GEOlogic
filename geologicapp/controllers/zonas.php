@@ -111,6 +111,17 @@ class Zonas extends MY_Controller {
 		endif;
 	}
 	
+
+	function delete()
+	{
+		$id = $this->uri->segment(3);
+		$this->db->query("UPDATE zonas SET active = 0 WHERE id = ". $id);
+		//$this->input->post('stringQuery');
+		$this->session->set_flashdata('item', 'Zona eliminada');
+		
+		redirect('/zonas/', 'refresh');
+	}
 	
 	
 }
+
