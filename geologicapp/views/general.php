@@ -52,6 +52,9 @@
 					<button type="button" class="btn btn-warning btn-sm btn-newP" data-toggle="modal" data-target="#myModal" style="float:left;">
 						Nueva Zona
 					</button>
+					<div style="clear: both; float: left; margin-top: 9px;">
+						<a>asdfgasfg</a>
+					</div>
 					<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 						<div class="modal-dialog">
 							<div class="modal-content">
