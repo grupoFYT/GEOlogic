@@ -52,9 +52,9 @@
 					<button type="button" class="btn btn-warning btn-sm btn-newP" data-toggle="modal" data-target="#myModal" style="float:left;">
 						Nueva Zona
 					</button>
-					<div style="clear: both; float: left; margin-top: 9px;">
+					<div style="clear: both; float: left; margin-top: 10px;">
 						<button type="button" class="btn btn-default btn-xs">
-							<span class="glyphicon glyphicon-star"></span> Vista General
+							<span class="glyphicon glyphicon-fire"></span> Vista General
 						</button>
 					</div>
 					<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -63,7 +63,7 @@
 								<div class="modal-header">
 									<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
 									<h4 class="modal-title" id="myModalLabel">Nueva Zona</h4>
-								</div>
+								</div> 
 								<div class="modal-body">
 									<style>
 										#rootwizard .navbar {

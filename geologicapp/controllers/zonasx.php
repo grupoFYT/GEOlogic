@@ -1,8 +1,8 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-class Zonas extends MY_Controller {
+class Zonasx extends MY_Controller {
 
-	public function __construct() {
+    public function __construct() {
         parent::__construct();
 		
 		$this->load->library('form_validation');
@@ -10,10 +10,38 @@ class Zonas extends MY_Controller {
         $this->load->database();		
     }
 
-	public function index() {
+    public function index() {
 	
-		$this->styles = array('dataTables.bootstrap') ;
-		$this->jsfiles = array('jquery.dataTables.min', 'dataTables.bootstrap','jquery.bootstrap.wizard','bootstrap3-typeahead','general');
+		$this->styles = array('dataTables.bootstrap','zonas') ;
+		$this->jsfiles = array('jquery.dataTables.min', 'dataTables.bootstrap', 'zonas');
+	
+		$this->data['page_title'] = "Gestion de zonas";
+		
+		$this->data['view_file'] = 'zonas/index';
+		
+		//echo "caca";
+		$this->load->view('_layouts/mainGeologic', $this->data);
+    }
+	
+	function datatable()
+    {
+		$this->datatables->select('zonas.id as id,zonas.zona as zona,regiones.region as region, paises.pais as pais', FALSE)
+			->from('zonas') ->join('regiones','zonas.region_id = regiones.id','left')
+			->from('zonas') ->join('paises','regiones.pais_id = paises.id','left')
+			->where('active = 1');
+		
+        echo $this->datatables->generate();
+
+	}
+	
+	public function create() {
+	
+		//ini_set('display_errors', 'On');
+	
+		$this->styles = array('bootstrap-datetimepicker.min') ;
+		$this->jsfiles = array('moment','bootstrap3-typeahead','zonas_create','bootstrap-datetimepicker.min','jquery.validate.min') ;
+	
+		$this->data['page_title'] = "Nueva Zona";
 		
 		$regiones = $this->db->query("SELECT * FROM regiones")->result();
 		
@@ -36,22 +64,11 @@ class Zonas extends MY_Controller {
 			$coordenadas = $this->db->query("SELECT * FROM zonas_coordenadas where zona_id = " . $value->id )->result();
 			$this->data['zonas'][$key]['coordenadas'] = $coordenadas;
 		}
-	
-		$this->data['view_file'] = 'general';
 		
-		$this->load->view('_layouts/mainGeologicTabs', $this->data);
+		$this->data['view_file'] = 'zonas/create';
+		
+		$this->load->view('_layouts/mainGeologic', $this->data);
     }
-	
-	function datatable()
-    {
-		$this->datatables->select('zonas.id as id,zonas.zona as zona,regiones.region as region, paises.pais as pais', FALSE)
-			->from('zonas') ->join('regiones','zonas.region_id = regiones.id','left')
-			->from('zonas') ->join('paises','regiones.pais_id = paises.id','left')
-			->where('active = 1');
-		
-        echo $this->datatables->generate();
-
-	}
 	
 	function getRegiones()
 	{
@@ -89,8 +106,11 @@ class Zonas extends MY_Controller {
 						}
 						$coordx = array();						
 					}
-					$count = $count + 1;					
-				}					
+					$count = $count + 1;
+					
+				}
+				
+					
 			}
 			else {
 				$this->db->trans_rollback();
@@ -111,6 +131,18 @@ class Zonas extends MY_Controller {
 		endif;
 	}
 	
-	
-	
+	function delete()
+	{
+		$id = $this->uri->segment(3);
+		$this->db->query("UPDATE zonas SET active = 0 WHERE id = ". $id);
+		//$this->input->post('stringQuery');
+		$this->session->set_flashdata('item', 'Zona eliminada');
+		
+		redirect('/zonas/', 'refresh');
+	}
 }
+
+	
+
+/* End of file home.php */
+/* Location: ./application/controllers/home.php */
