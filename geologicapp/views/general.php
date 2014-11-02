@@ -53,7 +53,9 @@
 						Nueva Zona
 					</button>
 					<div style="clear: both; float: left; margin-top: 9px;">
-						<a>asdfgasfg</a>
+						<button type="button" class="btn btn-default btn-xs">
+							<span class="glyphicon glyphicon-star"></span> Vista General
+						</button>
 					</div>
 					<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 						<div class="modal-dialog">
@@ -140,7 +142,7 @@
 				<div style="clear:both;">
 					
 				</div>
-				<div id="map-canvas" style="height: 400px; width: auto; margin-top: 13px;">
+				<div id="map-canvas" style="height: 400px; width: auto; margin-top: 11px;">
 				</div>
 			</div>
 			<div class="col-lg-6">
