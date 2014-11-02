@@ -33,10 +33,10 @@
 	<div class="row" style="margin-top: 22px;">
 		<div class="col-lg-12">
 			<ul class="nav nav-tabs" role="tablist">
-				<li class="active"><a href="#tabZonas" role="tab" data-toggle="tab">Zonas</a></li>
-				<li><a href="#tabYacimientos" role="tab" data-toggle="tab">Yacimientos</a></li>
-				<li><a href="#tabMinerales" role="tab" data-toggle="tab">Minerales</a></li>
-				<li><a href="#tabPP" role="tab" data-toggle="tab">Piedras Preciosas</a></li>				
+				<li id="tabZonas_" class="active"><a href="#tabZonas" role="tab" data-toggle="tab">Zonas</a></li>
+				<li id="tabYacimientos_"><a href="#tabYacimientos" role="tab" data-toggle="tab">Yacimientos</a></li>
+				<li id="tabMinerales_"><a href="#tabMinerales" role="tab" data-toggle="tab">Minerales</a></li>
+				<li id="tabPP_"><a href="#tabPP" role="tab" data-toggle="tab">Piedras Preciosas</a></li>				
 			</ul>
 		</div>
 	</div>

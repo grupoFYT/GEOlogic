@@ -191,7 +191,7 @@ $(document).ready(function(){
 		
 	});
 	
-	$('#tabYacimientos a').click(function (e) {
+	$('#tabYacimientos_ a').click(function (e) {
 		e.preventDefault();
 		window.location.href='/geologic/yacimientos';
 	});

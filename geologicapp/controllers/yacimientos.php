@@ -37,7 +37,7 @@ class Yacimientos extends MY_Controller {
 			$this->data['zonas'][$key]['coordenadas'] = $coordenadas;
 		}
 	
-		$this->data['view_file'] = 'general';
+		$this->data['view_file'] = 'zonas';
 		
 		$this->load->view('_layouts/mainGeologicTabs', $this->data);
     }
