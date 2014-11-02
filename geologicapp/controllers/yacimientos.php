@@ -1,6 +1,6 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-class General extends MY_Controller {
+class Yacimientos extends MY_Controller {
 
 	public function __construct() {
         parent::__construct();
@@ -13,7 +13,7 @@ class General extends MY_Controller {
 	public function index() {
 	
 		$this->styles = array('dataTables.bootstrap') ;
-		$this->jsfiles = array('jquery.dataTables.min', 'dataTables.bootstrap','jquery.bootstrap.wizard','bootstrap3-typeahead','general');
+		$this->jsfiles = array('jquery.dataTables.min', 'dataTables.bootstrap','jquery.bootstrap.wizard','bootstrap3-typeahead','yacimientos');
 		
 		$regiones = $this->db->query("SELECT * FROM regiones")->result();
 		
@@ -41,6 +41,23 @@ class General extends MY_Controller {
 		
 		$this->load->view('_layouts/mainGeologicTabs', $this->data);
     }
+	
+	function datatable()
+    {
+		$this->datatables->select('zonas.id as id,zonas.zona as zona,regiones.region as region, paises.pais as pais', FALSE)
+			->from('zonas') ->join('regiones','zonas.region_id = regiones.id','left')
+			->from('zonas') ->join('paises','regiones.pais_id = paises.id','left')
+			->where('active = 1');
+		
+        echo $this->datatables->generate();
+
+	}
+	
+	function getRegiones()
+	{
+		$query = $this->db->query('SELECT id, region FROM regiones where region like "%' . $this->input->post('stringQuery') . '%"');
+		echo json_encode($query->result());
+	}
 	
 	function save()
 	{
