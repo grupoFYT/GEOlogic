@@ -26,25 +26,12 @@ class Yacimientos extends MY_Controller {
 			$this->data['zonas'][$key]['coordenadas'] = $coordenadas;
 		}
 		
-				
-		// $regiones = $this->db->query("SELECT * FROM regiones")->result();
-		
-		// foreach ($regiones as $key=>$value)
-		// {
-			// $this->data['regiones'][$key]['region'] = $value;
-			// $pais = $this->db->query("SELECT * FROM paises where id = 1")->row();
-			// $this->data['regiones'][$key]['pais'] = $pais;
-			// $coordenadas = $this->db->query("SELECT * FROM regiones_coordenadas where region_id = " . $value->id )->result();
-			// $this->data['regiones'][$key]['coordenadas'] = $coordenadas;
-		// }
-		
 		$yacimientos = $this->db->query("SELECT * FROM yacimientos")->result();
 		
 		foreach ($yacimientos as $key=>$value)
 		{
 			$this->data['yacimientos'][$key]['yacimiento'] = $value;
-			$minerales = $this->db->query("SELECT * FROM minerales inner join minerales_tipo on minerales.mineral_tipo_id = minerales_tipo.id where minerales.yacimiento_id = " . $value->yacimiento_id )->result();
-			var_dump($minerales);
+			$minerales = $this->db->query("SELECT * FROM minerales inner join minerales_tipo on minerales.mineral_tipo_id = minerales_tipo.id where minerales.yacimiento_id = " . $value->id )->result();
 			$this->data['yacimientos'][$key]['minerales'] = $minerales;
 		}
 	
@@ -55,6 +42,14 @@ class Yacimientos extends MY_Controller {
 	
 	function datatable()
     {
+		
+		$this->datatables->select('yacimientos.id as id,yacimientos.yacimiento as yacimiento, yacimientos.fecha_descubrimiento as fecha_descubrimiento, zonas.zona as zona', FALSE)
+			->from('zonas') ->join('regiones','zonas.region_id = regiones.id','left')
+			->from('zonas') ->join('paises','regiones.pais_id = paises.id','left')
+			->where('active = 1');
+		
+        echo $this->datatables->generate();
+	
 		$this->datatables->select('zonas.id as id,zonas.zona as zona,regiones.region as region, paises.pais as pais', FALSE)
 			->from('zonas') ->join('regiones','zonas.region_id = regiones.id','left')
 			->from('zonas') ->join('paises','regiones.pais_id = paises.id','left')
