@@ -13,7 +13,7 @@ class Zonas extends MY_Controller {
 	public function index() {
 	
 		$this->styles = array('dataTables.bootstrap') ;
-		$this->jsfiles = array('jquery.dataTables.min', 'dataTables.bootstrap','jquery.bootstrap.wizard','bootstrap3-typeahead','general');
+		$this->jsfiles = array('jquery.dataTables.min', 'dataTables.bootstrap','jquery.bootstrap.wizard','bootstrap3-typeahead','zonas');
 		
 		$regiones = $this->db->query("SELECT * FROM regiones")->result();
 		
@@ -37,7 +37,7 @@ class Zonas extends MY_Controller {
 			$this->data['zonas'][$key]['coordenadas'] = $coordenadas;
 		}
 	
-		$this->data['view_file'] = 'general';
+		$this->data['view_file'] = 'zonas';
 		
 		$this->load->view('_layouts/mainGeologicTabs', $this->data);
     }
