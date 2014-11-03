@@ -30,7 +30,7 @@ $(document).ready(function(){
 	map = new google.maps.Map(document.getElementById('map-canvas'),mapOptions);
 	map.setZoom(3);
 	map.panTo(myLatLng);
-	//drawRegiones();
+	drawX();
 	
 	table = $('#yacimientosGrid').DataTable( {
 		
@@ -184,6 +184,69 @@ $(document).ready(function(){
 
 });
 
+function drawX() {
+	
+	regionesPol = new Array();
+	zonasPol = new Array();
+	var markerBounds = new google.maps.LatLngBounds();
+	$.each(ZS.regiones , function(index, value) {
+		regionesPol[index] = new Array();
+		regionesPol[index]['coords'] = new Array();
+		$.each(value.coords , function(ix, vx) {
+			regionesPol[index]['coords'].push( new google.maps.LatLng(vx['lat'], vx['lng']) );
+			lat = vx['lat'];
+			Lng = vx['lng'];
+			markerBounds.extend(new google.maps.LatLng(lat, Lng));						
+			map.fitBounds(markerBounds);
+				
+		});
+		regionesPol[index]['zmap'] = new google.maps.Polygon({
+									paths: regionesPol[index]['coords'],
+									draggable: false,
+									editable: false,
+									strokeColor: '#' + value.color,
+									strokeOpacity: 0.8,
+									strokeWeight: 1,
+									fillColor: '#' + value.color ,
+									fillOpacity: 0.3,
+									zIndex: 0
+								});	
+		regionesPol[index]['zmap'].setMap(map);
+		
+		
+		$.each(ZS.zonas , function(indexx, valuex) {
+			if ((valuex.region_id == value.id) && (valuex.coords.length > 0)) {
+				zonasPol[indexx] = new Array();
+				zonasPol[indexx]['id'] = valuex.id;
+				zonasPol[indexx]['name'] = valuex.name;
+				zonasPol[indexx]['coords'] = new Array();
+				$.each(valuex.coords , function(indexxx, valuexx) {
+					zonasPol[indexx]['coords'].push( new google.maps.LatLng(valuexx['lat'], valuexx['lng']) );						
+				});
+				zonasPol[indexx]['zmap'] = new google.maps.Polygon({
+											paths: zonasPol[indexx]['coords'],
+											draggable: false,
+											editable: false,
+											strokeColor: '#ff2012',
+											strokeOpacity: 0.8,
+											strokeWeight: 1,
+											fillColor: '#ff2012',
+											fillOpacity: 0.4,
+											zIndex: 1
+										});	
+				zonasPol[indexx]['zmap'].setMap(map);
+				
+			}
+		});
+			
+		
+	});
+
+
+	
+
+}
+
 function drawZonas() {
 	
 	$('#infoRow h4').html('Zona ' + data.zona + ' ( Región ' + data.region + ' )');
@@ -206,9 +269,9 @@ function drawZonas() {
 }
 
 function drawRegiones() {
-    	regionesPol = new Array();
+	regionesPol = new Array();
 	zonasPol = new Array();
-		var markerBounds = new google.maps.LatLngBounds();
+	var markerBounds = new google.maps.LatLngBounds();
 	$.each(ZS.regiones , function(index, value) {
 		regionesPol[index] = new Array();
 		regionesPol[index]['coords'] = new Array();
