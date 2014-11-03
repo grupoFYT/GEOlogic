@@ -1,10 +1,10 @@
 <style>
 
-	#zonasGrid {
+	#yacimientosGrid {
 		border: 0 none;
 	}
 	
-	#zonasGrid th, #zonasGrid td {
+	#yacimientosGrid th, #yacimientosGrid td {
 		border-right: 0 none;
 		border-left: 0 none;
 	}
@@ -13,7 +13,7 @@
 		border-bottom-width: 0;	
 	}
 	
-	#zonasGrid tbody tr.odd.selected, #zonasGrid tbody tr.odd.selected {
+	#yacimientosGrid tbody tr.odd.selected, #yacimientosGrid tbody tr.odd.selected {
 		background-color: #abb9d3 !important;
 	}
 	
@@ -33,15 +33,15 @@
 	<div class="row" style="margin-top: 22px;">
 		<div class="col-lg-12">
 			<ul class="nav nav-tabs" role="tablist">
-				<li id="tabZonas_" class="active"><a href="#tabZonas" role="tab" data-toggle="tab">Zonas</a></li>
-				<li id="tabYacimientos_"><a href="#tabYacimientos" role="tab" data-toggle="tab">Yacimientos</a></li>
+				<li id="tabZonas_"><a href="#tabZonas" role="tab" data-toggle="tab">Zonas</a></li>
+				<li id="tabYacimientos_" class="active"><a href="#tabYacimientos" role="tab" data-toggle="tab">Yacimientos</a></li>
 				<li id="tabMinerales_"><a href="#tabMinerales" role="tab" data-toggle="tab">Minerales</a></li>
 				<li id="tabPP_"><a href="#tabPP" role="tab" data-toggle="tab">Piedras Preciosas</a></li>				
 			</ul>
 		</div>
 	</div>
 	<div class="row tab-content" style="margin-top: 12px;">
-		<div class="tab-pane active" id="tabZonas">
+		<div class="tab-pane active" id="tabYacimientos">
 			<div class="col-lg-6">
 				<div style="">
 					<!--
@@ -50,7 +50,7 @@
 					</a>
 					-->
 					<button type="button" class="btn btn-warning btn-sm btn-newP" data-toggle="modal" data-target="#myModal" style="float:left;">
-						Nueva Zona
+						Nuevo Yacimiento
 					</button>
 					<div style="clear: both; float: left; margin-top: 10px;">
 						<button type="button" class="btn btn-default btn-xs">
@@ -62,7 +62,7 @@
 							<div class="modal-content">
 								<div class="modal-header">
 									<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-									<h4 class="modal-title" id="myModalLabel">Nueva Zona</h4>
+									<h4 class="modal-title" id="myModalLabel">Nueva Yacimiento</h4>
 								</div> 
 								<div class="modal-body">
 									<style>
@@ -75,7 +75,7 @@
 											width: 111px;
 										}
 									</style>	
-									<?php echo form_open("/general/create", array('name' => 'newZ_form', 'id' => 'newZ_form'));?>
+									<?php echo form_open("/yacimientos/create", array('name' => 'newY_form', 'id' => 'newY_form'));?>
 										<div id="rootwizard">
 											<div class="navbar">
 												<div class="navbar-inner">
@@ -146,13 +146,13 @@
 				</div>
 			</div>
 			<div class="col-lg-6">
-				<table id="zonasGrid" class="table table-striped table-bordered" cellspacing="0" width="100%">
+				<table id="yacimientosGrid" class="table table-striped table-bordered" cellspacing="0" width="100%">
 					<thead>
 						<tr>
 							<th></th>
+							<th>Yacimiento</th>
+							<th>Fecha Desc.</th>
 							<th>Zona</th>
-							<th>Region</th>
-							<th>Pais</th>
 							<th>Acciones</th>
 						</tr>
 					</thead>					
@@ -175,23 +175,6 @@
 
 <script>
 
-var ZS = ZS || {};
-	ZS.regiones = [<?php foreach( $regiones as $region ) : ?>
-		{id : <?=$region['region']->id ?>,
-		 name : "<?=$region['region']->region ?>",
-		 color: "<?=$region['region']->color ?>",
-		 c_lat: <?=$region['region']->c_lat ?>,
-		 c_lng: <?=$region['region']->c_lng ?>,
-		 c_zoom: <?=$region['region']->c_zoom ?>,
-		 coords :[<?php foreach( $region['coordenadas'] as $coord ) : ?>{"lat":"<?=$coord->lat ?>","lng":"<?=$coord->lng ?>"},<?php endforeach; ?>]
-		},<?php endforeach; ?>];
-    ZS.zonas = [<?php foreach( $zonas as $zona ) : ?>
-		{id : <?=$zona['zona']->id ?>,
-		 name : "<?=$zona['zona']->zona ?>",
-		 region_id: <?=$zona['zona']->region_id ?>,
-		 coords :[<?php foreach( $zona['coordenadas'] as $coord ) : ?>{"lat":"<?=$coord->lat ?>","lng":"<?=$coord->lng ?>"},<?php endforeach; ?>]
-		},<?php endforeach; ?>];
-	
 </script>
 
 

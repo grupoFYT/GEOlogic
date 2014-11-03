@@ -35,33 +35,22 @@ class Yacimientos extends MY_Controller {
 			$this->data['yacimientos'][$key]['minerales'] = $minerales;
 		}
 	
-		$this->data['view_file'] = 'zonas';
+		$this->data['view_file'] = 'yacimientos';
 		
-		//$this->load->view('_layouts/mainGeologicTabs', $this->data);
+		$this->load->view('_layouts/mainGeologicTabs', $this->data);
     }
 	
 	function datatable()
-    {
-		
+    {		
 		$this->datatables->select('yacimientos.id as id,yacimientos.yacimiento as yacimiento, yacimientos.fecha_descubrimiento as fecha_descubrimiento, zonas.zona as zona', FALSE)
-			->from('zonas') ->join('regiones','zonas.region_id = regiones.id','left')
-			->from('zonas') ->join('paises','regiones.pais_id = paises.id','left')
-			->where('active = 1');
+			->from('yacimientos') ->join('zonas','yacimientos.zona_id = zonas.id','left');
 		
         echo $this->datatables->generate();
-	
-		$this->datatables->select('zonas.id as id,zonas.zona as zona,regiones.region as region, paises.pais as pais', FALSE)
-			->from('zonas') ->join('regiones','zonas.region_id = regiones.id','left')
-			->from('zonas') ->join('paises','regiones.pais_id = paises.id','left')
-			->where('active = 1');
-		
-        echo $this->datatables->generate();
-
 	}
 	
-	function getRegiones()
+	function getZonas()
 	{
-		$query = $this->db->query('SELECT id, region FROM regiones where region like "%' . $this->input->post('stringQuery') . '%"');
+		$query = $this->db->query('SELECT id, zona FROM zonas where zona like "%' . $this->input->post('stringQuery') . '%"');
 		echo json_encode($query->result());
 	}
 	
