@@ -213,29 +213,14 @@ function drawX() {
 
 	});
 	
-	$.each(ZS.zonas , function(indexx, valuex) {
-		if ((valuex.region_id == value.id) && (valuex.coords.length > 0)) {
-			zonasPol[indexx] = new Array();
-			zonasPol[indexx]['id'] = valuex.id;
-			zonasPol[indexx]['name'] = valuex.name;
-			zonasPol[indexx]['coords'] = new Array();
-			$.each(valuex.coords , function(indexxx, valuexx) {
-				zonasPol[indexx]['coords'].push( new google.maps.LatLng(valuexx['lat'], valuexx['lng']) );						
-			});
-			zonasPol[indexx]['zmap'] = new google.maps.Polygon({
-										paths: zonasPol[indexx]['coords'],
-										draggable: false,
-										editable: false,
-										strokeColor: '#ff2012',
-										strokeOpacity: 0.8,
-										strokeWeight: 1,
-										fillColor: '#ff2012',
-										fillOpacity: 0.4,
-										zIndex: 1
-									});	
-			zonasPol[indexx]['zmap'].setMap(map);
-			
-		}
+	$.each(ZS.yacimientos , function(index, value) {
+		
+		var marker = new google.maps.Marker({
+			position: new google.maps.LatLng(value['lat'],value['lng']),
+			map: map,
+			title: 'Hello World!'
+		});
+		
 	});
 
 
