@@ -28,7 +28,7 @@ Number.prototype.round = function(places) {
 $(document).ready(function(){
 
 	map = new google.maps.Map(document.getElementById('map-canvas'),mapOptions);
-	map.setZoom(1);
+	map.setZoom(3);
 	map.panTo(myLatLng);
 	//drawRegiones();
 	
@@ -81,7 +81,7 @@ $(document).ready(function(){
 		data = table.row( this ).data();
 		drawZonas();
 		
-		} );
+	} );
 		
 	// Search Button
 			

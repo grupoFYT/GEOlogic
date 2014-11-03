@@ -175,6 +175,21 @@
 
 <script>
 
+var ZS = ZS || {};
+    ZS.zonas = [<?php foreach( $zonas as $zona ) : ?>
+		{id : <?=$zona['zona']->id ?>,
+		 name : "<?=$zona['zona']->zona ?>",
+		 region_id: <?=$zona['zona']->region_id ?>,
+		 coords :[<?php foreach( $zona['coordenadas'] as $coord ) : ?>{"lat":"<?=$coord->lat ?>","lng":"<?=$coord->lng ?>"},<?php endforeach; ?>]
+		},<?php endforeach; ?>];
+		
+	ZS.yacimientos = [<?php foreach( $yacimientos as $yacimiento ) : ?>
+		{id : <?=$yacimiento['yacimiento']->id ?>,
+		 name : "<?=$yacimiento['yacimiento']->zona ?>",
+		 region_id: <?=$yacimiento['yacimiento']->region_id ?>,
+		 coords :[<?php foreach( $yacimiento['coordenadas'] as $coord ) : ?>{"lat":"<?=$coord->lat ?>","lng":"<?=$coord->lng ?>"},<?php endforeach; ?>]
+		},<?php endforeach; ?>];
+	
 </script>
 
 
