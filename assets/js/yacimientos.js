@@ -185,23 +185,21 @@ $(document).ready(function(){
 });
 
 function drawX() {
-	
-	regionesPol = new Array();
 	zonasPol = new Array();
 	var markerBounds = new google.maps.LatLngBounds();
-	$.each(ZS.regiones , function(index, value) {
-		regionesPol[index] = new Array();
-		regionesPol[index]['coords'] = new Array();
+	$.each(ZS.zonas , function(index, value) {
+		zonasPol[index] = new Array();
+		zonasPol[index]['coords'] = new Array();
 		$.each(value.coords , function(ix, vx) {
-			regionesPol[index]['coords'].push( new google.maps.LatLng(vx['lat'], vx['lng']) );
+			zonasPol[index]['coords'].push( new google.maps.LatLng(vx['lat'], vx['lng']) );
 			lat = vx['lat'];
 			Lng = vx['lng'];
 			markerBounds.extend(new google.maps.LatLng(lat, Lng));						
 			map.fitBounds(markerBounds);
 				
 		});
-		regionesPol[index]['zmap'] = new google.maps.Polygon({
-									paths: regionesPol[index]['coords'],
+		zonasPol[index]['zmap'] = new google.maps.Polygon({
+									paths: zonasPol[index]['coords'],
 									draggable: false,
 									editable: false,
 									strokeColor: '#' + value.color,
@@ -211,38 +209,37 @@ function drawX() {
 									fillOpacity: 0.3,
 									zIndex: 0
 								});	
-		regionesPol[index]['zmap'].setMap(map);
-		
-		
-		$.each(ZS.zonas , function(indexx, valuex) {
-			if ((valuex.region_id == value.id) && (valuex.coords.length > 0)) {
-				zonasPol[indexx] = new Array();
-				zonasPol[indexx]['id'] = valuex.id;
-				zonasPol[indexx]['name'] = valuex.name;
-				zonasPol[indexx]['coords'] = new Array();
-				$.each(valuex.coords , function(indexxx, valuexx) {
-					zonasPol[indexx]['coords'].push( new google.maps.LatLng(valuexx['lat'], valuexx['lng']) );						
-				});
-				zonasPol[indexx]['zmap'] = new google.maps.Polygon({
-											paths: zonasPol[indexx]['coords'],
-											draggable: false,
-											editable: false,
-											strokeColor: '#ff2012',
-											strokeOpacity: 0.8,
-											strokeWeight: 1,
-											fillColor: '#ff2012',
-											fillOpacity: 0.4,
-											zIndex: 1
-										});	
-				zonasPol[indexx]['zmap'].setMap(map);
-				
-			}
-		});
+		zonasPol[index]['zmap'].setMap(map);
+
+	});
+	
+	$.each(ZS.zonas , function(indexx, valuex) {
+		if ((valuex.region_id == value.id) && (valuex.coords.length > 0)) {
+			zonasPol[indexx] = new Array();
+			zonasPol[indexx]['id'] = valuex.id;
+			zonasPol[indexx]['name'] = valuex.name;
+			zonasPol[indexx]['coords'] = new Array();
+			$.each(valuex.coords , function(indexxx, valuexx) {
+				zonasPol[indexx]['coords'].push( new google.maps.LatLng(valuexx['lat'], valuexx['lng']) );						
+			});
+			zonasPol[indexx]['zmap'] = new google.maps.Polygon({
+										paths: zonasPol[indexx]['coords'],
+										draggable: false,
+										editable: false,
+										strokeColor: '#ff2012',
+										strokeOpacity: 0.8,
+										strokeWeight: 1,
+										fillColor: '#ff2012',
+										fillOpacity: 0.4,
+										zIndex: 1
+									});	
+			zonasPol[indexx]['zmap'].setMap(map);
 			
-		
+		}
 	});
 
 
+	
 	
 
 }
