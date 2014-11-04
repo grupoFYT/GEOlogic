@@ -79,7 +79,7 @@ $(document).ready(function(){
 	$('#yacimientosGrid tbody').on( 'click', 'tr', function () {
 
 		data = table.row( this ).data();
-		drawZonas();
+		getInfo();
 		
 	} );
 		
@@ -229,7 +229,7 @@ function drawX() {
 
 }
 
-function drawZonas() {
+function getInfo() {
 	
 	$('#infoRow h4').html('Zona ' + data.zona + ' ( Región ' + data.region + ' )');
 	var markerBounds = new google.maps.LatLngBounds();
