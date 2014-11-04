@@ -11,7 +11,7 @@ var map;
 var regionPol;
 var zonasPol;
 var table;
-var data;
+var datax;
 
 var xzona;
 
@@ -78,7 +78,7 @@ $(document).ready(function(){
 	
 	$('#yacimientosGrid tbody').on( 'click', 'tr', function () {
 
-		data = table.row( this ).data();
+		datax = table.row( this ).data();
 		getInfo();
 		
 	} );
@@ -231,23 +231,23 @@ function drawX() {
 
 function getInfo() {
 	
-	$('#infoRow h4').html('Zona ' + data.zona + ' ( Región ' + data.region + ' )');
-	var markerBounds = new google.maps.LatLngBounds();
+	$('#infoRow h4').html('Zona ' + datax.zona + ' ( Región ' + datax.region + ' )');
+	// var markerBounds = new google.maps.LatLngBounds();
 
-	$.each(zonasPol , function(index, value) {
-		if (value.id == data.id) {
-			var teta = google.maps.geometry.spherical.computeArea(value['zmap'].getPath());
-			$('#infoRow p').html('Area: ' + teta.round(2) + ' mts2' );
-			vertices=value['zmap'].getPath();
+	// $.each(zonasPol , function(index, value) {
+		// if (value.id == datax.id) {
+			// var teta = google.maps.geometry.spherical.computeArea(value['zmap'].getPath());
+			// $('#infoRow p').html('Area: ' + teta.round(2) + ' mts2' );
+			// vertices=value['zmap'].getPath();
 			
-			for (i = 0; i < vertices.length; i++) {
-				lng=(vertices.getAt(i).lng());
-				lat=(vertices.getAt(i).lat());
-				markerBounds.extend( new google.maps.LatLng(lat, lng) );						
-				map.fitBounds(markerBounds);
-			}
-		}
-	});
+			// for (i = 0; i < vertices.length; i++) {
+				// lng=(vertices.getAt(i).lng());
+				// lat=(vertices.getAt(i).lat());
+				// markerBounds.extend( new google.maps.LatLng(lat, lng) );						
+				// map.fitBounds(markerBounds);
+			// }
+		// }
+	// });
 }
 
 function drawRegiones() {
