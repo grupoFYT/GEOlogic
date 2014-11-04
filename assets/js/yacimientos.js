@@ -225,14 +225,16 @@ function drawX() {
 
 }
 
-function getInfo() {
-	
-	$('#infoRow h4').html('Zona ' + datax.zona + ' ( Región ' + datax.region + ' )');
-	
+function getInfo() {	
 	// var markerBounds = new google.maps.LatLngBounds();
 
-	// $.each(zonasPol , function(index, value) {
-		// if (value.id == datax.id) {
+	$.each(ZS.yacimientos , function(index, value) {
+		if (value.id == datax.id) {
+			$('#infoRow h4').html('Yacimiento ' + value.name + ' ( Zona ' + datax.zona + ' )');
+			
+			map.setZoom(10);
+			map.panTo(new google.maps.LatLng(value.lat, value.lng));
+			
 			// var teta = google.maps.geometry.spherical.computeArea(value['zmap'].getPath());
 			// $('#infoRow p').html('Area: ' + teta.round(2) + ' mts2' );
 			// vertices=value['zmap'].getPath();
@@ -243,8 +245,8 @@ function getInfo() {
 				// markerBounds.extend( new google.maps.LatLng(lat, lng) );						
 				// map.fitBounds(markerBounds);
 			// }
-		// }
-	// });
+		}
+	});
 }
 
 
