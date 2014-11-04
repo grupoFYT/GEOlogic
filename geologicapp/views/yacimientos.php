@@ -98,17 +98,25 @@
 														</div>
 														<div class="form-group input-group col-lg-6">
 															<span class="input-group-addon">Zona</span>
-															<input type="text" name="searchRegion" id="searchRegion" data-provide="typeahead" class="form-control" autocomplete="off" placeholder="Zona" />
+															<input type="text" name="searchZona" id="searchZona" data-provide="typeahead" class="form-control" autocomplete="off" placeholder="Region" />
 															<input type="hidden" name="hiddenZonaID" id="hiddenZonaID"/>
 															<div id="infoSelZona" style="display: none; position: absolute; font-size: 11px; top: 40px;">
 																<span>Selección:</span>
 																<span id="selZona" style="font-weight: bold;"></span> 
 															</div>
 														</div>
+														<div  id="datetimepicker1" class="form-group input-group col-lg-8 calendar" data-date-format="DD/MM/YYYY">
+															<span class="input-group-addon">Fecha desc.</span>
+															<input type="text" class="form-control" id="fechaDescubrimiento" name="fechaDescubrimiento"/>
+															<span class="input-group-addon" style="width: 40px !important;">
+																<span class="glyphicon-calendar glyphicon"></span>
+															</span>													
+														</div>
+														
 													</div>
 												</div>
 												<div class="tab-pane" id="tab2">
-													<p>Ubicar una posición para insertar el nuevo yacimiento</p>
+													<p>Ubicar una posici�n para insertar la nueva zona</p>
 													<a id="polygon_main_add">Insertar</a>
 													<div id="mini-map" style="height: 350px; width: auto;">
 													</div>

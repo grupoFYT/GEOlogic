@@ -171,7 +171,12 @@ $(document).ready(function(){
 		// xZona.setMap(minmap);		
     // });
 	
-	
+	$('#datetimepicker1').datetimepicker({
+		language:'es', 
+		pickTime: false,
+		maxDate: moment()
+	});
+		
 	
 	
 	$('#tabZonas_ a').click(function (e) {
@@ -248,7 +253,7 @@ function getInfo() {
 function setTypeahead(objdom, xrhfrunc, dataId, dataProperty, hiddencell) {
 	$(objdom).typeahead({ 
 		source: function(query, process) {
-			var $url = '/geologic/zonas/' + xrhfrunc;
+			var $url = '/geologic/yacimientos/' + xrhfrunc;
 			var $items = new Array;
 			$items = [""];
 			$.ajax({
