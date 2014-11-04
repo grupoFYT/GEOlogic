@@ -230,6 +230,49 @@ function drawX() {
 
 }
 
+function drawMinMap() {
+	
+	minmap = new google.maps.Map(document.getElementById('mini-map'),minmapOptions);
+	minmap.setZoom(1);
+	minmap.panTo(myLatLng);
+
+	gotoZona($('#hiddenZonaID').val());
+
+}
+
+var minZonaPol;
+
+function gotoZona(zonId) {	
+	
+	$.each(ZS.zonas, function(index, value) {		
+		if (value.id == zonId) {
+			if(typeof(minZonaPol) != 'undefined') {
+				minZonaPol.setMap(null);
+			}		
+			var zonaCoords = [];
+			$.each(value.coords , function(indexx, valuex) {
+				zonaCoords.push(new google.maps.LatLng(valuex['lat'], valuex['lng']));				
+			});			
+			minZonaPol = new google.maps.Polygon({
+				paths: zonaCoords,
+				draggable: false,
+				editable: false,
+				strokeColor: '#CDA323',
+				strokeOpacity: 0.8,
+				strokeWeight: 2,
+				fillColor: '#CDA323',
+				fillOpacity: 0.3,
+				zIndex: 0
+			});			
+			minZonaPol.setMap(minmap);				
+		
+		}
+	}); 
+}
+
+
+
+
 function getInfo() {	
 	// var markerBounds = new google.maps.LatLngBounds();
 
