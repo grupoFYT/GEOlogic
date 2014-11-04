@@ -12,8 +12,8 @@ class Yacimientos extends MY_Controller {
 
 	public function index() {
 	
-		$this->styles = array('dataTables.bootstrap') ;
-		$this->jsfiles = array('jquery.dataTables.min', 'dataTables.bootstrap','jquery.bootstrap.wizard','bootstrap3-typeahead','yacimientos');
+		$this->styles = array('dataTables.bootstrap','bootstrap-datetimepicker.min') ;
+		$this->jsfiles = array('moment','bootstrap-datetimepicker.min','jquery.dataTables.min', 'dataTables.bootstrap','jquery.bootstrap.wizard','bootstrap3-typeahead','yacimientos');
 
 		$zonas = $this->db->query("SELECT * FROM zonas WHERE active = 1")->result();
 		
