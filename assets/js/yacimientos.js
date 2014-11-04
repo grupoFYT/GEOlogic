@@ -95,8 +95,8 @@ $(document).ready(function(){
 	$('#myModal').on('shown.bs.modal', function (e) {
 	
 		$('#zona').val('');
-		$('#searchRegion').val('');
-		$('#hiddenRegionID').val('');
+		$('#searchZona').val('');
+		$('#hiddenZonaID').val('');
 		
 		$('#rootwizard').bootstrapWizard({
 			'tabClass': 'bwizard-steps',
@@ -230,6 +230,16 @@ function drawX() {
 
 }
 
+var minmapOptions = {
+	streetViewControl: false,
+	zoom: 3,
+	center: myLatLng,
+	mapTypeId: google.maps.MapTypeId.HYBRID,
+	disableDefaultUI: true
+};
+
+var minmap;
+
 function drawMinMap() {
 	
 	minmap = new google.maps.Map(document.getElementById('mini-map'),minmapOptions);
@@ -264,7 +274,8 @@ function gotoZona(zonId) {
 				fillOpacity: 0.3,
 				zIndex: 0
 			});			
-			minZonaPol.setMap(minmap);				
+			minZonaPol.setMap(minmap);	
+			minmap.fitBounds(minZonaPol.my_getBounds());
 		
 		}
 	}); 
