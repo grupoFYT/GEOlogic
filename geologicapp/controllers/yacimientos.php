@@ -31,7 +31,9 @@ class Yacimientos extends MY_Controller {
 		foreach ($yacimientos as $key=>$value)
 		{
 			$this->data['yacimientos'][$key]['yacimiento'] = $value;
-			$minerales = $this->db->query("SELECT * FROM minerales inner join minerales_tipo on minerales.mineral_tipo_id = minerales_tipo.id where minerales.yacimiento_id = " . $value->id )->result();
+			$minerales = $this->db->query("SELECT minerales.*, minerales_tipo.nombre, minerales_tipo.origen, 
+											minerales_tipo.utilidad, minerales_tipo.color
+											FROM minerales inner join minerales_tipo on minerales.mineral_tipo_id = minerales_tipo.id where minerales.yacimiento_id = " . $value->id )->result();
 			$this->data['yacimientos'][$key]['minerales'] = $minerales;
 		}
 	
