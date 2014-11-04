@@ -189,7 +189,7 @@ var ZS = ZS || {};
 		 zona_id: <?=$yacimiento['yacimiento']->zona_id ?>,
 		 lat: <?=$yacimiento['yacimiento']->lat ?>,
 		 lng: <?=$yacimiento['yacimiento']->lng ?>,
-		 minerales :[<?php foreach( $yacimiento['minerales'] as $mineral ) : ?>{"id":"<?=$mineral->id ?>","mineral_tipo_id":"<?=$mineral->mineral_tipo_id ?>"}, <? var_dump($mineral) ?> <?php endforeach; ?>]
+		 minerales :[<?php foreach( $yacimiento['minerales'] as $mineral ) : ?>{ <?php foreach( $mineral as $key => $value ) : ?> <?=$key ?> : "<?=$value ?>", <?php endforeach; ?> },<?php endforeach; ?>]
 		},<?php endforeach; ?>];
 	
 </script>
