@@ -128,7 +128,7 @@ $(document).ready(function(){
 	
 	});
 	
-	//setTypeahead('#searchRegion', 'getRegiones', 'id', 'region','hiddenRegionID');
+	setTypeahead('#searchZona', 'getZonas', 'id', 'zona','hiddenZonaID');
 	
 	//
 	
@@ -235,16 +235,11 @@ function getInfo() {
 			map.setZoom(10);
 			map.panTo(new google.maps.LatLng(value.lat, value.lng));
 			
-			// var teta = google.maps.geometry.spherical.computeArea(value['zmap'].getPath());
-			// $('#infoRow p').html('Area: ' + teta.round(2) + ' mts2' );
-			// vertices=value['zmap'].getPath();
+			$.each(value.minerales , function(indexx, valuex) {
+				$('#infoRow p').html(valuex.nombre + '<br>');
 			
-			// for (i = 0; i < vertices.length; i++) {
-				// lng=(vertices.getAt(i).lng());
-				// lat=(vertices.getAt(i).lat());
-				// markerBounds.extend( new google.maps.LatLng(lat, lng) );						
-				// map.fitBounds(markerBounds);
-			// }
+			});
+			
 		}
 	});
 }

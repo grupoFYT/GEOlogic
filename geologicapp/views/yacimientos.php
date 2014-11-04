@@ -80,9 +80,9 @@
 											<div class="navbar">
 												<div class="navbar-inner">
 													<div class="container">
-														<ul>
+														<ul> 
 															<li><a href="#tab1" data-toggle="tab">1</a></li>
-															<li><a href="#tab2" data-toggle="tab">2</a></li>
+															<li><a href="#tab2" data-toggle="tab">2</a></li> 
 															<li><a href="#tab3" data-toggle="tab">3</a></li>
 														</ul>
 													</div>
@@ -90,25 +90,25 @@
 											</div>
 											<div class="tab-content">
 												<div class="tab-pane" id="tab1">
-													<p>Ingrese una denominación y seleccione la región para la nueva zona</p>
+													<p>Ingrese los datos necesarios para el nuevo yacimiento</p>
 													<div class="col-lg-12">
 														<div class="form-group input-group col-lg-6">
-															<span class="input-group-addon">Zona</span>
-															<input type="text" class="form-control" name="zona" id="zona" placeholder="Zona">
+															<span class="input-group-addon">Yacimiento</span>
+															<input type="text" class="form-control" name="yacimiento" id="yacimiento" placeholder="Yacimiento">
 														</div>
 														<div class="form-group input-group col-lg-6">
-															<span class="input-group-addon">Región</span>
-															<input type="text" name="searchRegion" id="searchRegion" data-provide="typeahead" class="form-control" autocomplete="off" placeholder="Region" />
-															<input type="hidden" name="hiddenRegionID" id="hiddenRegionID"/>
-															<div id="infoSelRegion" style="display: none; position: absolute; font-size: 11px; top: 40px;">
-																<span>Selección:</span>
-																<span id="selRegion" style="font-weight: bold;"></span> 
+															<span class="input-group-addon">Zona</span>
+															<input type="text" name="searchRegion" id="searchRegion" data-provide="typeahead" class="form-control" autocomplete="off" placeholder="Zona" />
+															<input type="hidden" name="hiddenZonaID" id="hiddenZonaID"/>
+															<div id="infoSelZona" style="display: none; position: absolute; font-size: 11px; top: 40px;">
+																<span>SelecciÃ³n:</span>
+																<span id="selZona" style="font-weight: bold;"></span> 
 															</div>
 														</div>
 													</div>
 												</div>
 												<div class="tab-pane" id="tab2">
-													<p>Ubicar una posición para insertar la nueva zona</p>
+													<p>Ubicar una posiciÃ³n para insertar el nuevo yacimiento</p>
 													<a id="polygon_main_add">Insertar</a>
 													<div id="mini-map" style="height: 350px; width: auto;">
 													</div>
