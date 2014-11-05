@@ -52,7 +52,7 @@ class Yacimientos extends MY_Controller {
 	
 	function getZonas()
 	{
-		$query = $this->db->query('SELECT id, zona FROM zonas where zona like "%' . $this->input->post('stringQuery') . '%"');
+		$query = $this->db->query('SELECT id, zona FROM zonas where zona like "%' . $this->input->post('stringQuery') . '%" and active = 1');
 		echo json_encode($query->result());
 	}
 	

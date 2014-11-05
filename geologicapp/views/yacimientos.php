@@ -98,7 +98,7 @@
 														</div>
 														<div class="form-group input-group col-lg-6">
 															<span class="input-group-addon">Zona</span>
-															<input type="text" name="searchZona" id="searchZona" data-provide="typeahead" class="form-control" autocomplete="off" placeholder="Region" />
+															<input type="text" name="searchZona" id="searchZona" data-provide="typeahead" class="form-control" autocomplete="off" placeholder="Zona" />
 															<input type="hidden" name="hiddenZonaID" id="hiddenZonaID"/>
 															<div id="infoSelZona" style="display: none; position: absolute; font-size: 11px; top: 40px;">
 																<span>Selección:</span>
