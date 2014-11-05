@@ -107,8 +107,8 @@ $(document).ready(function(){
 				}				
 			},
 			onTabShow: function(tab, navigation, it) {
-				if(it==1) {	
-					drawMinMap();
+				if(it==1) drawMinMap();
+				if(it==2) {	
 					$('#rootwizard').find('.pager .finish').show();
 					$('#rootwizard').find('.pager .finish').removeClass('hidden');
 					$('#rootwizard').find('.pager .next').hide();
@@ -118,8 +118,6 @@ $(document).ready(function(){
 					$('#rootwizard').find('.pager .finish').addClass('hidden');
 					$('#rootwizard').find('.pager .next').show();
 				}
-				
-
 				
 			}
 		});	
@@ -132,7 +130,7 @@ $(document).ready(function(){
 	
 	//
 	
-	// $('#polygon_main_add').on('click', function(){		
+	$('#point_add').on('click', function(){		
 		// if(typeof(xZona) != 'undefined') {
 			// xZona.setMap(null);
 		// }
@@ -169,7 +167,7 @@ $(document).ready(function(){
 			// zIndex: 3
 		// });				
 		// xZona.setMap(minmap);		
-    // });
+    });
 	
 	$('#datetimepicker1').datetimepicker({
 		language:'es', 
