@@ -13,7 +13,7 @@ var zonasPol;
 var table;
 var datax;
 
-var xzona;
+var xMaker;
 
 google.maps.Polygon.prototype.my_getBounds=function(){
     var bounds = new google.maps.LatLngBounds()
@@ -134,8 +134,7 @@ $(document).ready(function(){
 	setTypeahead('#searchZona', 'getZonas', 'id', 'zona','hiddenZonaID');
 	
 	//
-	
-	var xMaker;
+
 	
 	$('#point_add').on('click', function(){	
 		
@@ -365,7 +364,8 @@ $('.finish').on('click', function(){
 	
 });
 
-function getPointCoords() {	
-	$("#coord").val([xMaker.position.lat(),xMaker.position.lng()]);
+function getPointCoords() {
+	xx = xMaker.getPosition();
+	$("#coord").val([xx.lat(), xx.lng()]);
 }
 
