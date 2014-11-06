@@ -130,7 +130,15 @@ $(document).ready(function(){
 	
 	//
 	
-	$('#point_add').on('click', function(){		
+	$('#point_add').on('click', function(){	
+
+		var marker = new google.maps.Marker({
+			position: new google.maps.LatLng(value['lat'],value['lng']),
+			map: map,
+			title: 'Hello World!'
+		});
+		
+		
 		// if(typeof(xZona) != 'undefined') {
 			// xZona.setMap(null);
 		// }
