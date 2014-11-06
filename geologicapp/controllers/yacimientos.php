@@ -61,6 +61,7 @@ class Yacimientos extends MY_Controller {
 	function save()
 	{
 		if($_POST):
+		echo "LALALALAL";
 			
 			$this->db->trans_begin();
 			
@@ -82,7 +83,7 @@ class Yacimientos extends MY_Controller {
 														'caracteristicas' => $this->input->post('caracteristicas'), 
 														'yacimiento_id' => $this->input->post('id_fm'), 
 														'explotabilidad' => $this->input->post('explotabilidad'), 
-														'explotacion' => $this->input->post('explotacion'));
+														'explotacion' => $this->input->post('explotacion')));
 
 				$idx = $this->db->insert_id();
 				if (!isset($idx)) {
