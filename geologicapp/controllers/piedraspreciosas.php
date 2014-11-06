@@ -40,8 +40,8 @@ class Piedraspreciosas extends MY_Controller {
 	function datatable()
     {		
 		$this->datatables->select('piedraspreciosas.id as id, piedraspreciosas_tipo.nombre as nombre, piedraspreciosas.fecha_descubrimiento as fecha_descubrimiento, zonas.zona as zona', FALSE)
-			->from('piedraspreciosas_tipo') ->join('piedraspreciosas','piedraspreciosas.piedrapreciosa_tipo_id = piedraspreciosas_tipo.id','inner')
-			->from('zonas') ->join('piedraspreciosas','piedraspreciosas.zona_id = zonas.id','inner');
+			->from('piedraspreciosas') ->join('piedraspreciosas_tipo','piedraspreciosas.piedrapreciosa_tipo_id = piedraspreciosas_tipo.id','inner')
+			->from('piedraspreciosas') ->join('zonas','piedraspreciosas.zona_id = zonas.id','inner');
 		
         echo $this->datatables->generate();
 	}

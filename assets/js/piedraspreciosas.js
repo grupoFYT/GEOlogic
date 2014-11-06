@@ -30,7 +30,7 @@ $(document).ready(function(){
 	map = new google.maps.Map(document.getElementById('map-canvas'),mapOptions);
 	map.setZoom(3);
 	map.panTo(myLatLng);
-	//drawX();
+	drawX();
 	
 	table = $('#piedraspreciosasGrid').DataTable( {
 		
@@ -78,8 +78,8 @@ $(document).ready(function(){
 	
 	$('#piedraspreciosasGrid tbody').on( 'click', 'tr', function () {
 
-		//datax = table.row( this ).data();
-		//getInfo();
+		datax = table.row( this ).data();
+		getInfo();
 		
 	} );
 		
@@ -94,3 +94,44 @@ $(document).ready(function(){
 	
 });
 	
+	
+function drawX() {
+	zonasPol = new Array();
+	var markerBounds = new google.maps.LatLngBounds();
+	$.each(ZS.zonas , function(index, value) {
+		zonasPol[index] = new Array();
+		zonasPol[index]['coords'] = new Array();
+		$.each(value.coords , function(ix, vx) {
+			zonasPol[index]['coords'].push( new google.maps.LatLng(vx['lat'], vx['lng']) );
+			lat = vx['lat'];
+			Lng = vx['lng'];
+			markerBounds.extend(new google.maps.LatLng(lat, Lng));						
+			map.fitBounds(markerBounds);
+				
+		});
+		zonasPol[index]['zmap'] = new google.maps.Polygon({
+									paths: zonasPol[index]['coords'],
+									draggable: false,
+									editable: false,
+									strokeColor: '#' + value.color,
+									strokeOpacity: 0.8,
+									strokeWeight: 1,
+									fillColor: '#' + value.color ,
+									fillOpacity: 0.3,
+									zIndex: 0
+								});	
+		zonasPol[index]['zmap'].setMap(map);
+
+	});
+	
+	$.each(ZS.piedraspreciosas , function(index, value) {
+		
+		var marker = new google.maps.Marker({
+			position: new google.maps.LatLng(value['lat'],value['lng']),
+			map: map,
+			title: value.nombre
+		});
+		
+	});
+
+}
