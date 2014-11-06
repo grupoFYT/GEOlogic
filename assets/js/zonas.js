@@ -1,4 +1,4 @@
-var myLatLng = new google.maps.LatLng(-33.000000, -64.000000);
+var myLatLng = new google.maps.LatLng(-40.000000, -64.000000);
 var mapOptions = {
 	streetViewControl: false,
 	zoom: 3,
@@ -28,7 +28,7 @@ Number.prototype.round = function(places) {
 $(document).ready(function(){
 
 	map = new google.maps.Map(document.getElementById('map-canvas'),mapOptions);
-	map.setZoom(1);
+	//map.setZoom(1);
 	map.panTo(myLatLng);
 	drawRegiones();
 	
@@ -223,9 +223,9 @@ function drawZonas() {
 }
 
 function drawRegiones() {
-    	regionesPol = new Array();
+	regionesPol = new Array();
 	zonasPol = new Array();
-		var markerBounds = new google.maps.LatLngBounds();
+	var markerBounds = new google.maps.LatLngBounds();
 	$.each(ZS.regiones , function(index, value) {
 		regionesPol[index] = new Array();
 		regionesPol[index]['coords'] = new Array();
@@ -233,8 +233,8 @@ function drawRegiones() {
 			regionesPol[index]['coords'].push( new google.maps.LatLng(vx['lat'], vx['lng']) );
 			lat = vx['lat'];
 			Lng = vx['lng'];
-			markerBounds.extend(new google.maps.LatLng(lat, Lng));						
-			map.fitBounds(markerBounds);
+			//markerBounds.extend(new google.maps.LatLng(lat, Lng));						
+			//map.fitBounds(markerBounds);
 				
 		});
 		regionesPol[index]['zmap'] = new google.maps.Polygon({
@@ -390,9 +390,8 @@ function gotoRegion(regId) {
 				zIndex: 0
 			});			
 			minRegionPol.setMap(minmap);				
-			var latLng = new google.maps.LatLng(value.c_lat, value.c_lng); //Makes a latlng
-			minmap.setZoom(value.c_zoom);
-			minmap.panTo(latLng);
+			
+			minmap.fitBounds(minRegionPol.my_getBounds());
 
 			minZonasPol = new Array();
 			$.each(ZS.zonas , function(indexx, valuex) {
