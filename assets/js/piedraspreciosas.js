@@ -92,7 +92,46 @@ $(document).ready(function(){
 		$('#piedraspreciosasGrid').DataTable().search($('#searchInput').val().trim()).draw();
 	});
 	
+		
+	
+	$('#tabZonas_ a').click(function (e) {
+		e.preventDefault();
+		window.location.href='/geologic/zonas';
+	});
+	
+	$('#tabYacimientos_ a').click(function (e) {
+		e.preventDefault();
+		window.location.href='/geologic/yacimientos';
+	});
+	$('#tabMinerales_ a').click(function (e) {
+		e.preventDefault();
+		window.location.href='/geologic/minerales';
+	});
+	$('#tabPP_ a').click(function (e) {
+		e.preventDefault();
+		window.location.href='/geologic/piedraspreciosas';
+	});	
+	
 });
+
+function getInfo() {	
+	// var markerBounds = new google.maps.LatLngBounds();
+
+	$.each(ZS.piedraspreciosas , function(index, value) {
+		if (value.id == datax.id) {
+			$('#infoRow h4').html(value.nombre + ' ( Zona ' + datax.zona + ' )');
+			
+			map.setZoom(10);
+			map.panTo(new google.maps.LatLng(value.lat, value.lng));
+			
+			$.each(value.minerales , function(indexx, valuex) {
+				$('#infoRow p').html(valuex.nombre + '<br>');
+			
+			});
+			
+		}
+	});
+}
 	
 	
 function drawX() {

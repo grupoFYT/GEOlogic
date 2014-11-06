@@ -191,13 +191,23 @@ $(document).ready(function(){
 		
 	});
 	
+	$('#tabZonas_ a').click(function (e) {
+		e.preventDefault();
+		window.location.href='/geologic/zonas';
+	});
+	
 	$('#tabYacimientos_ a').click(function (e) {
 		e.preventDefault();
 		window.location.href='/geologic/yacimientos';
 	});
-
-	
-	
+	$('#tabMinerales_ a').click(function (e) {
+		e.preventDefault();
+		window.location.href='/geologic/minerales';
+	});
+	$('#tabPP_ a').click(function (e) {
+		e.preventDefault();
+		window.location.href='/geologic/piedraspreciosas';
+	});	
 
 });
 
