@@ -37,7 +37,8 @@ class Zonas extends MY_Controller {
 			$this->data['zonas'][$key]['coordenadas'] = $coordenadas;
 			$yacimientos = $this->db->query("SELECT yacimientos.*,
 												minerales.*
-											FROM yacimientos LEFT JOIN minerales ON minerales.yacimiento_id = yacimientos.id INNER JOIN
+											FROM yacimientos LEFT JOIN minerales ON minerales.yacimiento_id = yacimientos.id 
+												LEFT JOIN 
 												minerales_tipo ON minerales_tipo.id = minerales.mineral_tipo_id
 											WHERE yacimientos.zona_id = " . $value->id )->result();
 			$this->data['zonas'][$key]['yacimientos'] = $yacimientos;
