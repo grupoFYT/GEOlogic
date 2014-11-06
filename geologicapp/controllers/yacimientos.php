@@ -65,7 +65,12 @@ class Yacimientos extends MY_Controller {
 			$this->db->trans_begin();
 			
 			$x = explode( ',', $this->input->post('coord') );			
-													
+			
+			var_dump("caca");
+			var_dump($x[0]);
+			var_dump("------"); 
+			var_dump($x[1]);
+			
 			$this->db->insert('yacimientos', array( 'yacimiento' => $this->input->post('yacimiento') ,
 													'fecha_descubrimiento' => $this->input->post('fechaDescubrimiento'), 
 													'zona_id' => $this->input->post('hiddenZonaID'), 
