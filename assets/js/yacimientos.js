@@ -108,10 +108,10 @@ $(document).ready(function(){
 			onNext: function(tab, navigation, index) {
 				//alert(index + "on next");
 				if(index==1) {					
-					alert("check inputzzs");
+					//alert("check inputzzs");
 				}				
 			},
-			onTabShow: function(tab, navigation, it) {
+			onTabShow: function(tab, navigation, it) { 
 				if(it==1) drawMinMap();
 				if(it==2) {	
 					$('#rootwizard').find('.pager .finish').show();

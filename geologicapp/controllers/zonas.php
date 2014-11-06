@@ -35,6 +35,11 @@ class Zonas extends MY_Controller {
 			$this->data['zonas'][$key]['region'] = $region;
 			$coordenadas = $this->db->query("SELECT * FROM zonas_coordenadas where zona_id = " . $value->id )->result();
 			$this->data['zonas'][$key]['coordenadas'] = $coordenadas;
+			$yacimientos = $this->db->query("SELECT yacimientos.*, 
+
+											FROM yacimientos 
+											WHERE zona_id = " . $value->id )->result();
+			$this->data['zonas'][$key]['yacimientos'] = $yacimientos;
 		}
 	
 		$this->data['view_file'] = 'zonas';

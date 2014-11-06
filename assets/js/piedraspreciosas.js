@@ -32,7 +32,7 @@ $(document).ready(function(){
 	map.panTo(myLatLng);
 	drawX();
 	
-	table = $('#piedraspreciosasGrid').DataTable( {
+	table = $('#piedraspreciosasGrid').DataTable( { 
 		
 		"processing": true,
 		"serverSide": true,

@@ -186,7 +186,8 @@ var ZS = ZS || {};
 		{id : <?=$zona['zona']->id ?>,
 		 name : "<?=$zona['zona']->zona ?>",
 		 region_id: <?=$zona['zona']->region_id ?>,
-		 coords :[<?php foreach( $zona['coordenadas'] as $coord ) : ?>{"lat":"<?=$coord->lat ?>","lng":"<?=$coord->lng ?>"},<?php endforeach; ?>]
+		 coords :[<?php foreach( $zona['coordenadas'] as $coord ) : ?>{"lat":"<?=$coord->lat ?>","lng":"<?=$coord->lng ?>"},<?php endforeach; ?>],
+		 yacimientos :[<?php foreach( $zona['coordenadas'] as $coord ) : ?>{"lat":"<?=$coord->lat ?>","lng":"<?=$coord->lng ?>"},<?php endforeach; ?>]
 		},<?php endforeach; ?>];
 	
 </script>
