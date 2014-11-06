@@ -13,7 +13,7 @@ class Piedraspreciosas extends MY_Controller {
 	public function index() {
 	
 		$this->styles = array('dataTables.bootstrap','bootstrap-datetimepicker.min') ;
-		$this->jsfiles = array('moment','bootstrap-datetimepicker.min','jquery.dataTables.min', 'dataTables.bootstrap','jquery.bootstrap.wizard','bootstrap3-typeahead','yacimientos');
+		$this->jsfiles = array('moment','bootstrap-datetimepicker.min','jquery.dataTables.min', 'dataTables.bootstrap','jquery.bootstrap.wizard','bootstrap3-typeahead','piedraspreciosas');
 
 		$zonas = $this->db->query("SELECT * FROM zonas WHERE active = 1")->result();
 		
@@ -39,8 +39,9 @@ class Piedraspreciosas extends MY_Controller {
 	
 	function datatable()
     {		
-		$this->datatables->select('yacimientos.id as id,yacimientos.yacimiento as yacimiento, yacimientos.fecha_descubrimiento as fecha_descubrimiento, zonas.zona as zona', FALSE)
-			->from('yacimientos') ->join('zonas','yacimientos.zona_id = zonas.id','left');
+		$this->datatables->select('piedraspreciosas.id as id,piedraspreciosas_tipo.nombre as nombre, piedraspreciosas.fecha_descubrimiento as fecha_descubrimiento, zonas.zona as zona', FALSE)
+			->from('piedraspreciosas_tipo') ->join('piedraspreciosas','piedraspreciosas.piedraspreciosa_tipo_id = piedraspreciosas_tipo.id','left')
+			->from('zonas') ->join('piedraspreciosas','piedraspreciosas.zona_id = zonas.id','left');
 		
         echo $this->datatables->generate();
 	}
