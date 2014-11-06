@@ -123,7 +123,36 @@
 													<input type="hidden" id="coord" name="coord" value="" >
 												</div>
 												<div class="tab-pane" id="tab3">
-													3
+													<p>Declarar un mineral</p>
+														
+														
+														
+													<div class="form-group input-group col-lg-6">
+														<span class="input-group-addon">Yacimiento</span>
+														<select class="form-control" name="yacimiento" id="yacimiento" placeholder="Yacimiento">
+															<option value="AK">Alaska</option>
+															<option value="Af">Ddgfbsafg</option>
+															<option value="Ae">Alsafgasfgaska</option>
+															<option value="Aq">Alassafgasfka</option>
+														</select>
+													</div>
+													<div class="form-group input-group col-lg-6">
+														<span class="input-group-addon">Zona</span>
+														<input type="text" name="searchZona" id="searchZona" data-provide="typeahead" class="form-control" autocomplete="off" placeholder="Zona" />
+														<input type="hidden" name="hiddenZonaID" id="hiddenZonaID"/>
+														<div id="infoSelZona" style="display: none; position: absolute; font-size: 11px; top: 40px;">
+															<span>Selección:</span>
+															<span id="selZona" style="font-weight: bold;"></span> 
+														</div>
+													</div>
+													<div  id="datetimepicker1" class="form-group input-group col-lg-6 calendar" data-date-format="DD/MM/YYYY">
+														<span class="input-group-addon">Fecha desc.</span>
+														<input type="text" class="form-control" id="fechaDescubrimiento" name="fechaDescubrimiento"/>
+														<span class="input-group-addon" style="width: 40px !important;">
+															<span class="glyphicon-calendar glyphicon"></span>
+														</span>													
+													</div>												
+													
 												</div>
 												<ul class="pager wizard">
 													<li class="first" style="display:none;"><a href="#">Prim.</a></li>
