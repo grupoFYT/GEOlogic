@@ -26,7 +26,7 @@ class Piedraspreciosas extends MY_Controller {
 			$this->data['zonas'][$key]['coordenadas'] = $coordenadas;
 		}
 		
-		$piedraspreciosas = $this->db->query("SELECT piedraspreciosas.*, piedraspreciosas_tipo.nombre, piedraspreciosas_tipo.similares, 
+		$this->data['piedraspreciosas'] = $this->db->query("SELECT piedraspreciosas.*, piedraspreciosas_tipo.nombre, piedraspreciosas_tipo.similares, 
 											piedraspreciosas_tipo.famosas
 											FROM piedraspreciosas inner join piedraspreciosas_tipo on piedraspreciosas.piedrapreciosa_tipo_id = piedraspreciosas_tipo.id")->result();
 		

@@ -28,7 +28,6 @@
 
 </style>
 
-
 <div class="row">
 	<div class="row" style="margin-top: 22px;">
 		<div class="col-lg-12">
@@ -222,9 +221,11 @@ var ZS = ZS || {};
 		 coords :[<?php foreach( $zona['coordenadas'] as $coord ) : ?>{"lat":"<?=$coord->lat ?>","lng":"<?=$coord->lng ?>"},<?php endforeach; ?>]
 		},<?php endforeach; ?>];
 	
-	ZS.piedraspreciosas = [<?php foreach( $piedraspreciosas as $key => $value ) : ?>
+	ZS.piedraspreciosas = [<?php foreach( $piedraspreciosas as $piedraspreciosa ) : ?>
+							<?php foreach( $piedraspreciosa as $key => $value ) : ?>
 							<?=$key ?> : "<?=$value ?>",
-							<?php endforeach; ?>];
+							<?php endforeach; ?>
+						   <?php endforeach; ?>];
 	
 </script>
 
