@@ -36,6 +36,8 @@ class Yacimientos extends MY_Controller {
 											FROM minerales inner join minerales_tipo on minerales.mineral_tipo_id = minerales_tipo.id where minerales.yacimiento_id = " . $value->id )->result();
 			$this->data['yacimientos'][$key]['minerales'] = $minerales;
 		}
+		
+		$this->data['minerales_tipo'] = $this->db->query("SELECT * FROM minerales_tipo order by nombre")->result();
 	
 		$this->data['view_file'] = 'yacimientos';
 		

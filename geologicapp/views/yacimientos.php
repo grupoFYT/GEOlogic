@@ -124,17 +124,22 @@
 												</div>
 												<div class="tab-pane" id="tab3">
 													<p>Declarar un mineral</p>
-														
-														
-														
+													
 													<div class="form-group input-group col-lg-6">
-														<span class="input-group-addon">Yacimiento</span>
-														<select class="form-control" name="yacimiento" id="yacimiento" placeholder="Yacimiento">
-															<option value="AK">Alaska</option>
-															<option value="Af">Ddgfbsafg</option>
-															<option value="Ae">Alsafgasfgaska</option>
-															<option value="Aq">Alassafgasfka</option>
+														<span class="input-group-addon">Mineral</span>
+														<select class="form-control" name="minerales" id="mineral">
+															<?php foreach( $minerales_tipo as $tipo ) : ?>
+																<option value="<?=$tipo->id ?>"><?=$tipo->nombre ?></option>
+															<?php endforeach; ?>
 														</select>
+													</div>
+													<div class="form-group input-group col-lg-6">
+														<span class="input-group-addon">Dureza</span>
+														<input type="text" class="form-control" name="dureza" id="dureza" placeholder="Dureza">
+													</div>
+													<div class="form-group input-group col-lg-6">
+														<span class="input-group-addon">Dureza</span>
+														<input type="text" class="form-control" name="dureza" id="dureza" placeholder="Dureza">
 													</div>
 													<div class="form-group input-group col-lg-6">
 														<span class="input-group-addon">Zona</span>
