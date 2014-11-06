@@ -35,7 +35,7 @@
 			<ul class="nav nav-tabs" role="tablist">
 				<li id="tabZonas_" class="active"><a href="#tabZonas" role="tab" data-toggle="tab">Zonas</a></li>
 				<li id="tabYacimientos_"><a href="#tabYacimientos" role="tab" data-toggle="tab">Yacimientos</a></li>
-				<li id="tabMinerales_"><a href="#tabMinerales" role="tab" data-toggle="tab">Minerales</a></li>
+				<!--<li id="tabMinerales_"><a href="#tabMinerales" role="tab" data-toggle="tab">Minerales</a></li>-->
 				<li id="tabPP_"><a href="#tabPP" role="tab" data-toggle="tab">Piedras Preciosas</a></li>				
 			</ul>
 		</div>
