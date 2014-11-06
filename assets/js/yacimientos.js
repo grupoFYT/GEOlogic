@@ -354,10 +354,10 @@ $('.finish').on('click', function(){
 		dataString = $("#newY_form").serialize();
 		$.ajax({
 			type: "POST",
-			url: "/geologic/zonas/save",
+			url: "/geologic/yacimientos/save",
 			data: dataString,			 
 			success: function(data){
-				data ? (window.location.href = "/geologic/zonas/") : "";
+				data ? (window.location.href = "/geologic/yacimientos/") : "";
 			}		 
 		});			 
 	// }			

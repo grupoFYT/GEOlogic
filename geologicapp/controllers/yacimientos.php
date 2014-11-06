@@ -63,9 +63,13 @@ class Yacimientos extends MY_Controller {
 		if($_POST):
 			
 			$this->db->trans_begin();
-		
-			$this->db->insert('zonas', array( 'zona' => $this->input->post('zona') ,
-											  'region_id' => $this->input->post('hiddenRegionID')));
+													
+			$this->db->insert('yacimientos', array( 'yacimiento' => $this->input->post('yacimiento') ,
+													'fecha_descubrimiento' => $this->input->post('fechaDescubrimiento'), 
+													'zona_id' => $this->input->post('hiddenZonaID'), 
+													'lat' => $this->input->post('caracteristicas'), 
+													'lng' => $this->input->post('hiddenRegionID')));
+													
 			$id_fm = $this->db->insert_id();
 			//$id_fm = 2;
 			
