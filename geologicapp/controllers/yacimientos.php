@@ -63,37 +63,33 @@ class Yacimientos extends MY_Controller {
 		if($_POST):
 			
 			$this->db->trans_begin();
+			
+			$x = explode( ',', $this->input->post('coord') );			
 													
 			$this->db->insert('yacimientos', array( 'yacimiento' => $this->input->post('yacimiento') ,
 													'fecha_descubrimiento' => $this->input->post('fechaDescubrimiento'), 
 													'zona_id' => $this->input->post('hiddenZonaID'), 
-													'lat' => $this->input->post('caracteristicas'), 
-													'lng' => $this->input->post('hiddenRegionID')));
-													
-			$id_fm = $this->db->insert_id();
-			//$id_fm = 2;
-			
-			if (isset($id_fm)) {
-				
-				$count = 0;
-				foreach( explode( ',', $this->input->post('coord') ) as $x ) {
-					if ($count%2==0){
-						$coordx = array( 'zona_id' => $id_fm );
-						$coordx['lat']  = $x ;
-					}
-					else {
-						$coordx['lng']  = $x ;
-						$this->db->insert('zonas_coordenadas', $coordx );
+													'lat' => $x[0], 
+													'lng' => $x[1]));
 
-						$idx = $this->db->insert_id();
-						if (!isset($idx)) {
-							$this->db->trans_rollback();
-							return FALSE;
-						}
-						$coordx = array();						
-					}
-					$count = $count + 1;					
-				}					
+			$id_fm = $this->db->insert_id();
+						
+			if (isset($id_fm)) {			
+
+				$this->db->insert('minerales', array(   'mineral_tipo_id' => $this->input->post('minerales') ,
+														'dureza' => $this->input->post('dureza'), 
+														'densidad' => $this->input->post('densidad'), 
+														'caracteristicas' => $this->input->post('caracteristicas'), 
+														'yacimiento_id' => $this->input->post('id_fm'), 
+														'explotabilidad' => $this->input->post('explotabilidad'), 
+														'explotacion' => $this->input->post('explotacion')));
+
+				$idx = $this->db->insert_id();
+				if (!isset($idx)) {
+					$this->db->trans_rollback();
+					return FALSE;
+				}
+				
 			}
 			else {
 				$this->db->trans_rollback();
@@ -108,7 +104,7 @@ class Yacimientos extends MY_Controller {
 				$this->db->trans_commit();
 			}
 
-			$this->session->set_flashdata('item', 'Zona ' . $this->input->post('zona') . ' cargada.');
+			$this->session->set_flashdata('item', 'Yacimiento ' . $this->input->post('yacimiento') . ' cargado.');
 			echo TRUE;
  
 		endif;
