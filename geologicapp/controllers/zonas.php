@@ -36,9 +36,12 @@ class Zonas extends MY_Controller {
 			$coordenadas = $this->db->query("SELECT * FROM zonas_coordenadas where zona_id = " . $value->id )->result();
 			$this->data['zonas'][$key]['coordenadas'] = $coordenadas;
 			$yacimientos = $this->db->query("SELECT yacimientos.*, 
-
-											FROM yacimientos 
-											WHERE zona_id = " . $value->id )->result();
+												minerales.*,
+												minerales_tipo.*
+											FROM yacimientos INNER JOIN
+												minerales ON minerales.yacimiento_id = yacimientos.id INNER JOIN
+												minerales_tipo ON minerales.mineral_tipo_id = minerales_tipo.id
+											WHERE yacimientos.zona_id = " . $value->id )->result();
 			$this->data['zonas'][$key]['yacimientos'] = $yacimientos;
 		}
 	
