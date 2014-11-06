@@ -64,15 +64,10 @@ class Yacimientos extends MY_Controller {
 			
 			$this->db->trans_begin();
 			
-			$x = explode( ',', $this->input->post('coord') );			
-			
-			var_dump("caca");
-			var_dump($x[0]);
-			var_dump("------"); 
-			var_dump($x[1]);
+			$x = explode( ',', $this->input->post('coord') );
 			
 			$this->db->insert('yacimientos', array( 'yacimiento' => $this->input->post('yacimiento') ,
-													'fecha_descubrimiento' => $this->input->post('fechaDescubrimiento'), 
+													'fecha_descubrimiento' => date('Y-m-d', strtotime(str_replace("/","-",$this->input->post('fechaDescubrimiento')))),													
 													'zona_id' => $this->input->post('hiddenZonaID'), 
 													'lat' => $x[0], 
 													'lng' => $x[1]));
@@ -85,7 +80,7 @@ class Yacimientos extends MY_Controller {
 														'dureza' => $this->input->post('dureza'), 
 														'densidad' => $this->input->post('densidad'), 
 														'caracteristicas' => $this->input->post('caracteristicas'), 
-														'yacimiento_id' => $this->input->post('id_fm'), 
+														'yacimiento_id' => $id_fm,  
 														'explotabilidad' => $this->input->post('explotabilidad'), 
 														'explotacion' => $this->input->post('explotacion')));
 
