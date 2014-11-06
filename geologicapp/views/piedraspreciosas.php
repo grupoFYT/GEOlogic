@@ -188,9 +188,9 @@
 					<thead>
 						<tr>
 							<th></th>
-							<th>Piedra Preciosa</th>
-							<th>Fecha Desc.</th>
-							<th>Zona</th>
+							<th>Nombre</th>
+							<th>Fecha Desc.</th>							
+							<th>Zona</th> 
 							<th>Acciones</th>
 						</tr>
 					</thead>					
