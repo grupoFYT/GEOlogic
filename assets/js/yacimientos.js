@@ -94,9 +94,14 @@ $(document).ready(function(){
 		
 	$('#myModal').on('shown.bs.modal', function (e) {
 	
-		$('#zona').val('');
 		$('#searchZona').val('');
 		$('#hiddenZonaID').val('');
+		$('#fechaDescubrimiento').val('');
+		$('#dureza').val('');
+		$('#densidad').val('');
+		$('#caracteristicas').val('');
+		$('#explotabilidad').val('');
+		$('#explotacion').val('');		
 		
 		$('#rootwizard').bootstrapWizard({
 			'tabClass': 'bwizard-steps',
@@ -340,3 +345,22 @@ function setTypeahead(objdom, xrhfrunc, dataId, dataProperty, hiddencell) {
 	});
 }
 
+
+$('.finish').on('click', function(){
+	
+	// var suspend = false;
+	getPolygonCoords();
+	// alert(google.maps.geometry.spherical.computeArea(xZona.getPath()));
+	// if (!suspend) {				
+		dataString = $("#newZ_form").serialize();
+		$.ajax({
+			type: "POST",
+			url: "/geologic/zonas/save",
+			data: dataString,			 
+			success: function(data){
+				data ? (window.location.href = "/geologic/zonas/") : "";
+			}		 
+		});			 
+	// }			
+	
+});

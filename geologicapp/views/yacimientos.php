@@ -133,30 +133,27 @@
 															<?php endforeach; ?>
 														</select>
 													</div>
-													<div class="form-group input-group col-lg-6">
+													<div class="form-group input-group col-lg-4">
 														<span class="input-group-addon">Dureza</span>
 														<input type="text" class="form-control" name="dureza" id="dureza" placeholder="Dureza">
 													</div>
-													<div class="form-group input-group col-lg-6">
-														<span class="input-group-addon">Dureza</span>
-														<input type="text" class="form-control" name="dureza" id="dureza" placeholder="Dureza">
+													<div class="form-group input-group col-lg-4">
+														<span class="input-group-addon">Densidad</span>
+														<input type="text" class="form-control" name="densidad" id="densidad" placeholder="Densidad">
 													</div>
-													<div class="form-group input-group col-lg-6">
-														<span class="input-group-addon">Zona</span>
-														<input type="text" name="searchZona" id="searchZona" data-provide="typeahead" class="form-control" autocomplete="off" placeholder="Zona" />
-														<input type="hidden" name="hiddenZonaID" id="hiddenZonaID"/>
-														<div id="infoSelZona" style="display: none; position: absolute; font-size: 11px; top: 40px;">
-															<span>Selección:</span>
-															<span id="selZona" style="font-weight: bold;"></span> 
-														</div>
+													<div class="form-group input-group col-lg-12">
+														<span class="input-group-addon">Característica</span>
+														<input type="text" class="form-control" name="caracteristicas" id="caracteristicas" placeholder="Características">
 													</div>
-													<div  id="datetimepicker1" class="form-group input-group col-lg-6 calendar" data-date-format="DD/MM/YYYY">
-														<span class="input-group-addon">Fecha desc.</span>
-														<input type="text" class="form-control" id="fechaDescubrimiento" name="fechaDescubrimiento"/>
-														<span class="input-group-addon" style="width: 40px !important;">
-															<span class="glyphicon-calendar glyphicon"></span>
-														</span>													
-													</div>												
+													<div class="form-group input-group col-lg-4">
+														<span class="input-group-addon">Explotabilidad</span>
+														<input type="text" class="form-control" name="explotabilidad" id="explotabilidad" placeholder="Explotabilidad">
+													</div>
+													<div class="form-group input-group col-lg-4">
+														<span class="input-group-addon">Explotacion</span>
+														<input type="text" class="form-control" name="explotacion" id="explotacion" placeholder="Explotacion">
+													</div>
+																						
 													
 												</div>
 												<ul class="pager wizard">
