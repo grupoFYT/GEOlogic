@@ -15,7 +15,7 @@ class Yacimientos extends MY_Controller {
 		$this->styles = array('dataTables.bootstrap','bootstrap-datetimepicker.min') ;
 		$this->jsfiles = array('moment','bootstrap-datetimepicker.min','jquery.dataTables.min', 'dataTables.bootstrap','jquery.bootstrap.wizard','bootstrap3-typeahead','yacimientos');
 
-		$zonas = $this->db->query("SELECT * FROM zonas WHERE active = 1")->result();
+		$zonas = $this->db->query("SELECT * FROM zonas")->result();
 		
 		foreach ($zonas as $key=>$value)
 		{
@@ -54,7 +54,7 @@ class Yacimientos extends MY_Controller {
 	
 	function getZonas()
 	{
-		$query = $this->db->query('SELECT id, zona FROM zonas where zona like "%' . $this->input->post('stringQuery') . '%" and active = 1');
+		$query = $this->db->query('SELECT id, zona FROM zonas where zona like "%' . $this->input->post('stringQuery') . '%"');
 		echo json_encode($query->result());
 	}
 	

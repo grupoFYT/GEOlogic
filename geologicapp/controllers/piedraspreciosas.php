@@ -15,7 +15,7 @@ class Piedraspreciosas extends MY_Controller {
 		$this->styles = array('dataTables.bootstrap','bootstrap-datetimepicker.min') ;
 		$this->jsfiles = array('moment','bootstrap-datetimepicker.min','jquery.dataTables.min', 'dataTables.bootstrap','jquery.bootstrap.wizard','bootstrap3-typeahead','piedraspreciosas');
 
-		$zonas = $this->db->query("SELECT * FROM zonas WHERE active = 1")->result();
+		$zonas = $this->db->query("SELECT * FROM zonas")->result();
 		
 		foreach ($zonas as $key=>$value)
 		{
