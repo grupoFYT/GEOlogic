@@ -1,10 +1,10 @@
 <style>
 
-	#yacimientosGrid {
+	#piedraspreciosasGrid {
 		border: 0 none;
 	}
 	
-	#yacimientosGrid th, #yacimientosGrid td {
+	#piedraspreciosasGrid th, #piedraspreciosasGrid td {
 		border-right: 0 none;
 		border-left: 0 none;
 	}
@@ -13,7 +13,7 @@
 		border-bottom-width: 0;	
 	}
 	
-	#yacimientosGrid tbody tr.odd.selected, #yacimientosGrid tbody tr.odd.selected {
+	#piedraspreciosasGrid tbody tr.odd.selected, #piedraspreciosasGrid tbody tr.odd.selected {
 		background-color: #abb9d3 !important;
 	}
 	
@@ -220,12 +220,8 @@ var ZS = ZS || {};
 		 region_id: <?=$zona['zona']->region_id ?>,
 		 coords :[<?php foreach( $zona['coordenadas'] as $coord ) : ?>{"lat":"<?=$coord->lat ?>","lng":"<?=$coord->lng ?>"},<?php endforeach; ?>]
 		},<?php endforeach; ?>];
-	
-	ZS.piedraspreciosas = [<?php foreach( $piedraspreciosas as $piedraspreciosa ) : ?>
-							<?php foreach( $piedraspreciosa as $key => $value ) : ?>
-							<?=$key ?> : "<?=$value ?>",
-							<?php endforeach; ?>
-						   <?php endforeach; ?>];
+	 
+	ZS.piedraspreciosas = [<?php foreach( $piedraspreciosas as $piedraspreciosa ) : ?>{<?php foreach( $piedraspreciosa as $key => $value ) : ?><?=$key ?> : "<?=$value ?>",<?php endforeach; ?>},<?php endforeach; ?>];
 	
 </script>
 
