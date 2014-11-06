@@ -61,7 +61,6 @@ class Yacimientos extends MY_Controller {
 	function save()
 	{
 		if($_POST):
-		echo "LALALALAL";
 			
 			$this->db->trans_begin();
 			
