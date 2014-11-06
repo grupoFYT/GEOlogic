@@ -349,10 +349,10 @@ function setTypeahead(objdom, xrhfrunc, dataId, dataProperty, hiddencell) {
 $('.finish').on('click', function(){
 	
 	// var suspend = false;
-	getPolygonCoords();
+	getPointCoords();
 	// alert(google.maps.geometry.spherical.computeArea(xZona.getPath()));
 	// if (!suspend) {				
-		dataString = $("#newZ_form").serialize();
+		dataString = $("#newY_form").serialize();
 		$.ajax({
 			type: "POST",
 			url: "/geologic/zonas/save",
@@ -364,3 +364,8 @@ $('.finish').on('click', function(){
 	// }			
 	
 });
+
+function getPointCoords() {	
+	$("#coord").val([xMaker.position.lat(),xMaker.position.lng()]);
+}
+
