@@ -130,51 +130,24 @@ $(document).ready(function(){
 	
 	//
 	
+	var xMaker;
+	
 	$('#point_add').on('click', function(){	
-
-		var marker = new google.maps.Marker({
-			position: new google.maps.LatLng(value['lat'],value['lng']),
-			map: map,
+		
+		if(typeof(xMaker) != 'undefined') {
+			xMaker.setMap(null);
+		}
+		
+		tk = minZonaPol.my_getBounds().getCenter();
+		
+		xMaker = new google.maps.Marker({
+			position: new google.maps.LatLng(tk.k,tk.B),
+			draggable:true,
+			animation: google.maps.Animation.DROP,
+			map: minmap,
 			title: 'Hello World!'
 		});
-		
-		
-		// if(typeof(xZona) != 'undefined') {
-			// xZona.setMap(null);
-		// }
-		// function get_random_value(val_max) {
-            // val_max = val_max || 100;
-            // return Math.floor((Math.random()*val_max));
-        // }		
-		// var px_center = minmap.getCenter();		
-		// var polygon_width = 300;
-        // var polygon_height = 200;
-        // var px_bl_x = parseInt(px_center.k - (0)) - 0.1;
-        // var px_bl_y = parseInt(px_center.B + (0)) - 0.1;
-        // var px_br_x = parseInt(px_center.k + (0)) + 0.1;
-        // var px_br_y = parseInt(px_center.B + (0)) - 0.1;        
-        // var px_tr_x = parseInt(px_center.k + (0)) + 0.1;
-        // var px_tr_y = parseInt(px_center.B - (0)) + 0.1;        
-        // var px_tl_x = parseInt(px_center.k - (0)) - 0.1;
-        // var px_tl_y = parseInt(px_center.B - (0)) + 0.1;		
-		// var triangleCoords = [
-			// new google.maps.LatLng(px_bl_x, px_bl_y),
-			// new google.maps.LatLng(px_br_x, px_br_y),
-			// new google.maps.LatLng(px_tr_x, px_tr_y),
-			// new google.maps.LatLng(px_tl_x, px_tl_y)
-		// ];		
-		// xZona = new google.maps.Polygon({
-			// paths: triangleCoords,
-			// draggable: true,
-			// editable: true,			
-			// strokeColor: '#000000',
-			// strokeOpacity: 0.5,
-			// strokeWeight: 2,
-			// fillColor: '#CACACA',
-			// fillOpacity: 0.7,
-			// zIndex: 3
-		// });				
-		// xZona.setMap(minmap);		
+
     });
 	
 	$('#datetimepicker1').datetimepicker({
