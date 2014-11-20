@@ -119,7 +119,8 @@ class Zonas extends MY_Controller {
 	
 	function getData()
 	{
-		$query = $this->db->query('SELECT id, region FROM regiones where region like "%' . $this->input->post('stringQuery') . '%"');
+		
+		$query = $this->db->query('SELECT * from yacimientos where zona_id = ' . $this->input->post('zona'));
 		echo json_encode($query->result());
 	}
 	
