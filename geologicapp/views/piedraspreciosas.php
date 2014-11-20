@@ -132,16 +132,16 @@
 														<span class="input-group-addon">Dureza</span>
 														<input type="text" class="form-control" name="dureza" id="dureza" placeholder="Dureza">
 													</div>
-													<div class="form-group input-group col-lg-4">
+													<div class="form-group input-group col-lg-6">
 														<span class="input-group-addon">Color</span>
 														<input type="text" class="form-control" name="color" id="color" placeholder="Color">
 													</div>
-													<div class="form-group input-group col-lg-12">
+													<div class="form-group input-group col-lg-4">
 														<span class="input-group-addon">Densidad</span>
 														<input type="text" class="form-control" name="densidad" id="densidad" placeholder="Densidad">
 													</div>
-													<div class="form-group input-group col-lg-4">
-														<span class="input-group-addon">Características</span>
+													<div class="form-group input-group col-lg-12">
+														<span class="input-group-addon">Característic.</span>
 														<input type="text" class="form-control" name="caracteristicas" id="caracteristicas" placeholder="Características">
 													</div>
 													<div class="form-group input-group col-lg-4">
