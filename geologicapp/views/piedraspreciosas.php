@@ -121,7 +121,7 @@
 													<p>Crear nueva piedra preciosa</p>
 													
 													<div class="form-group input-group col-lg-6">
-														<span class="input-group-addon">Piedra preciosa</span>
+														<span class="input-group-addon">Piedra preci.</span>
 														<select class="form-control" name="piedrapreciosa" id="piedrapreciosa">
 															<?php foreach( $piedraspreciosas_tipo as $tipo ) : ?>
 																<option value="<?=$tipo->id ?>"><?=$tipo->nombre ?></option>

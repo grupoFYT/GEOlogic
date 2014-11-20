@@ -56,11 +56,14 @@ class Piedraspreciosas extends MY_Controller {
 	{
 		if($_POST):
 			
-			$this->db->trans_begin();
-			
 			$x = explode( ',', $this->input->post('coord') );
 			
-			$this->db->insert('yacimientos', array( 'yacimiento' => $this->input->post('yacimiento') ,
+			$this->db->insert('piedraspreciosas', array( 'piedrapreciosa_tipo_id' => $this->input->post('piedrapreciosa') ,
+													'dureza' => $this->input->post('dureza'), 
+													'color' => $this->input->post('color'), 
+													'densidad' => $this->input->post('densidad'), 
+													'caracteristicas' => $this->input->post('caracteristicas'), 
+													'talla' => $this->input->post('talla'), 
 													'fecha_descubrimiento' => date('Y-m-d', strtotime(str_replace("/","-",$this->input->post('fechaDescubrimiento')))),													
 													'zona_id' => $this->input->post('hiddenZonaID'), 
 													'lat' => $x[0], 
@@ -68,37 +71,7 @@ class Piedraspreciosas extends MY_Controller {
 
 			$id_fm = $this->db->insert_id();
 						
-			if (isset($id_fm)) {			
-
-				$this->db->insert('minerales', array(   'mineral_tipo_id' => $this->input->post('minerales') ,
-														'dureza' => $this->input->post('dureza'), 
-														'densidad' => $this->input->post('densidad'), 
-														'caracteristicas' => $this->input->post('caracteristicas'), 
-														'yacimiento_id' => $id_fm,  
-														'explotabilidad' => $this->input->post('explotabilidad'), 
-														'explotacion' => $this->input->post('explotacion')));
-
-				$idx = $this->db->insert_id();
-				if (!isset($idx)) {
-					$this->db->trans_rollback();
-					return FALSE;
-				}
-				
-			}
-			else {
-				$this->db->trans_rollback();
-				return FALSE;
-			}
-			
-			if ($this->db->trans_status() === FALSE) {
-				$this->db->trans_rollback();
-				return FALSE;
-			}		
-			else {
-				$this->db->trans_commit();
-			}
-
-			$this->session->set_flashdata('item', 'Yacimiento ' . $this->input->post('yacimiento') . ' cargado.');
+			$this->session->set_flashdata('item', 'Piedra Preciosa cargada.');
 			echo TRUE;
  
 		endif;

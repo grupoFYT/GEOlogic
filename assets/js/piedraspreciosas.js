@@ -352,3 +352,28 @@ function setTypeahead(objdom, xrhfrunc, dataId, dataProperty, hiddencell) {
 		}
 	});
 }
+
+$('.finish').on('click', function(){
+	
+	// var suspend = false;
+	getPointCoords();
+	// alert(google.maps.geometry.spherical.computeArea(xZona.getPath()));
+	// if (!suspend) {				
+		dataString = $("#newPP_form").serialize();
+		$.ajax({
+			type: "POST",
+			url: "/geologic/piedraspreciosas/save",
+			data: dataString,			 
+			success: function(data){
+				data ? (window.location.href = "/geologic/piedraspreciosas/") : "";
+			}		 
+		});			 
+	// }			
+	
+});
+
+function getPointCoords() {
+	xx = xMaker.getPosition();
+	$("#coord").val([xx.lat(), xx.lng()]);
+}
+
