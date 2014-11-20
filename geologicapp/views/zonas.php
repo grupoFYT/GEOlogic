@@ -25,7 +25,13 @@
 		margin: 10px 5px;
 		padding: 10px 15px;
 	}
-
+	
+	<? if ($this->ion_auth->in_group('GeologoJr')) { ?>
+	.btn-danger {
+		display: none;
+	}
+	<? } ?>
+	
 </style>
 
 
