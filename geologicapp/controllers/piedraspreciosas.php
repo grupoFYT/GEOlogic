@@ -48,7 +48,7 @@ class Piedraspreciosas extends MY_Controller {
 	
 	function getZonas()
 	{
-		$query = $this->db->query('SELECT id, zona FROM zonas where zona like "%' . $this->input->post('stringQuery') . '%" and active = 1');
+		$query = $this->db->query('SELECT id, zona FROM zonas where zona like "%' . $this->input->post('stringQuery') . '%"');
 		echo json_encode($query->result());
 	}
 	

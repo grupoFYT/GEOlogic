@@ -110,6 +110,16 @@ class Yacimientos extends MY_Controller {
 		endif;
 	}
 	
+	function delete()
+	{
+		$id = $this->uri->segment(3);
+		$this->db->query("DELETE FROM yacimientos where  id = ". $id);
+		//$this->input->post('stringQuery');
+		$this->session->set_flashdata('item', 'Yacimiento eliminado');
+		
+		redirect('/yacimientos/', 'refresh');
+	}
+	
 	
 	
 }

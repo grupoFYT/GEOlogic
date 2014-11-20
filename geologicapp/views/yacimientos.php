@@ -30,6 +30,11 @@
 
 
 <div class="row">
+	<?php if($this->session->flashdata('item')) { ?> 
+	<div class="alert alert-success"> 
+	<?php echo $this->session->flashdata('item'); ?> 
+	</div> 
+	<?php } ?>
 	<div class="row" style="margin-top: 22px;">
 		<div class="col-lg-12">
 			<ul class="nav nav-tabs" role="tablist">
