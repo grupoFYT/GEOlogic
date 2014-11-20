@@ -111,19 +111,19 @@
 													</div>
 												</div>
 												<div class="tab-pane" id="tab2">
-													<p>Ubicar una posición para insertar la nueva zona</p> 
+													<p>Ubicar una posición para insertar una nueva priedra preciosa</p> 
 													<a id="point_add">Insertar</a>
 													<div id="mini-map" style="height: 350px; width: auto;">
 													</div>
 													<input type="hidden" id="coord" name="coord" value="" >
 												</div>
 												<div class="tab-pane" id="tab3">
-													<p>Declarar un mineral</p>
+													<p>Crear nueva piedra preciosa</p>
 													
 													<div class="form-group input-group col-lg-6">
-														<span class="input-group-addon">Mineral</span>
-														<select class="form-control" name="minerales" id="mineral">
-															<?php foreach( $minerales_tipo as $tipo ) : ?>
+														<span class="input-group-addon">Piedra preciosa</span>
+														<select class="form-control" name="piedrapreciosa" id="piedrapreciosa">
+															<?php foreach( $piedraspreciosas_tipo as $tipo ) : ?>
 																<option value="<?=$tipo->id ?>"><?=$tipo->nombre ?></option>
 															<?php endforeach; ?>
 														</select>
@@ -133,22 +133,21 @@
 														<input type="text" class="form-control" name="dureza" id="dureza" placeholder="Dureza">
 													</div>
 													<div class="form-group input-group col-lg-4">
+														<span class="input-group-addon">Color</span>
+														<input type="text" class="form-control" name="color" id="color" placeholder="Color">
+													</div>
+													<div class="form-group input-group col-lg-12">
 														<span class="input-group-addon">Densidad</span>
 														<input type="text" class="form-control" name="densidad" id="densidad" placeholder="Densidad">
 													</div>
-													<div class="form-group input-group col-lg-12">
-														<span class="input-group-addon">Caracter�stica</span>
-														<input type="text" class="form-control" name="caracteristicas" id="caracteristicas" placeholder="Caracter�sticas">
+													<div class="form-group input-group col-lg-4">
+														<span class="input-group-addon">Características</span>
+														<input type="text" class="form-control" name="caracteristicas" id="caracteristicas" placeholder="Características">
 													</div>
 													<div class="form-group input-group col-lg-4">
-														<span class="input-group-addon">Explotabilidad</span>
-														<input type="text" class="form-control" name="explotabilidad" id="explotabilidad" placeholder="Explotabilidad">
+														<span class="input-group-addon">Talla</span>
+														<input type="text" class="form-control" name="talla" id="talla" placeholder="Talla">
 													</div>
-													<div class="form-group input-group col-lg-4">
-														<span class="input-group-addon">Explotacion</span>
-														<input type="text" class="form-control" name="explotacion" id="explotacion" placeholder="Explotacion">
-													</div>
-																						
 													
 												</div>
 												<ul class="pager wizard">
