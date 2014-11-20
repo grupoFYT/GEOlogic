@@ -92,6 +92,7 @@ $(document).ready(function(){
 		$('#piedraspreciosasGrid').DataTable().search($('#searchInput').val().trim()).draw();
 	});
 	
+	
 	$('#myModal').on('shown.bs.modal', function (e) {
 	
 		$('#searchZona').val('');
@@ -131,7 +132,34 @@ $(document).ready(function(){
 	
 	});
 	
+	setTypeahead('#searchZona', 'getZonas', 'id', 'zona','hiddenZonaID');
 	
+	//
+
+	
+	$('#point_add').on('click', function(){	
+		
+		if(typeof(xMaker) != 'undefined') {
+			xMaker.setMap(null);
+		}
+		
+		tk = minZonaPol.my_getBounds().getCenter();
+		
+		xMaker = new google.maps.Marker({
+			position: new google.maps.LatLng(tk.k,tk.B),
+			draggable:true,
+			animation: google.maps.Animation.DROP,
+			map: minmap,
+			title: 'Hello World!'
+		});
+
+    });
+	
+	$('#datetimepicker1').datetimepicker({
+		language:'es', 
+		pickTime: false,
+		maxDate: moment()
+	});
 		
 	
 	$('#tabZonas_ a').click(function (e) {
@@ -213,4 +241,114 @@ function drawX() {
 		
 	});
 
+}
+
+
+var minmapOptions = {
+	streetViewControl: false,
+	zoom: 3,
+	center: myLatLng,
+	mapTypeId: google.maps.MapTypeId.HYBRID,
+	disableDefaultUI: true
+};
+
+var minmap;
+
+function drawMinMap() {
+	
+	minmap = new google.maps.Map(document.getElementById('mini-map'),minmapOptions);
+	minmap.setZoom(1);
+	minmap.panTo(myLatLng);
+
+	gotoZona($('#hiddenZonaID').val());
+
+}
+
+var minZonaPol;
+
+function gotoZona(zonId) {	
+	
+	$.each(ZS.zonas, function(index, value) {		
+		if (value.id == zonId) {
+			if(typeof(minZonaPol) != 'undefined') {
+				minZonaPol.setMap(null);
+			}		
+			var zonaCoords = [];
+			$.each(value.coords , function(indexx, valuex) {
+				zonaCoords.push(new google.maps.LatLng(valuex['lat'], valuex['lng']));				
+			});			
+			minZonaPol = new google.maps.Polygon({
+				paths: zonaCoords,
+				draggable: false,
+				editable: false,
+				strokeColor: '#CDA323',
+				strokeOpacity: 0.8,
+				strokeWeight: 2,
+				fillColor: '#CDA323',
+				fillOpacity: 0.3,
+				zIndex: 0
+			});			
+			minZonaPol.setMap(minmap);	
+			minmap.fitBounds(minZonaPol.my_getBounds());
+		
+		}
+	}); 
+}
+
+
+function setTypeahead(objdom, xrhfrunc, dataId, dataProperty, hiddencell) {
+	$(objdom).typeahead({ 
+		source: function(query, process) {
+			var $url = '/geologic/piedraspreciosas/' + xrhfrunc;
+			var $items = new Array;
+			$items = [""];
+			$.ajax({
+				url: $url,
+				data: { stringQuery: query },
+				dataType: "json",
+				type: "POST",
+				success: function(data) {				
+					$.map(data, function(data){					
+						var group;
+						group = {
+							id: data[dataId],
+							descriptionField: data[dataProperty],                          
+							toString: function () {
+								return JSON.stringify(this);
+							},
+							toLowerCase: function () {
+								return this.descriptionField.toLowerCase();
+							},
+							indexOf: function (string) {
+								return String.prototype.indexOf.apply(this.descriptionField, arguments);
+							},
+							replace: function (string) {
+								var value = '';
+								value +=  this.descriptionField;
+								if(typeof(this.level) != 'undefined') {
+									value += ' <span class="pull-right muted">';
+									value += this.level;
+									value += '</span>';
+								}
+								return String.prototype.replace.apply('<div style="width:' + $('#search').width() + 'px;">' + value + '</div>', arguments);
+							}
+						};
+						$items.push(group);
+					});
+					process($items);
+				}
+			});
+		},
+		property: dataProperty,
+		items: 20,
+		minLength: 2,
+		updater: function (item) {
+			var item = JSON.parse(item);
+
+			$('#' + hiddencell).val(item.id); 
+			//gotoRegion(item.id);
+			//alert(item.id);
+			return item.descriptionField;
+		}
+	});
 }

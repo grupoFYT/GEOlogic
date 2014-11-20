@@ -96,7 +96,7 @@
 															<input type="text" name="searchZona" id="searchZona" data-provide="typeahead" class="form-control" autocomplete="off" placeholder="Zona" />
 															<input type="hidden" name="hiddenZonaID" id="hiddenZonaID"/>
 															<div id="infoSelZona" style="display: none; position: absolute; font-size: 11px; top: 40px;">
-																<span>Selección:</span>
+																<span>SelecciÃ³n:</span>
 																<span id="selZona" style="font-weight: bold;"></span> 
 															</div>
 														</div>
@@ -111,7 +111,7 @@
 													</div>
 												</div>
 												<div class="tab-pane" id="tab2">
-													<p>Ubicar una posición para insertar la nueva zona</p> 
+													<p>Ubicar una posiciÃ³n para insertar la nueva zona</p> 
 													<a id="point_add">Insertar</a>
 													<div id="mini-map" style="height: 350px; width: auto;">
 													</div>
