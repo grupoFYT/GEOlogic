@@ -92,6 +92,46 @@ $(document).ready(function(){
 		$('#piedraspreciosasGrid').DataTable().search($('#searchInput').val().trim()).draw();
 	});
 	
+	$('#myModal').on('shown.bs.modal', function (e) {
+	
+		$('#searchZona').val('');
+		$('#hiddenZonaID').val('');
+		$('#fechaDescubrimiento').val('');
+		$('#dureza').val('');
+		$('#densidad').val('');
+		$('#caracteristicas').val('');
+		$('#explotabilidad').val('');
+		$('#explotacion').val('');		
+		
+		$('#rootwizard').bootstrapWizard({
+			'tabClass': 'bwizard-steps',
+			onNext: function(tab, navigation, index) {
+				//alert(index + "on next");
+				if(index==1) {					
+					//alert("check inputzzs");
+				}				
+			},
+			onTabShow: function(tab, navigation, it) { 
+				if(it==1) drawMinMap();
+				if(it==2) {	
+					$('#rootwizard').find('.pager .finish').show();
+					$('#rootwizard').find('.pager .finish').removeClass('hidden');
+					$('#rootwizard').find('.pager .next').hide();
+				}
+				else {
+					$('#rootwizard').find('.pager .finish').hide();
+					$('#rootwizard').find('.pager .finish').addClass('hidden');
+					$('#rootwizard').find('.pager .next').show();
+				}
+				
+			}
+		});	
+
+		$('#rootwizard').bootstrapWizard('first');		
+	
+	});
+	
+	
 		
 	
 	$('#tabZonas_ a').click(function (e) {
