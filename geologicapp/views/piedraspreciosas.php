@@ -92,10 +92,6 @@
 													<p>Ingrese los datos necesarios para la nueva Piedra Preciosa</p>
 													<div class="col-lg-12">
 														<div class="form-group input-group col-lg-6">
-															<span class="input-group-addon">Yacimiento</span>
-															<input type="text" class="form-control" name="yacimiento" id="yacimiento" placeholder="Yacimiento">
-														</div>
-														<div class="form-group input-group col-lg-6">
 															<span class="input-group-addon">Zona</span>
 															<input type="text" name="searchZona" id="searchZona" data-provide="typeahead" class="form-control" autocomplete="off" placeholder="Zona" />
 															<input type="hidden" name="hiddenZonaID" id="hiddenZonaID"/>
