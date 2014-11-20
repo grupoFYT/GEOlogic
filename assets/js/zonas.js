@@ -81,7 +81,7 @@ $(document).ready(function(){
 		data = table.row( this ).data();
 		drawZonas();
 		
-		} );
+	} );
 		
 	// Search Button
 			
@@ -214,6 +214,19 @@ $(document).ready(function(){
 function drawZonas() {
 	
 	$('#infoRow h4').html('Zona ' + data.zona + ' ( Región ' + data.region + ' )');
+
+	$.ajax({
+		url: "/geologic/zonas/getData",
+		data: { zona : data.id },
+		dataType: "json",
+		type: "POST",
+		success: function(data) {
+			
+			
+		}
+	});	
+	
+	
 	var markerBounds = new google.maps.LatLngBounds();
 
 	$.each(zonasPol , function(index, value) {

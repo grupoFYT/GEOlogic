@@ -117,6 +117,12 @@ class Zonas extends MY_Controller {
 		endif;
 	}
 	
+	function getData()
+	{
+		$query = $this->db->query('SELECT id, region FROM regiones where region like "%' . $this->input->post('stringQuery') . '%"');
+		echo json_encode($query->result());
+	}
+	
 
 	function delete()
 	{
