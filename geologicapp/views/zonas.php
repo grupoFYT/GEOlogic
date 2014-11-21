@@ -162,8 +162,8 @@
 						<tr>
 							<th></th>
 							<th>Zona</th>
-							<th>Region</th>
-							<th>Pais</th>
+							<th>Región</th>
+							<th>País</th>
 							<th>Acciones</th>
 						</tr>
 					</thead>					

@@ -15,7 +15,7 @@ class Minerales extends MY_Controller {
 		$this->styles = array('dataTables.bootstrap','minerales') ;
 		$this->jsfiles = array('jquery.dataTables.min', 'dataTables.bootstrap', 'minerales');
 	
-		$this->data['page_title'] = "Gestion de minerales";
+		$this->data['page_title'] = "Gestión de minerales";
 				
 		$this->data['view_file'] = 'minerales/index';
 		

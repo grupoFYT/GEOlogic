@@ -226,12 +226,10 @@
                         <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                        <li><a href="#"><i class="fa fa-user fa-fw"></i>Perfil Usuario</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        <li><a href="auth/logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -259,7 +257,9 @@
                     </li>
                     <li>
                 	<a href="/geologic"><i class="fa fa-random fa-fw"></i> Panel Principal</a>
-                        <a href="/geologic/auth"><i class="fa fa-random fa-fw"></i> Administracion de Usuarios</a>
+						<? if ($this->ion_auth->in_group(1)) { ?>
+						<a href="/geologic/auth"><i class="fa fa-random fa-fw"></i> Administración de Usuarios</a>
+						<? } ?>			
                         <a href="/geologic/auth/logout"><i class="fa fa-random fa-fw"></i> Salir del Sistema</a>
                         
                     </li>
