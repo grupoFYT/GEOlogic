@@ -259,7 +259,9 @@
                     </li>
                     <li>
                 	<a href="/geologic/"><i class="fa fa-random fa-fw"></i> Panel Principal</a>
-                        <a href="/geologic/auth"><i class="fa fa-random fa-fw"></i> Administracion de Usuarios</a>
+                        <? if ($this->ion_auth->in_group(1)) { ?>
+						<a href="/geologic/auth"><i class="fa fa-random fa-fw"></i> Administracion de Usuarios</a>
+						<? } ?>					
                         <a href="/geologic/auth/logout"><i class="fa fa-random fa-fw"></i> Salir del Sistema</a>
                         
                     </li>
