@@ -139,7 +139,7 @@ $(document).ready(function(){
 				});		
 			}
 			else {
-				alert("Insérteme el polígono, amor");
+				alert("Debe insertar una zona");
 			}
 			
 			
