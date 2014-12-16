@@ -124,10 +124,10 @@ $(document).ready(function(){
             }
         },
 		 submitHandler: function(form) {
-			var suspend = false;
-			getPolygonCoords();
-			alert(google.maps.geometry.spherical.computeArea(xZona.getPath()));
-			if (!suspend) {				
+			
+			if(typeof(xZona) != 'undefined') {
+				getPolygonCoords();
+				
 				dataString = $("#newZ_form").serialize();			 
 				$.ajax({
 					type: "POST",
@@ -136,8 +136,16 @@ $(document).ready(function(){
 					success: function(data){
 						data ? (window.location.href = "/geologic/zonas/") : "";
 					}		 
-				});			 
-			}			
+				});		
+			}
+			else {
+				alert("Insérteme el polígono, amor");
+			}
+			
+			
+				
+					 
+			
 		}
     });
 	
