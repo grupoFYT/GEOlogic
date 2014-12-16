@@ -145,11 +145,11 @@ $(document).ready(function(){
 		tk = minZonaPol.my_getBounds().getCenter();
 		
 		xMaker = new google.maps.Marker({
-			position: new google.maps.LatLng(tk.k,tk.B),
+			position: new google.maps.LatLng(tk.k,tk.D),
 			draggable:true,
 			animation: google.maps.Animation.DROP,
 			map: minmap,
-			title: 'Hello World!'
+			title: 'Yacimiento'
 		});
 
     });
