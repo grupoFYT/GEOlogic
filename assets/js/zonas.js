@@ -95,7 +95,7 @@ $(document).ready(function(){
 	//
 	
 	
-	$('#newZ_form').validate({
+	var $validator = $('#newZ_form').validate({
 		ignore: [],
 		lang: 'es',
         rules: {
@@ -126,7 +126,7 @@ $(document).ready(function(){
 		 submitHandler: function(form) {
 			var suspend = false;
 			getPolygonCoords();
-			//alert(google.maps.geometry.spherical.computeArea(xZona.getPath()));
+			alert(google.maps.geometry.spherical.computeArea(xZona.getPath()));
 			if (!suspend) {				
 				dataString = $("#newZ_form").serialize();			 
 				$.ajax({
@@ -158,9 +158,15 @@ $(document).ready(function(){
 				//alert(index + "on next");
 				if(index==1) {					
 					//alert("check inputzzs");  
+					
 					$('#zona').valid();
 					$('#hiddenRegionID').valid();
 					
+					var $valid = $("#newZ_form").valid();
+					if(!$valid) {
+						$validator.focusInvalid();
+						return false;
+					}
 					
 				}			
 			},
