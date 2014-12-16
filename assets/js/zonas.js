@@ -303,7 +303,7 @@ function drawZonas() {
 				$.each(data , function(index, value) {
 					$.each( value, function(i, n){
 						if (i.toLowerCase().indexOf("id") < 0) {
-							$("#yacim").append(i + ": " + n + "<br>");						
+							$("#yacim").append(i.charAt(0).toUpperCase() + i.slice(1) + ": " + n + "<br>");						
 						}
 					});
 					$("#yacim").append("<br>");

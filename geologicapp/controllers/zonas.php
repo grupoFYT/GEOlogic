@@ -120,7 +120,8 @@ class Zonas extends MY_Controller {
 	function getData()
 	{
 		
-		$query = $this->db->query('SELECT * from yacimientos inner join minerales on yacimientos.id = minerales.yacimiento_id inner join minerales_tipo on minerales.mineral_tipo_id = minerales_tipo.id where yacimientos.zona_id = ' . $this->input->post('zona'));
+		//$query = $this->db->query('SELECT * from yacimientos inner join minerales on yacimientos.id = minerales.yacimiento_id inner join minerales_tipo on minerales.mineral_tipo_id = minerales_tipo.id where yacimientos.zona_id = ' . $this->input->post('zona'));
+		$query = $this->db->query('SELECT * from yacimientos where yacimientos.zona_id = ' . $this->input->post('zona'));
 		echo json_encode($query->result());
 	}
 	
