@@ -13,7 +13,7 @@ class Zonas extends MY_Controller {
 	public function index() {
 	
 		$this->styles = array('dataTables.bootstrap') ;
-		$this->jsfiles = array('jquery.dataTables.min', 'dataTables.bootstrap','jquery.bootstrap.wizard','bootstrap3-typeahead','validate','zonas');
+		$this->jsfiles = array('jquery.dataTables.min', 'dataTables.bootstrap','jquery.bootstrap.wizard','bootstrap3-typeahead','jquery.validate.min','zonas');
 		
 		$regiones = $this->db->query("SELECT * FROM regiones")->result();
 		

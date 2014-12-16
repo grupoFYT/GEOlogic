@@ -91,6 +91,72 @@ $(document).ready(function(){
 		}
 		$('#zonasGrid').DataTable().search($('#searchInput').val().trim()).draw();
 	});
+	
+	//
+	
+	$('#newZ_form').validate({
+		ignore: [],
+		lang: 'es',
+        rules: {
+            zona: {
+				required: true,
+                minlength: 3,
+                maxlength: 20
+            },
+			hiddenRegionID: {
+				required: true
+            }
+        },
+        highlight: function(element) {
+            $(element).closest('.form-group').addClass('has-error');
+        },
+        unhighlight: function(element) {
+            $(element).closest('.form-group').removeClass('has-error');
+        },
+        errorElement: 'span',
+        errorClass: 'help-block',
+        errorPlacement: function(error, element) {
+            if(element.parent('.input-group').length) {
+                error.insertAfter(element.parent());
+            } else {
+                error.insertAfter(element);
+            }
+        },
+		submitHandler: function(form) {
+			// var suspend = false;
+			// getPolygonCoords();
+			// alert(google.maps.geometry.spherical.computeArea(xZona.getPath()));
+			// if (!suspend) {				
+				// dataString = $("#newP_form").serialize();			 
+				// $.ajax({
+					// type: "POST",
+					// url: "/geologic/zonas/save",
+					// data: dataString,			 
+					// success: function(data){
+						// data ? (window.location.href = "/geologic/zonas/") : "";
+					// }		 
+				// });			 
+			// }
+
+
+			
+			getPolygonCoords();
+			dataString = $("#newZ_form").serialize();
+			$.ajax({
+				type: "POST",
+				url: "/geologic/zonas/save",
+				data: dataString,			 
+				success: function(data){
+					data ? (window.location.href = "/geologic/zonas/") : "";
+				}		 
+			});			 
+			
+
+			
+		}
+    });
+	
+	//
 		
 	$('#myModal').on('shown.bs.modal', function (e) {
 	
@@ -103,7 +169,9 @@ $(document).ready(function(){
 			onNext: function(tab, navigation, index) {
 				//alert(index + "on next");
 				if(index==1) {					
-					//alert("check inputzzs");  
+					alert("check inputzzs");  
+					alert($('#zona').valid());
+					alert($('#hiddenRegionID').valid());
 				}			
 			},
 			onTabShow: function(tab, navigation, it) {
@@ -173,20 +241,30 @@ $(document).ready(function(){
 	
 	
 	$('.finish').on('click', function(){
+	
+		$( "#newZ_form" ).submit();
 		
 		// var suspend = false;
-		getPolygonCoords();
+		
 		// alert(google.maps.geometry.spherical.computeArea(xZona.getPath()));
-		// if (!suspend) {				
-			dataString = $("#newZ_form").serialize();
-			$.ajax({
-				type: "POST",
-				url: "/geologic/zonas/save",
-				data: dataString,			 
-				success: function(data){
-					data ? (window.location.href = "/geologic/zonas/") : "";
-				}		 
-			});			 
+		// if (!suspend) {	
+
+
+		
+
+		getPolygonCoords();
+		dataString = $("#newZ_form").serialize();
+		$.ajax({
+			type: "POST",
+			url: "/geologic/zonas/save",
+			data: dataString,			 
+			success: function(data){
+				data ? (window.location.href = "/geologic/zonas/") : "";
+			}		 
+		});			 
+		
+		
+		
 		// }			
 		
 	});
