@@ -299,8 +299,14 @@ function drawZonas() {
 		type: "POST",
 		success: function(data) {
 			if (data.length) {
+				$("#yacim").html("");
 				$.each(data , function(index, value) {
-					alert(value);
+					$.each( value, function(i, n){
+						if (i.toLowerCase().indexOf("id") < 0) {
+							$("#yacim").append(i + ": " + n + "<br>");						
+						}
+					});
+					$("#yacim").append("<br>");
 				});
 			} else {
 				$("#yacim").html("Zona sin Yacimientos.");
