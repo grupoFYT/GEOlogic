@@ -180,6 +180,8 @@
 			<p>
 				
 			</p>
+			<div id="yacim">
+			</div>
 		</div>
 	</div>
 </div>

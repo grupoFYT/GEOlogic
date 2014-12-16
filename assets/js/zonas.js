@@ -298,7 +298,13 @@ function drawZonas() {
 		dataType: "json",
 		type: "POST",
 		success: function(data) {
-			
+			if (data.length) {
+				$.each(data , function(index, value) {
+					alert(value);
+				});
+			} else {
+				$("#yacim").html("Zona sin Yacimientos.");
+			}
 			
 		}
 	});	
